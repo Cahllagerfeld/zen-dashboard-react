@@ -41,6 +41,7 @@
 		--background-offset: var(--white);
 		--text: var(--neutral-700);
 		--text-important: var(--neutral-900);
+		--inactive: var(--neutral-200);
 
 		--shadow-default: 0 0.625rem 1.5rem 0rem rgba(0, 0, 0, 0.1);
 	}
@@ -54,5 +55,6 @@
 		--background-offset: var(--neutral-800);
 		--text: var(--neutral-300);
 		--text-important: var(--neutral-50);
+		--inactive: var(--neutral-400);
 	}
 }

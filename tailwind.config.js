@@ -38,7 +38,8 @@ export default {
 					background: "var(--background)",
 					"background-offset": "var(--background-offset)",
 					text: "var(--text)",
-					"text-important": "var(--text-important)"
+					"text-important": "var(--text-important)",
+					inactive: "var(--inactive)"
 				},
 				success: "var(--success)",
 				warning: "var(--warning)",
