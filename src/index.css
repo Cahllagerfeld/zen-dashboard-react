@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,10 +41,12 @@
 		--background-offset: var(--white);
 		--text: var(--neutral-700);
 		--text-important: var(--neutral-900);
+
+		--shadow-default: 0 0.625rem 1.5rem 0rem rgba(0, 0, 0, 0.1);
 	}
 
 	html {
-		@apply bg-theme-background text-[var(--text)];
+		@apply bg-theme-background font-Rubik text-theme-text;
 	}
 
 	.dark {

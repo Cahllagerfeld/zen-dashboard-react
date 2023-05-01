@@ -39,7 +39,17 @@ export default {
 					"background-offset": "var(--background-offset)",
 					text: "var(--text)",
 					"text-important": "var(--text-important)"
-				}
+				},
+				success: "var(--success)",
+				warning: "var(--warning)",
+				error: "var(--error)",
+				info: "var(--info)"
+			},
+			boxShadow: {
+				default: "var(--shadow-default)"
+			},
+			fontFamily: {
+				Rubik: ["Rubik", "sans-serif"]
 			}
 		}
 	},
