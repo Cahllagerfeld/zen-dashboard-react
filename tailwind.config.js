@@ -47,12 +47,13 @@ export default {
 				info: "var(--info)"
 			},
 			boxShadow: {
-				default: "var(--shadow-default)"
+				default: "var(--shadow-default)",
+				sharper: "var(--shadow-sharper)"
 			},
 			fontFamily: {
 				Rubik: ["Rubik", "sans-serif"]
 			}
 		}
 	},
-	plugins: []
+	plugins: [require("@tailwindcss/forms")]
 };

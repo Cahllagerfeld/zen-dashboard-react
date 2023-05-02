@@ -17,6 +17,7 @@
 		"react-router-dom": "^6.11.0"
 	},
 	"devDependencies": {
+		"@tailwindcss/forms": "^0.5.3",
 		"@types/react": "^18.2.0",
 		"@types/react-dom": "^18.2.1",
 		"@typescript-eslint/eslint-plugin": "^5.59.1",
@@ -33,7 +34,8 @@
 		"prettier-plugin-tailwindcss": "^0.2.8",
 		"tailwindcss": "^3.3.2",
 		"typescript": "^5.0.4",
-		"vite": "^4.3.3"
+		"vite": "^4.3.3",
+		"vite-plugin-svgr": "^2.4.0"
 	},
 	"lint-staged": {
 		"*.{cjs,js,jsx,ts,tsx,css,scss}": [
