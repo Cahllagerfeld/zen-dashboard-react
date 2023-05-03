@@ -44,6 +44,7 @@
 		--inactive: var(--neutral-200);
 
 		--shadow-default: 0 0.625rem 1.5rem 0rem rgba(0, 0, 0, 0.1);
+		--shadow-sharper: 0px 2px 10px rgba(0, 0, 0, 0.5);
 	}
 
 	html {
