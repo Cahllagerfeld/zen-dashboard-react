@@ -1,11 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useAtom } from "jotai";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as ZenmlLogo } from "../../assets/logo-large.svg";
 import { ReactComponent as UserIcon } from "../../assets/user.svg";
 import { ReactComponent as KeyIcon } from "../../assets/key.svg";
 import { ReactComponent as EyeIcon } from "../../assets/eye.svg";
+import { useLoginMutation } from "./login-query";
+import { tokenAtom } from "../../state/atoms";
+import { routePaths } from "../../routes/route-paths";
 
 function Login() {
+	const navigate = useNavigate();
+	const [_, setToken] = useAtom(tokenAtom);
+
+	const mutation = useLoginMutation({
+		onSuccess(data) {
+			setToken(data.access_token);
+			navigate(routePaths.base());
+		}
+	});
 	const [isReadble, setIsReadable] = useState(false);
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+
+	function handleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+		e.preventDefault();
+		mutation.mutate({ username, password });
+	}
 
 	function handlePassword() {
 		setIsReadable(!isReadble);
@@ -19,6 +40,7 @@ function Login() {
 					<div className="flex w-full items-center gap-2 rounded-lg bg-white px-2">
 						<UserIcon className="stroke-neutral-800" />
 						<input
+							onChange={(e) => setUsername(e.target.value)}
 							type="text"
 							className="w-full border-none py-2 text-neutral-800 placeholder:text-neutral-300"
 							placeholder="Username"
@@ -27,6 +49,7 @@ function Login() {
 					<div className="flex w-full items-center gap-2 rounded-lg bg-white px-2">
 						<KeyIcon className="stroke-neutral-800" />
 						<input
+							onChange={(e) => setPassword(e.target.value)}
 							type={isReadble ? "text" : "password"}
 							placeholder="Password"
 							className="w-full border-none py-2 text-neutral-800 placeholder:text-neutral-300"
@@ -45,7 +68,7 @@ function Login() {
 					</button>
 					<button
 						type="submit"
-						onClick={(e) => e.preventDefault()}
+						onClick={handleSubmit}
 						className="w-full rounded-lg bg-secondary px-4 py-2 text-white transition-all duration-150 hover:bg-secondary-dark active:scale-95"
 					>
 						Login
