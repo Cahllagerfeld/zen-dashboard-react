@@ -1,7 +1,15 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 export function useLoginMutation(
-	options?: Omit<UseMutationOptions<any, any, any, any>, "mutationFn">
+	options?: Omit<
+		UseMutationOptions<
+			{ access_token: string; token_type: string },
+			unknown,
+			{ username: string; password: string },
+			any
+		>,
+		"mutationFn"
+	>
 ) {
 	return useMutation<
 		{ access_token: string; token_type: string },

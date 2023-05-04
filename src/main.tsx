@@ -4,15 +4,18 @@ import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { Provider as JotaiProvider } from "jotai";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
+			<JotaiProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</JotaiProvider>
 		</QueryClientProvider>
 	</React.StrictMode>
 );
