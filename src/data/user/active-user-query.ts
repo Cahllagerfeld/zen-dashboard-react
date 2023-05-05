@@ -1,14 +1,13 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import { useAtom } from "jotai";
-import { tokenAtom } from "../../state/atoms";
 import { User } from "../../types/user";
+import { useTokenStore } from "../../state/atoms";
 
 export function getCurrentUserKey() {
 	return ["current-user"];
 }
 
 export function useCurrentUser(options?: Omit<UseQueryOptions<User>, "queryKey" | "queryFn">) {
-	const [token] = useAtom(tokenAtom);
+	const { token } = useTokenStore();
 	return useQuery<User>({
 		queryKey: getCurrentUserKey(),
 		queryFn: async () => {

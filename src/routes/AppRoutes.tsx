@@ -2,15 +2,14 @@ import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "../layouts/UnauthenticatedLayout";
-import { useAtom } from "jotai";
-import { tokenAtom } from "../state/atoms";
 import AuthenticatedLayout from "../layouts/AuthenticatedLayout/AuthenticatedLayout";
+import { useTokenStore } from "../state/atoms";
 // import Login from "../features/login/Login";
 
 const Login = React.lazy(() => import("../features/login/Login"));
 
 function AppRoutes() {
-	const [token] = useAtom(tokenAtom);
+	const { token } = useTokenStore();
 	return (
 		<Suspense>
 			<Routes>

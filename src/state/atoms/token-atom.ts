@@ -1,3 +1,19 @@
-import { atomWithStorage } from "jotai/utils";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export const tokenAtom = atomWithStorage("token", localStorage.getItem("token") || "");
+interface TokenStore {
+	token: string;
+	setToken: (token: string) => void;
+}
+
+export const useTokenStore = create(
+	persist<TokenStore>(
+		(set) => ({
+			token: "",
+			setToken: (token: string) => set(() => ({ token }))
+		}),
+		{
+			name: "token-storage"
+		}
+	)
+);
