@@ -4,7 +4,7 @@ import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "../layouts/UnauthenticatedLayout";
 import { useAtom } from "jotai";
 import { tokenAtom } from "../state/atoms";
-import AuthenticatedLayout from "../layouts/AuthenticatedLayout";
+import AuthenticatedLayout from "../layouts/AuthenticatedLayout/AuthenticatedLayout";
 // import Login from "../features/login/Login";
 
 const Login = React.lazy(() => import("../features/login/Login"));
