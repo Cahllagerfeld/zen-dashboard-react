@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { useAtom } from "jotai";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as ZenmlLogo } from "../../assets/logo-large.svg";
 import { ReactComponent as UserIcon } from "../../assets/user.svg";
 import { ReactComponent as KeyIcon } from "../../assets/key.svg";
 import { ReactComponent as EyeIcon } from "../../assets/eye.svg";
 import { useLoginMutation } from "./login-query";
-import { tokenAtom } from "../../state/atoms";
 import { routePaths } from "../../routes/route-paths";
+import { useTokenStore } from "../../state/atoms";
 
 function Login() {
 	const navigate = useNavigate();
-	const [_, setToken] = useAtom(tokenAtom);
+	const { setToken } = useTokenStore();
 
 	const mutation = useLoginMutation({
 		onSuccess(data) {
