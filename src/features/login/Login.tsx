@@ -6,7 +6,7 @@ import { ReactComponent as KeyIcon } from "../../assets/key.svg";
 import { ReactComponent as EyeIcon } from "../../assets/eye.svg";
 import { useLoginMutation } from "./login-query";
 import { routePaths } from "../../routes/route-paths";
-import { useTokenStore } from "../../state/atoms";
+import { useTokenStore } from "../../state/stores";
 
 function Login() {
 	const navigate = useNavigate();

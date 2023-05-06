@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "../layouts/UnauthenticatedLayout";
 import AuthenticatedLayout from "../layouts/AuthenticatedLayout/AuthenticatedLayout";
-import { useTokenStore } from "../state/atoms";
+import { useTokenStore } from "../state/stores";
 // import Login from "../features/login/Login";
 
 const Login = React.lazy(() => import("../features/login/Login"));
