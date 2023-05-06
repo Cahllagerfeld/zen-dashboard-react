@@ -1,6 +1,6 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { User } from "../../types/user";
-import { useTokenStore } from "../../state/atoms";
+import { useTokenStore } from "../../state/stores";
 
 export function getCurrentUserKey() {
 	return ["current-user"];
