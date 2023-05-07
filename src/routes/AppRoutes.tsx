@@ -24,7 +24,11 @@ function AppRoutes() {
 				<Route
 					element={token ? <AuthenticatedLayout /> : <Navigate to={routePaths.login()} replace />}
 				>
-					<Route path="/" element={<Home />} />
+					<Route path={routePaths.home()} element={<Home />} />
+					<Route
+						path={routePaths.workspaces.detail(":workspace")}
+						element={<div>Workspace Detail</div>}
+					/>
 				</Route>
 			</Routes>
 		</Suspense>
