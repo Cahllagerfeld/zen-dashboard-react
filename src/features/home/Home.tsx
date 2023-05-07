@@ -13,10 +13,10 @@ function Home() {
 				<Link
 					to={routePaths.workspaces.detail(item.name)}
 					onClick={() => setActiveWorkspace(item.name)}
-					className="flex w-full flex-col gap-4 rounded-2xl bg-white p-4"
+					className="flex w-full select-text flex-col gap-2 rounded-2xl bg-white p-4"
 				>
 					<h2 className="text-xl">{item.name}</h2>
-					{item.description && <p>{item.description}</p>}
+					{item.description ? <p>{item.description}</p> : <p>No description provided</p>}
 					<time>{new Date(item.created).toLocaleDateString()}</time>
 				</Link>
 			))}

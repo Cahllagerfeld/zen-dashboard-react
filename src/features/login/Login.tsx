@@ -15,7 +15,7 @@ function Login() {
 	const mutation = useLoginMutation({
 		onSuccess(data) {
 			setToken(data.access_token);
-			navigate(routePaths.base());
+			navigate(routePaths.home());
 		}
 	});
 	const [isReadble, setIsReadable] = useState(false);
