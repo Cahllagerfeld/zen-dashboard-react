@@ -13,7 +13,7 @@ function Home() {
 	return (
 		<div className="flex flex-col gap-8">
 			<div>
-				<Welcome name={currentUser?.full_name || ""} />
+				<Welcome name={currentUser?.full_name || currentUser?.name || ""} />
 				<p className="text-neutral-400">Please select one of the following workspaces</p>
 			</div>
 
