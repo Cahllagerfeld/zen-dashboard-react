@@ -8,7 +8,7 @@ function AuthenticatedLayout() {
 			<Sidebar />
 			<div className="my-0 h-screen shrink flex-grow basis-[0%] overflow-y-auto">
 				<Topbar />
-				<main className="px-4 lg:px-8 lg:py-4">
+				<main className="p-4">
 					<Outlet />
 				</main>
 			</div>

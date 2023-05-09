@@ -7,6 +7,7 @@ import { useTokenStore } from "../state/stores";
 // import Login from "../features/login/Login";
 
 const Login = React.lazy(() => import("../features/login/Login"));
+const Home = React.lazy(() => import("../features/home/Home"));
 
 function AppRoutes() {
 	const { token } = useTokenStore();
@@ -23,7 +24,11 @@ function AppRoutes() {
 				<Route
 					element={token ? <AuthenticatedLayout /> : <Navigate to={routePaths.login()} replace />}
 				>
-					<Route path="/" element={<p className="text-2xl">App</p>} />
+					<Route path={routePaths.home()} element={<Home />} />
+					<Route
+						path={routePaths.workspaces.detail(":workspace")}
+						element={<div>Workspace Detail</div>}
+					/>
 				</Route>
 			</Routes>
 		</Suspense>

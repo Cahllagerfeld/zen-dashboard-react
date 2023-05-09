@@ -1,7 +1,7 @@
 export const routePaths = {
-	base: () => "/",
+	home: () => "/",
 	login: () => "/login",
 	workspaces: {
-		base: (workspace_id: string) => `/workspaces/${workspace_id}`
+		detail: (workspace_id: string) => `/workspaces/${workspace_id}`
 	}
 };
