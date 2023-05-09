@@ -30,6 +30,9 @@ function AppRoutes() {
 						element={<div>Workspace Detail</div>}
 					/>
 				</Route>
+
+				{/* Fallback */}
+				<Route path="*" element={<h1 className="text-base">404</h1>} />
 			</Routes>
 		</Suspense>
 	);
