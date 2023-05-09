@@ -18,8 +18,9 @@ function Home() {
 			</div>
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
-				{data?.items.map((item) => (
+				{data?.items.map((item, index) => (
 					<Link
+						key={index}
 						to={routePaths.workspaces.detail(item.name)}
 						onClick={() => setActiveWorkspace(item.name)}
 						className="flex w-full select-text flex-col gap-2 rounded-2xl bg-white from-primary to-primary-light p-4 hover:bg-primary hover:bg-gradient-to-br hover:text-white"
