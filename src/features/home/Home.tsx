@@ -5,6 +5,7 @@ import { routePaths } from "../../routes/route-paths";
 import { useCurrentUser } from "../../data/user/active-user-query";
 import Welcome from "../../components/Welcome";
 import Skeleton from "react-loading-skeleton";
+import WorkspaceSkeletonCard from "./WorkspaceSkeletonCard";
 
 function Home() {
 	const { setActiveWorkspace } = useWorkspaceStore();
@@ -17,7 +18,7 @@ function Home() {
 				{currentUser ? (
 					<Welcome name={currentUser.full_name || currentUser.name || ""} />
 				) : (
-					<Skeleton duration={1} className="h-12 w-1/4 rounded-xl" />
+					<Skeleton className="h-12 w-1/4 rounded-xl" />
 				)}
 				<p className="text-neutral-400">Please select one of the following workspaces</p>
 			</div>
@@ -37,7 +38,7 @@ function Home() {
 					))}
 				</div>
 			) : (
-				<Skeleton className="h-32 w-1/4 rounded-2xl" />
+				<WorkspaceSkeletonCard />
 			)}
 		</div>
 	);
