@@ -4,6 +4,7 @@ import { useWorkspaces } from "./workspace-query";
 import { routePaths } from "../../routes/route-paths";
 import { useCurrentUser } from "../../data/user/active-user-query";
 import Welcome from "../../components/Welcome";
+import Skeleton from "react-loading-skeleton";
 
 function Home() {
 	const { setActiveWorkspace } = useWorkspaceStore();
@@ -13,24 +14,31 @@ function Home() {
 	return (
 		<div className="flex flex-col gap-8">
 			<div>
-				<Welcome name={currentUser?.full_name || currentUser?.name || ""} />
+				{currentUser ? (
+					<Welcome name={currentUser.full_name || currentUser.name || ""} />
+				) : (
+					<Skeleton duration={1} className="h-12 w-1/4 rounded-xl" />
+				)}
 				<p className="text-neutral-400">Please select one of the following workspaces</p>
 			</div>
-
-			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
-				{data?.items.map((item, index) => (
-					<Link
-						key={index}
-						to={routePaths.workspaces.detail(item.name)}
-						onClick={() => setActiveWorkspace(item.name)}
-						className="flex w-full select-text flex-col gap-2 rounded-2xl bg-white from-primary to-primary-light p-4 hover:bg-primary hover:bg-gradient-to-br hover:text-white"
-					>
-						<h2 className="text-xl">{item.name}</h2>
-						{item.description ? <p>{item.description}</p> : <p>No description provided</p>}
-						<time>{new Date(item.created).toLocaleDateString()}</time>
-					</Link>
-				))}
-			</div>
+			{data ? (
+				<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+					{data?.items.map((item, index) => (
+						<Link
+							key={index}
+							to={routePaths.workspaces.detail(item.name)}
+							onClick={() => setActiveWorkspace(item.name)}
+							className="flex w-full select-text flex-col gap-2 rounded-2xl bg-white from-primary to-primary-light p-4 hover:bg-primary hover:bg-gradient-to-br hover:text-white"
+						>
+							<h2 className="text-xl">{item.name}</h2>
+							{item.description ? <p>{item.description}</p> : <p>No description provided</p>}
+							<time>{new Date(item.created).toLocaleDateString()}</time>
+						</Link>
+					))}
+				</div>
+			) : (
+				<Skeleton className="h-32 w-1/4 rounded-2xl" />
+			)}
 		</div>
 	);
 }
