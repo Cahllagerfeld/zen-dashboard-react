@@ -4,10 +4,12 @@ import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "../layouts/UnauthenticatedLayout";
 import AuthenticatedLayout from "../layouts/AuthenticatedLayout/AuthenticatedLayout";
 import { useTokenStore } from "../state/stores";
+// import WorkspaceDetail from "../features/workspace-detail/WorkspaceDetail";
 // import Login from "../features/login/Login";
 
 const Login = React.lazy(() => import("../features/login/Login"));
 const Home = React.lazy(() => import("../features/home/Home"));
+const WorkspaceDetail = React.lazy(() => import("../features/workspace-detail/WorkspaceDetail"));
 
 function AppRoutes() {
 	const { token } = useTokenStore();
@@ -25,10 +27,7 @@ function AppRoutes() {
 					element={token ? <AuthenticatedLayout /> : <Navigate to={routePaths.login()} replace />}
 				>
 					<Route path={routePaths.home()} element={<Home />} />
-					<Route
-						path={routePaths.workspaces.detail(":workspace")}
-						element={<div>Workspace Detail</div>}
-					/>
+					<Route path={routePaths.workspaces.detail(":workspace")} element={<WorkspaceDetail />} />
 				</Route>
 
 				{/* Fallback */}
