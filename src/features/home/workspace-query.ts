@@ -2,7 +2,7 @@ import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "../../state/stores";
 import { WorkspaceResponsePage } from "../../types/workspace";
 
-export function getCurrentUserKey() {
+export function getWorkspacesKey() {
 	return ["workspaces"];
 }
 
@@ -11,7 +11,7 @@ export function useWorkspaces(
 ) {
 	const { token } = useTokenStore();
 	return useQuery<WorkspaceResponsePage>({
-		queryKey: getCurrentUserKey(),
+		queryKey: getWorkspacesKey(),
 		queryFn: async () => {
 			const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/workspaces`, {
 				method: "GET",
