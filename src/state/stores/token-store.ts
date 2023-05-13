@@ -12,7 +12,7 @@ export const useTokenStore = create(
 		(set) => ({
 			token: "",
 			setToken: (token: string) => set(() => ({ token })),
-			reset: () => set(() => ({ token: "" }), true)
+			reset: () => set(() => ({ token: "" }), false)
 		}),
 		{
 			name: "token-storage"
