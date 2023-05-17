@@ -3,7 +3,7 @@ type RunQueryKey = {
 	params: RunQueryParams;
 };
 
-type RunQueryParams = {
+export type RunQueryParams = {
 	sort_by?: string;
 	logical_operator?: "or" | "and";
 	page?: string;
@@ -30,13 +30,5 @@ type RunQueryParams = {
 };
 
 export function getRunQueryKey({ workspace, params }: RunQueryKey) {
-	const sanitizedParams = Object.fromEntries(
-		Object.entries(params).filter(([_, v]) => v !== undefined)
-	);
-
-	return ["workspaces", workspace, "runs", sanitizedParams];
+	return ["workspaces", workspace, "runs", params];
 }
-
-// export function useRunQuery() {
-// 	const token = useTokenStore((state) => state.token);
-// }
