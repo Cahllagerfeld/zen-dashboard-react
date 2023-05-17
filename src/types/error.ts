@@ -1,3 +1,3 @@
-export interface ErrorModel {
+export type ErrorModel = {
 	detail: string[];
-}
+};

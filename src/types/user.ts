@@ -1,4 +1,4 @@
-export interface User {
+export type User = {
 	id: string;
 	created: string;
 	updated: string;
@@ -11,20 +11,20 @@ export interface User {
 	teams: Team[];
 	roles: Role[];
 	email: string;
-}
+};
 
-export interface Team {
+export type Team = {
 	id: string;
 	created: string;
 	updated: string;
 	name: string;
 	users: string[];
-}
+};
 
-export interface Role {
+export type Role = {
 	id: string;
 	created: string;
 	updated: string;
 	name: string;
 	permissions: string[];
-}
+};
