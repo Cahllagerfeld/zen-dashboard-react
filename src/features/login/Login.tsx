@@ -7,6 +7,7 @@ import { ReactComponent as EyeIcon } from "../../assets/eye.svg";
 import { useLoginMutation } from "./login-query";
 import { routePaths } from "../../routes/route-paths";
 import { useTokenStore } from "../../state/stores";
+import Button from "../../components/buttons/Button";
 
 function Login() {
 	const navigate = useNavigate();
@@ -65,13 +66,9 @@ function Login() {
 					>
 						Forgot password?
 					</button>
-					<button
-						type="submit"
-						onClick={handleSubmit}
-						className="w-full rounded-lg bg-secondary px-4 py-2 text-white transition-all duration-150 hover:bg-secondary-dark active:scale-95"
-					>
+					<Button fullWidth type="submit" onClick={handleSubmit} intent="secondary">
 						Login
-					</button>
+					</Button>
 				</form>
 			</div>
 		</div>
