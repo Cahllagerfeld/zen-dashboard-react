@@ -6,6 +6,7 @@ import { useCurrentUser } from "../../data/user/active-user-query";
 import Welcome from "../../components/Welcome";
 import Skeleton from "react-loading-skeleton";
 import WorkspaceSkeletonCard from "./WorkspaceSkeletonCard";
+import Table from "../../components/table/Table";
 
 function Home() {
 	const { setActiveWorkspace } = useWorkspaceStore();
@@ -40,6 +41,7 @@ function Home() {
 			) : (
 				<WorkspaceSkeletonCard />
 			)}
+			<Table />
 		</div>
 	);
 }
