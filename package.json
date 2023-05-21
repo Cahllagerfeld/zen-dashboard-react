@@ -4,15 +4,16 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --host",
 		"build": "tsc && vite build",
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview",
+		"preview": "vite preview --host",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@tanstack/react-query": "^4.29.5",
+		"@tanstack/react-table": "^8.9.1",
 		"class-variance-authority": "^0.6.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
