@@ -6,100 +6,8 @@ import { useCurrentUser } from "../../data/user/active-user-query";
 import Welcome from "../../components/Welcome";
 import Skeleton from "react-loading-skeleton";
 import WorkspaceSkeletonCard from "./WorkspaceSkeletonCard";
-import Table from "../../components/table/Table";
-import { createColumnHelper } from "@tanstack/react-table";
-import { User } from "../../types/user";
-import { useMemo } from "react";
-
-const tableData: Partial<User>[] = [
-	{
-		id: "1",
-		name: "John Doe",
-		email: "john@doe.com",
-		active: true,
-		full_name: "John Doe"
-	},
-	{
-		id: "2",
-		name: "Jane Doe",
-		email: "jane@doe.com",
-		active: false,
-		full_name: "Jane Doe"
-	},
-	{
-		id: "3",
-		name: "Tony Stark",
-		email: "tony@stark.com",
-		active: true,
-		full_name: "Tony Stark"
-	},
-	{
-		id: "4",
-		active: false,
-		name: "Baiu",
-		full_name: "Twitter",
-		email: "asdfasdf@afadsf.com"
-	}
-];
-
-const columnHelper = createColumnHelper<Partial<User>>();
-
-const columns = [
-	columnHelper.accessor("id", {
-		header: () => "ID",
-		cell: (id) => id.getValue()
-	}),
-	columnHelper.accessor("name", {
-		header: () => "Name",
-		cell: (user) => user.getValue()
-	}),
-	columnHelper.accessor("email", {
-		header: () => "Email",
-		cell: (mail) => mail.getValue()
-	}),
-	columnHelper.accessor("active", {
-		header: () => "Active",
-		cell: (active) => (active.getValue() ? "Yes" : "No")
-	}),
-	columnHelper.accessor("as", {
-		header: () => "Active",
-		cell: (active) => (active.getValue() ? "Yes" : "No")
-	}),
-	columnHelper.accessor("ad", {
-		header: () => "Active",
-		cell: (active) => (active.getValue() ? "Yes" : "No")
-	}),
-	columnHelper.accessor("full_name", {
-		header: () => "Full Name",
-		cell: (fullName) => fullName.getValue()
-	}),
-	columnHelper.accessor("", {
-		id: "Actions",
-		cell: () => (
-			<button className="text-center align-middle" onClick={() => alert("test")}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					stroke-width="2"
-					stroke="currentColor"
-					fill="none"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-					<path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-					<path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-					<path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
-				</svg>
-			</button>
-		)
-	})
-];
 
 function Home() {
-	const datadata = useMemo(() => tableData, []);
 	const { setActiveWorkspace } = useWorkspaceStore();
 	const { data: currentUser } = useCurrentUser();
 	const { data } = useWorkspaces();
@@ -132,7 +40,6 @@ function Home() {
 			) : (
 				<WorkspaceSkeletonCard />
 			)}
-			<Table columnDef={columns} data={datadata} hasActions />
 		</div>
 	);
 }
