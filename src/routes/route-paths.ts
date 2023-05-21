@@ -2,6 +2,9 @@ export const routePaths = {
 	home: () => "/",
 	login: () => "/login",
 	workspaces: {
-		detail: (workspace_id: string) => `/workspaces/${workspace_id}`
+		detail: (workspaceID: string) => `/workspaces/${workspaceID}`
+	},
+	components: {
+		overview: (workspaceID: string) => `/workspaces/${workspaceID}/components`
 	}
 };
