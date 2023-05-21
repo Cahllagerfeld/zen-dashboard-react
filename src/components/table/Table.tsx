@@ -1,11 +1,4 @@
-import {
-	ColumnDef,
-	// createColumnHelper,
-	flexRender,
-	getCoreRowModel,
-	useReactTable
-} from "@tanstack/react-table";
-// import { User } from "../../types/user";
+import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
 type TableProps<T> = {
 	data: T[];
