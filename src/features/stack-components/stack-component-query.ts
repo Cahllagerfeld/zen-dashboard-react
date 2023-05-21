@@ -2,6 +2,7 @@ import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "../../state/stores";
 import { StackComponent } from "../../types/stack-component";
 import { ErrorModel } from "../../types/error";
+import { apiPaths, createApiPath } from "../../data/api";
 
 type StackComponentQuery = {
 	workspace: string;
@@ -39,15 +40,12 @@ export function useStackComponents(
 	return useQuery<StackComponent, ErrorModel>({
 		queryKey: getStackComponentQueryKey({ workspace, params }),
 		queryFn: async () => {
-			const response = await fetch(
-				`${import.meta.env.VITE_API_BASE_URL}/workspaces/${workspace}/components`,
-				{
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
+			const response = await fetch(createApiPath(apiPaths.workspaces.components(workspace)), {
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${token}`
 				}
-			);
+			});
 			if (!response.ok) throw new Error(`Components couldn't be fetched`);
 			return response.json();
 		},

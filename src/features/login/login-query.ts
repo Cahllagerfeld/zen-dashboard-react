@@ -1,4 +1,5 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
+import { apiPaths, createApiPath } from "../../data/api";
 
 export function useLoginMutation(
 	options?: Omit<
@@ -17,7 +18,7 @@ export function useLoginMutation(
 		{ username: string; password: string }
 	>({
 		mutationFn: async ({ password, username }) => {
-			const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/login`, {
+			const res = await fetch(createApiPath(apiPaths.login), {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded"
