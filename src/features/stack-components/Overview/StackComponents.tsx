@@ -3,6 +3,7 @@ import { useWorkspaceStore } from "../../../state/stores/workspace-store";
 import { StackComponentQueryParams, useStackComponents } from "../stack-component-query";
 import { useTableDefinition } from "./table";
 import Table from "../../../components/table/Table";
+import TableSkeleton from "../../../components/table/TableSkeleton";
 
 function StackComponentsOverview() {
 	const [params, _] = useState<StackComponentQueryParams>({});
@@ -11,8 +12,8 @@ function StackComponentsOverview() {
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
 		<div>
-			<p>Stack Components</p>
-			{isLoading && <p>Loading...</p>}
+			<h1 className="mb-4">Stack Components</h1>
+			{isLoading && <TableSkeleton />}
 			{isSuccess && <Table columnDef={tableDef} data={data.items} />}
 		</div>
 	);
