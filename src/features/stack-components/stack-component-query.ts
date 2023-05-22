@@ -3,6 +3,7 @@ import { useTokenStore } from "../../state/stores";
 import { StackComponent } from "../../types/stack-component";
 import { ErrorModel } from "../../types/error";
 import { apiPaths, createApiPath } from "../../data/api";
+import { ResponsePage } from "../../types/common";
 
 type StackComponentQuery = {
 	workspace: string;
@@ -34,10 +35,10 @@ export function getStackComponentQueryKey({ workspace, params }: StackComponentQ
 
 export function useStackComponents(
 	{ workspace, params }: StackComponentQuery,
-	options?: Omit<UseQueryOptions<StackComponent, ErrorModel>, "queryKey" | "queryFn">
+	options?: Omit<UseQueryOptions<ResponsePage<StackComponent>, ErrorModel>, "queryKey" | "queryFn">
 ) {
 	const token = useTokenStore((state) => state.token);
-	return useQuery<StackComponent, ErrorModel>({
+	return useQuery<ResponsePage<StackComponent>, ErrorModel>({
 		queryKey: getStackComponentQueryKey({ workspace, params }),
 		queryFn: async () => {
 			const response = await fetch(createApiPath(apiPaths.workspaces.components(workspace)), {
