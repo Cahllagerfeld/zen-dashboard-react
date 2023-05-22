@@ -1,3 +1,5 @@
+import { ResponsePage } from "./common";
+
 export type Workspace = {
 	id: string;
 	created: string;
@@ -6,10 +8,4 @@ export type Workspace = {
 	description: string;
 };
 
-export type WorkspaceResponsePage = {
-	index: number;
-	max_size: number;
-	total_pages: number;
-	total: number;
-	items: Workspace[];
-};
+export type WorkspaceResponsePage = ResponsePage<Workspace>;

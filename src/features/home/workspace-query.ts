@@ -1,6 +1,7 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "../../state/stores";
 import { WorkspaceResponsePage } from "../../types/workspace";
+import { apiPaths, createApiPath } from "../../data/api";
 
 export function getWorkspacesKey() {
 	return ["workspaces"];
@@ -13,7 +14,7 @@ export function useWorkspaces(
 	return useQuery<WorkspaceResponsePage>({
 		queryKey: getWorkspacesKey(),
 		queryFn: async () => {
-			const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/workspaces`, {
+			const response = await fetch(createApiPath(apiPaths.workspaces.base), {
 				method: "GET",
 				headers: {
 					Authorization: `Bearer ${token}`

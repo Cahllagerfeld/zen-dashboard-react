@@ -10,6 +10,9 @@ import { useTokenStore } from "../state/stores";
 const Login = React.lazy(() => import("../features/login/Login"));
 const Home = React.lazy(() => import("../features/home/Home"));
 const WorkspaceDetail = React.lazy(() => import("../features/workspace-detail/WorkspaceDetail"));
+const StackComponentsOverview = React.lazy(
+	() => import("../features/stack-components/Overview/StackComponents")
+);
 
 function AppRoutes() {
 	const { token } = useTokenStore();
@@ -28,6 +31,10 @@ function AppRoutes() {
 				>
 					<Route path={routePaths.home()} element={<Home />} />
 					<Route path={routePaths.workspaces.detail(":workspace")} element={<WorkspaceDetail />} />
+					<Route
+						path={routePaths.components.overview(":workspace")}
+						element={<StackComponentsOverview />}
+					/>
 				</Route>
 
 				{/* Fallback */}
