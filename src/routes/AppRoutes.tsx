@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "../layouts/UnauthenticatedLayout";
 import AuthenticatedLayout from "../layouts/AuthenticatedLayout/AuthenticatedLayout";
@@ -16,6 +16,7 @@ const StackComponentsOverview = React.lazy(
 
 function AppRoutes() {
 	const { token } = useTokenStore();
+	const location = useLocation();
 	return (
 		<Suspense>
 			<Routes>
@@ -27,7 +28,19 @@ function AppRoutes() {
 
 				{/* Protected Routes */}
 				<Route
-					element={token ? <AuthenticatedLayout /> : <Navigate to={routePaths.login()} replace />}
+					element={
+						token ? (
+							<AuthenticatedLayout />
+						) : (
+							<Navigate
+								to={
+									routePaths.login() +
+									`?${new URLSearchParams({ redirect: location.pathname }).toString()}`
+								}
+								replace
+							/>
+						)
+					}
 				>
 					<Route path={routePaths.home()} element={<Home />} />
 					<Route path={routePaths.workspaces.detail(":workspace")} element={<WorkspaceDetail />} />

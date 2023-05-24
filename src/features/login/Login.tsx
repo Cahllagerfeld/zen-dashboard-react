@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ReactComponent as ZenmlLogo } from "../../assets/logo-large.svg";
 import { ReactComponent as UserIcon } from "../../assets/user.svg";
 import { ReactComponent as KeyIcon } from "../../assets/key.svg";
@@ -11,12 +11,15 @@ import Button from "../../components/buttons/Button";
 
 function Login() {
 	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
 	const { setToken } = useTokenStore();
+
+	const redirect = searchParams.get("redirect");
 
 	const mutation = useLoginMutation({
 		onSuccess(data) {
 			setToken(data.access_token);
-			navigate(routePaths.home());
+			navigate(redirect || routePaths.home());
 		}
 	});
 	const [isReadble, setIsReadable] = useState(false);
