@@ -4,6 +4,7 @@ import { StackComponentQueryParams, useStackComponents } from "../stack-componen
 import { useTableDefinition } from "./table";
 import Table from "../../../components/table/Table";
 import TableSkeleton from "../../../components/table/TableSkeleton";
+import Pagination from "../../../components/pagination/Pagination";
 
 function StackComponentsOverview() {
 	const [params, _] = useState<StackComponentQueryParams>({});
@@ -14,7 +15,12 @@ function StackComponentsOverview() {
 		<div>
 			<h1 className="mb-4">Stack Components</h1>
 			{isLoading && <TableSkeleton />}
-			{isSuccess && <Table columnDef={tableDef} data={data.items} />}
+			{isSuccess && (
+				<div>
+					<Table columnDef={tableDef} data={data.items} />
+					<Pagination paginate={data} />
+				</div>
+			)}
 		</div>
 	);
 }
