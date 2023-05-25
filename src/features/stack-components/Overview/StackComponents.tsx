@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useWorkspaceStore } from "../../../state/stores/workspace-store";
 import { StackComponentQueryParams, useStackComponents } from "../stack-component-query";
 import { useTableDefinition } from "./table";
@@ -15,27 +15,21 @@ function StackComponentsOverview() {
 	const page = searchParams.get("page");
 	const size = searchParams.get("size");
 
-	const [params, _] = useState<StackComponentQueryParams>({
+	const [params, setParams] = useState<StackComponentQueryParams>({
 		page: page || DEFAULT_PAGE,
 		size: size || DEFAULT_PAGE_SIZE
 	});
 	const activeWorkspace = useWorkspaceStore((state) => state.activeWorkspace);
 	const tableDef = useTableDefinition();
 
-	useEffect(() => {
-		if (!page || !size) {
-			setSearchParams(
-				(existing) => ({
-					...existing,
-					page: data?.index.toString() || DEFAULT_PAGE,
-					size: data?.max_size.toString() || DEFAULT_PAGE_SIZE
-				}),
-				{
-					replace: true
-				}
-			);
-		}
-	}, []);
+	function pageChangeHandler(page: string) {
+		setParams({ ...params, page });
+		setSearchParams((existing) => {
+			const newSearchParams = new URLSearchParams(existing.toString());
+			newSearchParams.set("page", page);
+			return newSearchParams;
+		});
+	}
 
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
@@ -45,7 +39,7 @@ function StackComponentsOverview() {
 			{isSuccess && (
 				<div>
 					<Table columnDef={tableDef} data={data.items} />
-					<Pagination paginate={data} />
+					<Pagination pageChangeHandler={pageChangeHandler} paginate={data} />
 				</div>
 			)}
 		</div>
