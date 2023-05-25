@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWorkspaceStore } from "../../../state/stores/workspace-store";
 import { StackComponentQueryParams, useStackComponents } from "../stack-component-query";
 import { useTableDefinition } from "./table";
@@ -21,6 +21,17 @@ function StackComponentsOverview() {
 	});
 	const activeWorkspace = useWorkspaceStore((state) => state.activeWorkspace);
 	const tableDef = useTableDefinition();
+
+	useEffect(() => {
+		if (!searchParams.has("page")) {
+			searchParams.set("page", DEFAULT_PAGE);
+		}
+		if (!searchParams.has("size")) {
+			searchParams.set("size", DEFAULT_PAGE_SIZE);
+		}
+
+		setSearchParams(searchParams);
+	}, [searchParams, setSearchParams]);
 
 	function pageChangeHandler(page: string) {
 		setParams({ ...params, page });
