@@ -4,6 +4,7 @@ import { StackComponent } from "../../types/stack-component";
 import { ErrorModel } from "../../types/error";
 import { apiPaths, createApiPath } from "../../data/api";
 import { ResponsePage } from "../../types/common";
+import { objectToSearchParams } from "../../data/helper";
 
 type StackComponentQuery = {
 	workspace: string;
@@ -41,12 +42,17 @@ export function useStackComponents(
 	return useQuery<ResponsePage<StackComponent>, ErrorModel>({
 		queryKey: getStackComponentQueryKey({ workspace, params }),
 		queryFn: async () => {
-			const response = await fetch(createApiPath(apiPaths.workspaces.components(workspace)), {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${token}`
+			const response = await fetch(
+				createApiPath(
+					apiPaths.workspaces.components(workspace) + `?${objectToSearchParams(params)}`
+				),
+				{
+					method: "GET",
+					headers: {
+						Authorization: `Bearer ${token}`
+					}
 				}
-			});
+			);
 			if (!response.ok) throw new Error(`Components couldn't be fetched`);
 			return response.json();
 		},
