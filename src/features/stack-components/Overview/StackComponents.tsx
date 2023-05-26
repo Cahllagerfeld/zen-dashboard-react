@@ -34,7 +34,10 @@ function StackComponentsOverview() {
 	}, [searchParams, setSearchParams]);
 
 	function pageChangeHandler(page: string) {
-		setParams({ ...params, page });
+		setParams((prevParams) => ({
+			...prevParams,
+			page
+		}));
 		setSearchParams((existing) => {
 			const newSearchParams = new URLSearchParams(existing.toString());
 			newSearchParams.set("page", page);
