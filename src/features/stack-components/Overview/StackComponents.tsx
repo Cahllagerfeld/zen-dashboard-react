@@ -45,6 +45,18 @@ function StackComponentsOverview() {
 		});
 	}
 
+	function pageSizeChangeHandler(size: string) {
+		setParams((prevParams) => ({
+			...prevParams,
+			size
+		}));
+		setSearchParams((existing) => {
+			const newSearchParams = new URLSearchParams(existing.toString());
+			newSearchParams.set("size", size);
+			return newSearchParams;
+		});
+	}
+
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
 		<div>
@@ -53,7 +65,11 @@ function StackComponentsOverview() {
 			{isSuccess && (
 				<div>
 					<Table columnDef={tableDef} data={data.items} />
-					<Pagination pageChangeHandler={pageChangeHandler} paginate={data} />
+					<Pagination
+						pageSizeChangeHandler={pageSizeChangeHandler}
+						pageChangeHandler={pageChangeHandler}
+						paginate={data}
+					/>
 				</div>
 			)}
 		</div>
