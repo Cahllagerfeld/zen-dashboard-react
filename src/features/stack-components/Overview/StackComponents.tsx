@@ -61,7 +61,7 @@ function StackComponentsOverview() {
 	return (
 		<div>
 			<h1 className="mb-4">Stack Components</h1>
-			{isLoading && <TableSkeleton />}
+			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
 			{isSuccess && (
 				<div>
 					<Table columnDef={tableDef} data={data.items} />
