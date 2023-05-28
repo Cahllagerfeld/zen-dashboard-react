@@ -23,7 +23,9 @@ export function useTableDefinition() {
 		}),
 		columnHelper.accessor("created", {
 			header: "Created",
-			cell: (date) => date.getValue()
+			cell: ({ getValue }) => {
+				return <time>{new Date(getValue()).toLocaleString()}</time>;
+			}
 		})
 	];
 }
