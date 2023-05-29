@@ -53,6 +53,7 @@ function StackComponentsOverview() {
 		setSearchParams((existing) => {
 			const newSearchParams = new URLSearchParams(existing.toString());
 			newSearchParams.set("size", size);
+			newSearchParams.set("page", "1");
 			return newSearchParams;
 		});
 	}
