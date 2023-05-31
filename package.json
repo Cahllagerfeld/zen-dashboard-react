@@ -10,7 +10,8 @@
 		"preview": "vite preview --host",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "husky install",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"test:unit:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
 		"@tanstack/react-query": "^4.29.5",
@@ -29,6 +30,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.59.1",
 		"@typescript-eslint/parser": "^5.59.1",
 		"@vitejs/plugin-react-swc": "^3.3.0",
+		"@vitest/coverage-c8": "^0.31.3",
 		"autoprefixer": "^10.4.14",
 		"eslint": "^8.39.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
