@@ -13,6 +13,9 @@ const WorkspaceDetail = React.lazy(() => import("../features/workspace-detail/Wo
 const StackComponentsOverview = React.lazy(
 	() => import("../features/stack-components/Overview/StackComponents")
 );
+const StackComponentDetail = React.lazy(
+	() => import("../features/stack-components/Detail/StackComponentDetail")
+);
 
 function AppRoutes() {
 	const { token } = useTokenStore();
@@ -47,6 +50,10 @@ function AppRoutes() {
 					<Route
 						path={routePaths.components.overview(":workspace")}
 						element={<StackComponentsOverview />}
+					/>
+					<Route
+						path={routePaths.components.detail(":workspace", ":id")}
+						element={<StackComponentDetail />}
 					/>
 				</Route>
 
