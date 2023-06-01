@@ -34,6 +34,24 @@ export function getStackComponentQueryKey({ workspace, params }: StackComponentO
 	return ["workspaces", workspace, "runs", params];
 }
 
+export async function fetchStackComponents(
+	{ params, workspace }: StackComponentOverviewQuery,
+	token: string
+) {
+	const url = createApiPath(
+		apiPaths.workspaces.components(workspace) + `?${objectToSearchParams(params)}`
+	);
+
+	const res = await fetch(url, {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${token}`
+		}
+	});
+	if (!res.ok) throw new Error(`Components couldn't be fetched`);
+	return res.json();
+}
+
 export function useStackComponents(
 	{ workspace, params }: StackComponentOverviewQuery,
 	options?: Omit<UseQueryOptions<ResponsePage<StackComponent>, ErrorModel>, "queryKey" | "queryFn">
@@ -41,21 +59,7 @@ export function useStackComponents(
 	const token = useTokenStore((state) => state.token);
 	return useQuery<ResponsePage<StackComponent>, ErrorModel>({
 		queryKey: getStackComponentQueryKey({ workspace, params }),
-		queryFn: async () => {
-			const response = await fetch(
-				createApiPath(
-					apiPaths.workspaces.components(workspace) + `?${objectToSearchParams(params)}`
-				),
-				{
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				}
-			);
-			if (!response.ok) throw new Error(`Components couldn't be fetched`);
-			return response.json();
-		},
+		queryFn: () => fetchStackComponents({ workspace, params }, token),
 		...options
 	});
 }

@@ -12,7 +12,7 @@ export function getStackComponentQueryDetailKey({ id }: StackComponentDetailQuer
 	return ["components", id];
 }
 
-export async function fetchStackComponentDetail(id: string, token: string) {
+export async function fetchStackComponentDetail({ id }: StackComponentDetailQuery, token: string) {
 	const url = createApiPath(apiPaths.components.detail(id));
 	const res = await fetch(url, {
 		method: "GET",
@@ -31,7 +31,7 @@ export function useStackComponentDetail(
 	const token = useTokenStore((state) => state.token);
 	return useQuery<StackComponent, ErrorModel>({
 		queryKey: getStackComponentQueryDetailKey({ id }),
-		queryFn: () => fetchStackComponentDetail(id, token),
+		queryFn: () => fetchStackComponentDetail({ id }, token),
 		...options
 	});
 }
