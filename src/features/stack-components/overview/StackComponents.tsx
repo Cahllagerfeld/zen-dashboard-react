@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useWorkspaceStore } from "../../../state/stores/workspace-store";
-import { StackComponentQueryParams, useStackComponents } from "../stack-component-query";
+import { StackComponentQueryParams, useStackComponents } from "./query";
 import { useTableDefinition } from "./table";
 import Table from "../../../components/table/Table";
 import TableSkeleton from "../../../components/table/TableSkeleton";

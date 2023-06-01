@@ -1,12 +1,12 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import { useTokenStore } from "../../state/stores";
-import { StackComponent } from "../../types/stack-component";
-import { ErrorModel } from "../../types/error";
-import { apiPaths, createApiPath } from "../../data/api";
-import { ResponsePage } from "../../types/common";
-import { objectToSearchParams } from "../../data/helper";
+import { useTokenStore } from "../../../state/stores";
+import { StackComponent } from "../../../types/stack-component";
+import { ErrorModel } from "../../../types/error";
+import { apiPaths, createApiPath } from "../../../data/api";
+import { ResponsePage } from "../../../types/common";
+import { objectToSearchParams } from "../../../data/helper";
 
-type StackComponentQuery = {
+type StackComponentOverviewQuery = {
 	workspace: string;
 	params: StackComponentQueryParams;
 };
@@ -30,12 +30,12 @@ export type StackComponentQueryParams = {
 	user_id?: string;
 };
 
-export function getStackComponentQueryKey({ workspace, params }: StackComponentQuery) {
+export function getStackComponentQueryKey({ workspace, params }: StackComponentOverviewQuery) {
 	return ["workspaces", workspace, "runs", params];
 }
 
 export function useStackComponents(
-	{ workspace, params }: StackComponentQuery,
+	{ workspace, params }: StackComponentOverviewQuery,
 	options?: Omit<UseQueryOptions<ResponsePage<StackComponent>, ErrorModel>, "queryKey" | "queryFn">
 ) {
 	const token = useTokenStore((state) => state.token);

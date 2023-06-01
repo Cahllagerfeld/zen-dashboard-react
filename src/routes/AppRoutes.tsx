@@ -11,10 +11,10 @@ const Login = React.lazy(() => import("../features/login/Login"));
 const Home = React.lazy(() => import("../features/home/Home"));
 const WorkspaceDetail = React.lazy(() => import("../features/workspace-detail/WorkspaceDetail"));
 const StackComponentsOverview = React.lazy(
-	() => import("../features/stack-components/Overview/StackComponents")
+	() => import("../features/stack-components/overview/StackComponents")
 );
 const StackComponentDetail = React.lazy(
-	() => import("../features/stack-components/Detail/StackComponentDetail")
+	() => import("../features/stack-components/detail/StackComponentDetail")
 );
 
 function AppRoutes() {
