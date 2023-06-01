@@ -1,4 +1,4 @@
-import { getStackComponentQueryKey, StackComponentDetailQuery } from "./query";
+import { getStackComponentQueryDetailKey, StackComponentDetailQuery } from "./query";
 import { describe, it, expect } from "vitest";
 
 describe("getStackComponentQueryKey", () => {
@@ -8,7 +8,7 @@ describe("getStackComponentQueryKey", () => {
 		};
 		const expectedQueryKey: string[] = ["components", "abc123"];
 
-		const result = getStackComponentQueryKey(query);
+		const result = getStackComponentQueryDetailKey(query);
 
 		expect(result).toEqual(expectedQueryKey);
 	});
@@ -19,7 +19,7 @@ describe("getStackComponentQueryKey", () => {
 		};
 		const expectedQueryKey: string[] = ["components", "123"];
 
-		const result = getStackComponentQueryKey(query);
+		const result = getStackComponentQueryDetailKey(query);
 
 		expect(result).toEqual(expectedQueryKey);
 	});
@@ -30,7 +30,7 @@ describe("getStackComponentQueryKey", () => {
 		};
 		const expectedQueryKey: string[] = ["components", "!@#$%^&*()_+"];
 
-		const result = getStackComponentQueryKey(query);
+		const result = getStackComponentQueryDetailKey(query);
 
 		expect(result).toEqual(expectedQueryKey);
 	});

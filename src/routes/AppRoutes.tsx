@@ -51,10 +51,7 @@ function AppRoutes() {
 						path={routePaths.components.overview(":workspace")}
 						element={<StackComponentsOverview />}
 					/>
-					<Route
-						path={routePaths.components.detail(":workspace", ":id")}
-						element={<StackComponentDetail />}
-					/>
+					<Route path={routePaths.components.detail(":id")} element={<StackComponentDetail />} />
 				</Route>
 
 				{/* Fallback */}
