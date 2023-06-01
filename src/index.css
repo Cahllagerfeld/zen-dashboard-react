@@ -59,3 +59,9 @@
 		--inactive: var(--neutral-400);
 	}
 }
+
+@layer utilities {
+	.link {
+		@apply underline transition-all duration-200 hover:decoration-transparent;
+	}
+}

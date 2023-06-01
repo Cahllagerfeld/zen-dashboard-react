@@ -1,5 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table";
 import { StackComponent } from "../../../types/stack-component";
+import { Link } from "react-router-dom";
+import { routePaths } from "../../../routes/route-paths";
 
 const columnHelper = createColumnHelper<StackComponent>();
 
@@ -7,11 +9,19 @@ export function useTableDefinition() {
 	return [
 		columnHelper.accessor("id", {
 			header: () => "ID",
-			cell: (id) => id.getValue()
+			cell: (id) => (
+				<Link className="link" to={routePaths.components.detail(id.getValue())}>
+					{id.getValue()}
+				</Link>
+			)
 		}),
 		columnHelper.accessor("name", {
 			header: () => "Name",
 			cell: (name) => name.getValue()
+		}),
+		columnHelper.accessor("type", {
+			header: "Type",
+			cell: (type) => type.getValue()
 		}),
 		columnHelper.accessor("flavor", {
 			header: "Flavor",

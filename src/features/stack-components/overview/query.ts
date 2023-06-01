@@ -1,6 +1,6 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "../../../state/stores";
-import { StackComponent } from "../../../types/stack-component";
+import { StackComponent, StackComponentType } from "../../../types/stack-component";
 import { ErrorModel } from "../../../types/error";
 import { apiPaths, createApiPath } from "../../../data/api";
 import { ResponsePage } from "../../../types/common";
@@ -25,7 +25,7 @@ export type StackComponentQueryParams = {
 	is_shared?: string;
 	name?: string;
 	flavor?: string;
-	type?: string;
+	type?: StackComponentType;
 	workspace_id?: string;
 	user_id?: string;
 };
