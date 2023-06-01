@@ -1,3 +1,4 @@
+import { ServiceConnector } from "./connector";
 import { User } from "./user";
 import { Workspace } from "./workspace";
 
@@ -5,7 +6,7 @@ export type StackComponent = {
 	id: string;
 	created: string;
 	updated: string;
-	user: User;
+	user?: User;
 	workspace: Workspace;
 	is_shared: boolean;
 	name: string;
@@ -13,4 +14,6 @@ export type StackComponent = {
 	flavor: string;
 	configuration: Record<string, string>;
 	labels: Record<string, string>;
+	connector_resource_id?: string;
+	connector?: ServiceConnector;
 };
