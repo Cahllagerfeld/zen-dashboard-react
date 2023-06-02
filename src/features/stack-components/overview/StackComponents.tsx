@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useWorkspaceStore } from "../../../state/stores/workspace-store";
-import { StackComponentQueryParams, useStackComponents } from "../stack-component-query";
+import { StackComponentQueryParams, useStackComponents } from "./query";
 import { useTableDefinition } from "./table";
 import Table from "../../../components/table/Table";
 import TableSkeleton from "../../../components/table/TableSkeleton";
@@ -61,7 +61,7 @@ function StackComponentsOverview() {
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
 		<div>
-			<h1 className="mb-4">Stack Components</h1>
+			<h1 className="mb-4 text-[2rem]">Stack Components</h1>
 			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
 			{isSuccess && (
 				<div>

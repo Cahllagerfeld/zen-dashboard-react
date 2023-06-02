@@ -29,12 +29,12 @@ function Table<T>({ data, columnDef, hasActions = false }: TableProps<T>) {
 				</thead>
 				<tbody>
 					{table.getRowModel().rows.map((row) => (
-						<tr className="group" key={row.id}>
+						<tr key={row.id}>
 							{row.getVisibleCells().map((cell) => (
 								<td
 									className={`${
 										hasActions ? "last:w-16" : ""
-									} whitespace-nowrap bg-white p-3 first:rounded-l-lg last:rounded-r-lg group-hover:bg-primary group-hover:text-white`}
+									} whitespace-nowrap bg-white p-3 first:rounded-l-lg last:rounded-r-lg`}
 									key={cell.id}
 								>
 									{flexRender(cell.column.columnDef.cell, cell.getContext())}
