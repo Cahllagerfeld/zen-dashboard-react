@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useStackComponentDetail } from "./query";
 import OverviewCard from "./cards/OverviewCard";
 import { ReactComponent as Cube } from "../../../assets/cube.svg";
-import OrchestratorConfigCard from "./cards/config/OrchestratorConfig";
+import ConfigCard from "./cards/ConfigCard";
 
 function StackComponentDetail() {
 	const params = useParams() as { id: string };
@@ -18,7 +18,7 @@ function StackComponentDetail() {
 			</div>
 			<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
 				<OverviewCard stackComponent={data} />
-				<OrchestratorConfigCard config={data.configuration} />
+				<ConfigCard config={data.configuration} />
 			</div>
 		</div>
 	);
