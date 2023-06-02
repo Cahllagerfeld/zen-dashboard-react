@@ -61,7 +61,7 @@ function StackComponentsOverview() {
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
 		<div>
-			<h1 className="mb-4">Stack Components</h1>
+			<h1 className="mb-4 text-[2rem]">Stack Components</h1>
 			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
 			{isSuccess && (
 				<div>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useTokenStore } from "../state/stores";
+import { useTokenStore } from "../../state/stores";
 
 function LogoutButton() {
 	const navigate = useNavigate();
