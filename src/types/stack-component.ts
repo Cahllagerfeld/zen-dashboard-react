@@ -13,7 +13,7 @@ export type StackComponent = {
 	type: StackComponentType;
 
 	flavor: string;
-	configuration: Record<string, string>;
+	configuration: Record<string, string | object | boolean>;
 	labels: Record<string, string>;
 	connector_resource_id?: string;
 	connector?: ServiceConnector;
