@@ -9,7 +9,7 @@ import { useTokenStore } from "../state/stores";
 
 const Login = React.lazy(() => import("../features/login/Login"));
 const Home = React.lazy(() => import("../features/home/Home"));
-const WorkspaceDetail = React.lazy(() => import("../features/workspace-detail/WorkspaceDetail"));
+const WorkspaceDetail = React.lazy(() => import("../features/workspaces/detail/WorkspaceDetail"));
 const StackComponentsOverview = React.lazy(
 	() => import("../features/stack-components/overview/StackComponents")
 );
