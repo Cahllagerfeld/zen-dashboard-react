@@ -21,6 +21,7 @@ const queryClient = new QueryClient({
 });
 
 function handle401() {
+	localStorage.removeItem("token-storage");
 	queryClient.clear();
 	window.location.href =
 		routePaths.login() + `?${new URLSearchParams({ redirect: location.pathname }).toString()}`;
