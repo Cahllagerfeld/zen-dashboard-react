@@ -54,7 +54,7 @@ export async function fetchStackComponents(
 		throw new FetchError({
 			status: res.status,
 			statusText: res.statusText,
-			message: errorData?.detail[0] || "Fetching the components failed"
+			message: errorData.detail || "Fetching the components failed"
 		});
 	}
 	return res.json();

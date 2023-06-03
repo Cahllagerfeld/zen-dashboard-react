@@ -25,7 +25,7 @@ export function useCurrentUser(options?: Omit<UseQueryOptions<User>, "queryKey" 
 				throw new FetchError({
 					status: response.status,
 					statusText: response.statusText,
-					message: errorData?.detail[0] || "Fetching the active User failed"
+					message: errorData.detail || "Fetching the active User failed"
 				});
 			}
 			return response.json();

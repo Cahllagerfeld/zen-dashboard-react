@@ -12,7 +12,7 @@ export class FetchError extends Error {
 		statusText: string;
 		message: string;
 	}) {
-		super();
+		super(message);
 		this.status = status;
 		this.statusText = statusText;
 		this.message = message;

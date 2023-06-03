@@ -27,8 +27,7 @@ export function useWorkspaceStatisticsQuery(
 				throw new FetchError({
 					status: response.status,
 					statusText: response.statusText,
-					message:
-						errorData?.detail[0] || `Fetching the statistics for workspace ${workspace} failed`
+					message: errorData.detail || `Fetching the statistics for workspace ${workspace} failed`
 				});
 			}
 			return response.json();

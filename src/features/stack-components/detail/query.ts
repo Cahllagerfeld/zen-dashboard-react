@@ -26,7 +26,7 @@ export async function fetchStackComponentDetail({ id }: StackComponentDetailQuer
 		throw new FetchError({
 			status: res.status,
 			statusText: res.statusText,
-			message: errorData?.detail[0] || `Fetching the component ${id} failed`
+			message: errorData.detail || `Fetching the component ${id} failed`
 		});
 	}
 	return res.json();
