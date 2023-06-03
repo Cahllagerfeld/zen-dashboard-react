@@ -3,6 +3,7 @@ import { StackComponent } from "../../../types/stack-component";
 import { ErrorModel } from "../../../types/error";
 import { apiPaths, createApiPath } from "../../../data/api";
 import { useTokenStore } from "../../../state/stores";
+import { FetchError } from "../../../data/fetch-error";
 
 export type StackComponentDetailQuery = {
 	id: string;
@@ -20,7 +21,14 @@ export async function fetchStackComponentDetail({ id }: StackComponentDetailQuer
 			Authorization: `Bearer ${token}`
 		}
 	});
-	if (!res.ok) throw new Error(`Component ${id} couldn't be fetched`);
+	if (!res.ok) {
+		const errorData = (await res.json()) as ErrorModel;
+		throw new FetchError({
+			status: res.status,
+			statusText: res.statusText,
+			message: errorData?.detail[0] || `Fetching the component ${id} failed`
+		});
+	}
 	return res.json();
 }
 

@@ -2,6 +2,8 @@ import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { User } from "../../types/user";
 import { useTokenStore } from "../../state/stores";
 import { apiPaths, createApiPath } from "../api";
+import { ErrorModel } from "../../types/error";
+import { FetchError } from "../fetch-error";
 
 export function getCurrentUserKey() {
 	return ["current-user"];
@@ -18,7 +20,14 @@ export function useCurrentUser(options?: Omit<UseQueryOptions<User>, "queryKey" 
 					Authorization: `Bearer ${token}`
 				}
 			});
-			if (!response.ok) throw new Error("Current user couldn't be fetched");
+			if (!response.ok) {
+				const errorData = (await response.json()) as ErrorModel;
+				throw new FetchError({
+					status: response.status,
+					statusText: response.statusText,
+					message: errorData?.detail[0] || "Fetching the active User failed"
+				});
+			}
 			return response.json();
 		},
 		...options

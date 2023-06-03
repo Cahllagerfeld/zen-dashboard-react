@@ -2,6 +2,8 @@ import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "../../state/stores";
 import { WorkspaceResponsePage } from "../../types/workspace";
 import { apiPaths, createApiPath } from "../../data/api";
+import { ErrorModel } from "../../types/error";
+import { FetchError } from "../../data/fetch-error";
 
 export function getWorkspacesKey() {
 	return ["workspaces"];
@@ -20,7 +22,14 @@ export function useWorkspaces(
 					Authorization: `Bearer ${token}`
 				}
 			});
-			if (!response.ok) throw new Error("Workspaces couldn't be fetched");
+			if (!response.ok) {
+				const errorData = (await response.json()) as ErrorModel;
+				throw new FetchError({
+					status: response.status,
+					statusText: response.statusText,
+					message: errorData?.detail[0] || "Fetching the workspaces failed"
+				});
+			}
 			return response.json();
 		},
 		...options
