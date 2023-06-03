@@ -5,6 +5,7 @@ import { ErrorModel } from "../../../types/error";
 import { apiPaths, createApiPath } from "../../../data/api";
 import { ResponsePage } from "../../../types/common";
 import { objectToSearchParams } from "../../../data/helper";
+import { FetchError } from "../../../data/fetch-error";
 
 type StackComponentOverviewQuery = {
 	workspace: string;
@@ -48,7 +49,14 @@ export async function fetchStackComponents(
 			Authorization: `Bearer ${token}`
 		}
 	});
-	if (!res.ok) throw new Error(`Components couldn't be fetched`);
+	if (!res.ok) {
+		const errorData = (await res.json()) as ErrorModel;
+		throw new FetchError({
+			status: res.status,
+			statusText: res.statusText,
+			message: errorData.detail || "Fetching the components failed"
+		});
+	}
 	return res.json();
 }
 

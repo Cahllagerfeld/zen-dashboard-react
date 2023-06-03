@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Badge from "../../../../components/Badge";
 import KeyValue from "../../../../components/KeyValue";
 import { titleCase } from "./helper";
@@ -31,7 +32,9 @@ function ConfigCard({ config }: ConfigCardProps) {
 			<h2 className="mb-8 text-2xl">Configuration</h2>
 			<dl className="columns-1 space-y-4 xl:columns-2">
 				{Object.entries(config).map(([key, value], i) => (
-					<>{value && <KeyValue key={i} itemKey={titleCase(key)} value={getValue(value)} />}</>
+					<Fragment key={i}>
+						{value && <KeyValue itemKey={titleCase(key)} value={getValue(value)} />}
+					</Fragment>
 				))}
 			</dl>
 		</div>

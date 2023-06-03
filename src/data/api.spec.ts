@@ -19,6 +19,12 @@ describe("apiPaths", () => {
 		const expectedPath = "/workspaces/example/components";
 		expect(apiPaths.workspaces.components(workspace)).toEqual(expectedPath);
 	});
+
+	it("should generate correct values for components.detail", () => {
+		const component = "example";
+		const expectedPath = "/components/example";
+		expect(apiPaths.components.detail(component)).toEqual(expectedPath);
+	});
 });
 
 describe("createApiPath", () => {
