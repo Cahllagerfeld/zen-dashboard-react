@@ -34,10 +34,10 @@ export async function fetchStackComponentDetail({ id }: StackComponentDetailQuer
 
 export function useStackComponentDetail(
 	{ id }: StackComponentDetailQuery,
-	options?: Omit<UseQueryOptions<StackComponent, ErrorModel>, "queryKey" | "queryFn">
+	options?: Omit<UseQueryOptions<StackComponent, FetchError>, "queryKey" | "queryFn">
 ) {
 	const token = useTokenStore((state) => state.token);
-	return useQuery<StackComponent, ErrorModel>({
+	return useQuery<StackComponent, FetchError>({
 		queryKey: getStackComponentQueryDetailKey({ id }),
 		queryFn: () => fetchStackComponentDetail({ id }, token),
 		...options

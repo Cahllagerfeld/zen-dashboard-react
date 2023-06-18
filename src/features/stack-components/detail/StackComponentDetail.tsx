@@ -3,12 +3,16 @@ import { useStackComponentDetail } from "./query";
 import OverviewCard from "./cards/OverviewCard";
 import { ReactComponent as Cube } from "../../../assets/cube.svg";
 import ConfigCard from "./cards/ConfigCard";
+import StackComponent404 from "./StackComponent404";
 
 function StackComponentDetail() {
 	const params = useParams() as { id: string };
-	const { data, isError, isLoading } = useStackComponentDetail({ id: params.id });
+	const { data, isError, error, isLoading } = useStackComponentDetail({ id: params.id });
 
-	if (isError) return <p>Error</p>;
+	if (isError) {
+		if (error.status === 404) return <StackComponent404 />;
+		return <p>Error</p>;
+	}
 	if (isLoading) return <p>Fetching</p>;
 	return (
 		<div className="flex flex-col gap-4">
