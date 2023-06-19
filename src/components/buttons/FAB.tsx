@@ -1,4 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 import { ButtonHTMLAttributes } from "react";
 
 const fabVariants = cva(
@@ -22,9 +23,9 @@ interface FABProps
 		Omit<ButtonHTMLProps, "children">,
 		Required<Pick<ButtonHTMLProps, "children">> {}
 
-function FAB({ children, variant, ...props }: FABProps) {
+function FAB({ children, variant, className, ...props }: FABProps) {
 	return (
-		<button className={fabVariants({ variant })} {...props}>
+		<button className={twMerge(fabVariants({ variant }), className)} {...props}>
 			{children}
 		</button>
 	);

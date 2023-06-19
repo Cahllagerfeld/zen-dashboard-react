@@ -1,4 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 import { ReactNode } from "react";
 import { Link, LinkProps } from "react-router-dom";
 
@@ -18,9 +19,9 @@ type LinkButtonProps = LinkProps &
 		children: ReactNode;
 	};
 
-function LinkButton({ children, fullWidth, intent, ...rest }: LinkButtonProps) {
+function LinkButton({ children, fullWidth, intent, className, ...rest }: LinkButtonProps) {
 	return (
-		<Link className={linkButtonVariants({ intent, fullWidth })} {...rest}>
+		<Link className={twMerge(linkButtonVariants({ intent, fullWidth }), className)} {...rest}>
 			{children}
 		</Link>
 	);
