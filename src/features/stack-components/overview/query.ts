@@ -62,10 +62,10 @@ export async function fetchStackComponents(
 
 export function useStackComponents(
 	{ workspace, params }: StackComponentOverviewQuery,
-	options?: Omit<UseQueryOptions<ResponsePage<StackComponent>, ErrorModel>, "queryKey" | "queryFn">
+	options?: Omit<UseQueryOptions<ResponsePage<StackComponent>, FetchError>, "queryKey" | "queryFn">
 ) {
 	const token = useTokenStore((state) => state.token);
-	return useQuery<ResponsePage<StackComponent>, ErrorModel>({
+	return useQuery<ResponsePage<StackComponent>, FetchError>({
 		queryKey: getStackComponentQueryKey({ workspace, params }),
 		queryFn: () => fetchStackComponents({ workspace, params }, token),
 		...options

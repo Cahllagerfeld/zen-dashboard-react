@@ -10,10 +10,10 @@ export function getWorkspaceStatisticsKey(workspace: string) {
 
 export function useWorkspaceStatisticsQuery(
 	{ workspace }: { workspace: string },
-	options?: Omit<UseQueryOptions<Record<string, string>, ErrorModel>, "queryKey" | "queryFn">
+	options?: Omit<UseQueryOptions<Record<string, string>, FetchError>, "queryKey" | "queryFn">
 ) {
 	const { token } = useTokenStore();
-	return useQuery<Record<string, string>, ErrorModel>({
+	return useQuery<Record<string, string>, FetchError>({
 		queryKey: getWorkspaceStatisticsKey(workspace),
 		queryFn: async () => {
 			const response = await fetch(createApiPath(apiPaths.workspaces.statistics(workspace)), {
