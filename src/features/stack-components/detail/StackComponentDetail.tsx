@@ -6,11 +6,11 @@ import ConfigCard from "./cards/ConfigCard";
 import StackComponent404 from "./StackComponent404";
 
 function StackComponentDetail() {
-	const params = useParams() as { id: string };
-	const { data, isError, error, isLoading } = useStackComponentDetail({ id: params.id });
+	const { id } = useParams() as { id: string };
+	const { data, isError, error, isLoading } = useStackComponentDetail({ id });
 
 	if (isError) {
-		if (error.status === 404) return <StackComponent404 />;
+		if (error.status === 404) return <StackComponent404 id={id} />;
 		return <p>Error</p>;
 	}
 	if (isLoading) return <p>Fetching</p>;
