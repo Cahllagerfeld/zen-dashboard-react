@@ -21,6 +21,7 @@
 		"react-dom": "^18.2.0",
 		"react-loading-skeleton": "^3.3.1",
 		"react-router-dom": "^6.11.0",
+		"tailwind-merge": "^1.13.2",
 		"zustand": "^4.3.8"
 	},
 	"devDependencies": {

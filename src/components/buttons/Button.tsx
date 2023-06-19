@@ -1,4 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 import { ButtonHTMLAttributes } from "react";
 
 const buttonVariants = cva("rounded-lg px-4 py-2 transition-all duration-150 active:scale-95", {
@@ -19,9 +20,9 @@ interface ButtonProps
 		Omit<ButtonHTMLProps, "children">,
 		Required<Pick<ButtonHTMLProps, "children">> {}
 
-function Button({ intent, fullWidth, children, ...props }: ButtonProps) {
+function Button({ intent, fullWidth, children, className, ...props }: ButtonProps) {
 	return (
-		<button className={buttonVariants({ intent, fullWidth })} {...props}>
+		<button className={twMerge(buttonVariants({ intent, fullWidth }), className)} {...props}>
 			{children}
 		</button>
 	);
