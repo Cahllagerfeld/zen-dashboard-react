@@ -23,7 +23,7 @@ function Home() {
 				<p className="text-neutral-400">Please select one of the following workspaces</p>
 			</div>
 			{data ? (
-				<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
 					{data?.items.map((item, index) => (
 						<Link
 							key={index}
