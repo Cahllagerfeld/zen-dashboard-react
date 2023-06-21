@@ -27,7 +27,7 @@ export function useWorkspaces(
 				throw new FetchError({
 					status: response.status,
 					statusText: response.statusText,
-					message: errorData.detail || "Fetching the workspaces failed"
+					message: (errorData.detail as string) || "Fetching the workspaces failed"
 				});
 			}
 			return response.json();

@@ -1,11 +1,5 @@
-import { ResponsePage } from "./common";
+import { components } from "./core";
 
-export type Workspace = {
-	id: string;
-	created: string;
-	updated: string;
-	name: string;
-	description: string;
-};
+export type Workspace = components["schemas"]["WorkspaceResponseModel"];
 
-export type WorkspaceResponsePage = ResponsePage<Workspace>;
+export type WorkspaceResponsePage = components["schemas"]["Page_WorkspaceResponseModel_"];
