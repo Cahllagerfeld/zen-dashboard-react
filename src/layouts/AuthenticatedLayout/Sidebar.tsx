@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/logo.svg";
-import { ReactComponent as Home } from "../../assets/home.svg";
-import { ReactComponent as Workspace } from "../../assets/suitcase.svg";
-import { ReactComponent as Settings } from "../../assets/settings.svg";
-import { ReactComponent as Cube } from "../../assets/cube.svg";
+import { ReactComponent as Logo } from "@/assets/logo.svg";
+import { ReactComponent as Home } from "@/assets/home.svg";
+import { ReactComponent as Workspace } from "@/assets/suitcase.svg";
+import { ReactComponent as Settings } from "@/assets/settings.svg";
+import { ReactComponent as Cube } from "@/assets/cube.svg";
 import SidebarItem from "./SidebarItem";
-import { useWorkspaceStore } from "../../state/stores/workspace-store";
-import { routePaths } from "../../routes/route-paths";
+import { useWorkspaceStore } from "@/state/stores/workspace-store";
+import { routePaths } from "@/routes/route-paths";
 
 function Sidebar() {
 	const activeWorkspace = useWorkspaceStore((state) => state.activeWorkspace);

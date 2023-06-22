@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useWorkspaceStore } from "../../../state/stores/workspace-store";
+import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { StackComponentQueryParams, useStackComponents } from "./query";
 import { useTableDefinition } from "./table";
-import Table from "../../../components/table/Table";
-import TableSkeleton from "../../../components/table/TableSkeleton";
-import Pagination from "../../../components/pagination/Pagination";
+import Table from "@/components/table/Table";
+import TableSkeleton from "@/components/table/TableSkeleton";
+import Pagination from "@/components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 
 function StackComponentsOverview() {

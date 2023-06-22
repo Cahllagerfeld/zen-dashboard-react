@@ -1,7 +1,7 @@
-import { useCurrentUser } from "../../data/user/active-user-query";
-import PrimaryCirle from "../../components/primary-circle";
+import { useCurrentUser } from "@/data/user/active-user-query";
+import PrimaryCirle from "@/components/primary-circle";
 import Skeleton from "react-loading-skeleton";
-import LogoutButton from "../../components/buttons/LogoutButton";
+import LogoutButton from "@/components/buttons/LogoutButton";
 
 function Topbar() {
 	const user = useCurrentUser();

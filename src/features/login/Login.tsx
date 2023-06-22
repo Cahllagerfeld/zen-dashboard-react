@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ReactComponent as ZenmlLogo } from "../../assets/logo-large.svg";
-import { ReactComponent as UserIcon } from "../../assets/user.svg";
-import { ReactComponent as KeyIcon } from "../../assets/key.svg";
-import { ReactComponent as EyeIcon } from "../../assets/eye.svg";
+import { ReactComponent as ZenmlLogo } from "@/assets/logo-large.svg";
+import { ReactComponent as UserIcon } from "@/assets/user.svg";
+import { ReactComponent as KeyIcon } from "@/assets/key.svg";
+import { ReactComponent as EyeIcon } from "@/assets/eye.svg";
 import { useLoginMutation } from "./login-query";
-import { routePaths } from "../../routes/route-paths";
-import { useTokenStore } from "../../state/stores";
-import Button from "../../components/buttons/Button";
+import { routePaths } from "@/routes/route-paths";
+import { useTokenStore } from "@/state/stores";
+import Button from "@/components/buttons/Button";
 
 function Login() {
 	const navigate = useNavigate();
