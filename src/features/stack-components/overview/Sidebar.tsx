@@ -9,10 +9,10 @@ import { ReactComponent as Cube } from "@/assets/cube.svg";
 
 type SidebarProps = {
 	id: string;
-	setSelected: (value: string) => void;
+	resetSelected: () => void;
 };
 
-function Sidebar({ id, setSelected }: SidebarProps) {
+function Sidebar({ id, resetSelected }: SidebarProps) {
 	const { data, isLoading } = useStackComponentDetail({ id });
 
 	if (isLoading) return <p>Fetching...</p>;
@@ -29,7 +29,7 @@ function Sidebar({ id, setSelected }: SidebarProps) {
 							<Link to={routePaths.components.detail(data.id)}>
 								<Maximize className="h-6 w-6" />
 							</Link>
-							<button aria-label="close sidebar" onClick={() => setSelected("")}>
+							<button aria-label="close sidebar" onClick={() => resetSelected()}>
 								<X className="h-6 w-6" />
 							</button>
 						</div>

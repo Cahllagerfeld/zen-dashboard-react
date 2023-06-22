@@ -14,14 +14,12 @@ function StackComponentsOverview() {
 	const DEFAULT_PAGE_SIZE = "10";
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const [selected, setSelected] = useState("");
-
 	const columnHelper = createColumnHelper<StackComponent>();
 
 	const tableDef = [
 		columnHelper.accessor("id", {
 			header: () => "ID",
-			cell: (id) => <button onClick={() => setSelected(id.getValue())}>{id.getValue()}</button>
+			cell: (id) => <button onClick={() => setID(id.getValue())}>{id.getValue()}</button>
 		}),
 		columnHelper.accessor("name", {
 			header: () => "Name",
@@ -49,6 +47,23 @@ function StackComponentsOverview() {
 
 	const page = searchParams.get("page");
 	const size = searchParams.get("size");
+	const id = searchParams.get("id");
+
+	function setID(id: string) {
+		setSearchParams((existing) => {
+			const newSearchParams = new URLSearchParams(existing.toString());
+			newSearchParams.set("id", id);
+			return newSearchParams;
+		});
+	}
+
+	function resetID() {
+		setSearchParams((existing) => {
+			const newSearchParams = new URLSearchParams(existing.toString());
+			newSearchParams.delete("id");
+			return newSearchParams;
+		});
+	}
 
 	const [params, setParams] = useState<StackComponentQueryParams>({
 		page: page || DEFAULT_PAGE,
@@ -99,7 +114,7 @@ function StackComponentsOverview() {
 			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
 			{isSuccess && (
 				<div className="flex">
-					<div className={`${selected ? "w-2/3" : "w-full"}`}>
+					<div className={`${id ? "w-2/3" : "w-full"}`}>
 						<Table columnDef={tableDef} data={data.items} />
 						<Pagination
 							pageSizeChangeHandler={pageSizeChangeHandler}
@@ -107,7 +122,7 @@ function StackComponentsOverview() {
 							paginate={data}
 						/>
 					</div>
-					{selected && <Sidebar id={selected} setSelected={setSelected} />}
+					{id && <Sidebar id={id} resetSelected={resetID} />}
 				</div>
 			)}
 		</div>
