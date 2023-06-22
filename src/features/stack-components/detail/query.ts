@@ -1,9 +1,9 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import { StackComponent } from "../../../types/stack-component";
-import { ErrorModel } from "../../../types/error";
-import { apiPaths, createApiPath } from "../../../data/api";
-import { useTokenStore } from "../../../state/stores";
-import { FetchError } from "../../../data/fetch-error";
+import { StackComponent } from "@/types/stack-component";
+import { ErrorModel } from "@/types/error";
+import { apiPaths, createApiPath } from "@/data/api";
+import { useTokenStore } from "@/state/stores";
+import { FetchError } from "@/data/fetch-error";
 
 export type StackComponentDetailQuery = {
 	id: string;

@@ -1,8 +1,8 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import { useTokenStore } from "../../../state/stores";
-import { ErrorModel } from "../../../types/error";
-import { apiPaths, createApiPath } from "../../../data/api";
-import { FetchError } from "../../../data/fetch-error";
+import { useTokenStore } from "@/state/stores";
+import { ErrorModel } from "@/types/error";
+import { apiPaths, createApiPath } from "@/data/api";
+import { FetchError } from "@/data/fetch-error";
 
 export function getWorkspaceStatisticsKey(workspace: string) {
 	return ["workspaces", workspace, "statistics"];

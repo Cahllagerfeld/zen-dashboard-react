@@ -1,8 +1,8 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import { User } from "../../types/user";
-import { useTokenStore } from "../../state/stores";
+import { User } from "@/types/user";
+import { useTokenStore } from "@/state/stores";
 import { apiPaths, createApiPath } from "../api";
-import { ErrorModel } from "../../types/error";
+import { ErrorModel } from "@/types/error";
 import { FetchError } from "../fetch-error";
 
 export function getCurrentUserKey() {

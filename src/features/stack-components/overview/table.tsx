@@ -1,7 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table";
-import { StackComponent } from "../../../types/stack-component";
+import { StackComponent } from "@/types/stack-component";
 import { Link } from "react-router-dom";
-import { routePaths } from "../../../routes/route-paths";
+import { routePaths } from "@/routes/route-paths";
 
 const columnHelper = createColumnHelper<StackComponent>();
 

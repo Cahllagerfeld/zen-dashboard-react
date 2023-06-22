@@ -1,20 +1,20 @@
 import React, { Suspense } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { routePaths } from "./route-paths";
-import UnauthenticatedLayout from "../layouts/UnauthenticatedLayout";
-import AuthenticatedLayout from "../layouts/AuthenticatedLayout/AuthenticatedLayout";
-import { useTokenStore } from "../state/stores";
-// import WorkspaceDetail from "../features/workspace-detail/WorkspaceDetail";
-// import Login from "../features/login/Login";
+import UnauthenticatedLayout from "@/layouts/UnauthenticatedLayout";
+import AuthenticatedLayout from "@/layouts/AuthenticatedLayout/AuthenticatedLayout";
+import { useTokenStore } from "@/state/stores";
+// import WorkspaceDetail from "@/features/workspace-detail/WorkspaceDetail";
+// import Login from "@/features/login/Login";
 
-const Login = React.lazy(() => import("../features/login/Login"));
-const Home = React.lazy(() => import("../features/home/Home"));
-const WorkspaceDetail = React.lazy(() => import("../features/workspaces/detail/WorkspaceDetail"));
+const Login = React.lazy(() => import("@/features/login/Login"));
+const Home = React.lazy(() => import("@/features/home/Home"));
+const WorkspaceDetail = React.lazy(() => import("@/features/workspaces/detail/WorkspaceDetail"));
 const StackComponentsOverview = React.lazy(
-	() => import("../features/stack-components/overview/StackComponents")
+	() => import("@/features/stack-components/overview/StackComponents")
 );
 const StackComponentDetail = React.lazy(
-	() => import("../features/stack-components/detail/StackComponentDetail")
+	() => import("@/features/stack-components/detail/StackComponentDetail")
 );
 
 function AppRoutes() {
