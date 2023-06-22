@@ -7,5 +7,10 @@ export default defineConfig({
 	plugins: [svgr(), react()],
 	test: {
 		include: ["src/**/*.{test,spec}.{js,ts}"]
+	},
+	resolve: {
+		alias: {
+			"@": "/src"
+		}
 	}
 });

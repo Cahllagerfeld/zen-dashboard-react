@@ -1,6 +1,6 @@
-import LinkButton from "../../../components/links/LinkButton";
-import { routePaths } from "../../../routes/route-paths";
-import { useWorkspaceStore } from "../../../state/stores/workspace-store";
+import LinkButton from "@/components/links/LinkButton";
+import { routePaths } from "@/routes/route-paths";
+import { useWorkspaceStore } from "@/state/stores/workspace-store";
 
 type StackComponent404Props = {
 	id: string;

@@ -1,5 +1,5 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
-import { apiPaths, createApiPath } from "../../data/api";
+import { apiPaths, createApiPath } from "@/data/api";
 
 export function useLoginMutation(
 	options?: Omit<

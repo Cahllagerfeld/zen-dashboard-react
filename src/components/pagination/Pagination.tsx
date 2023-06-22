@@ -1,8 +1,8 @@
-import { ResponsePage } from "../../types/common";
-import { ReactComponent as ChevronRight } from "../../assets/chevron-right.svg";
-import { ReactComponent as ChevronLeft } from "../../assets/chevron-left.svg";
-import { ReactComponent as ChevronStart } from "../../assets/chevron-start.svg";
-import { ReactComponent as ChevronEnd } from "../../assets/chevron-end.svg";
+import { ResponsePage } from "@/types/common";
+import { ReactComponent as ChevronRight } from "@/assets/chevron-right.svg";
+import { ReactComponent as ChevronLeft } from "@/assets/chevron-left.svg";
+import { ReactComponent as ChevronStart } from "@/assets/chevron-start.svg";
+import { ReactComponent as ChevronEnd } from "@/assets/chevron-end.svg";
 
 type PaginationProps = {
 	paginate: Omit<ResponsePage<any>, "items">;

@@ -1,11 +1,11 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
-import { useTokenStore } from "../../../state/stores";
-import { StackComponent, StackComponentType } from "../../../types/stack-component";
-import { ErrorModel } from "../../../types/error";
-import { apiPaths, createApiPath } from "../../../data/api";
-import { ResponsePage } from "../../../types/common";
-import { objectToSearchParams } from "../../../data/helper";
-import { FetchError } from "../../../data/fetch-error";
+import { useTokenStore } from "@/state/stores";
+import { StackComponent, StackComponentType } from "@/types/stack-component";
+import { ErrorModel } from "@/types/error";
+import { apiPaths, createApiPath } from "@/data/api";
+import { ResponsePage } from "@/types/common";
+import { objectToSearchParams } from "@/data/helper";
+import { FetchError } from "@/data/fetch-error";
 
 type StackComponentOverviewQuery = {
 	workspace: string;
