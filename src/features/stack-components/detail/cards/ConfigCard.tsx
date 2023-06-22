@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import Badge from "../../../../components/Badge";
-import KeyValue from "../../../../components/KeyValue";
+import Badge from "@/components/Badge";
+import KeyValue from "@/components/KeyValue";
 import { titleCase } from "./helper";
 
 type ConfigCardProps = {
