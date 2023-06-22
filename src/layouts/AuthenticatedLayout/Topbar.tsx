@@ -6,7 +6,7 @@ import LogoutButton from "../../components/buttons/LogoutButton";
 function Topbar() {
 	const user = useCurrentUser();
 	return (
-		<aside className="mx-4 mt-4 flex h-20 items-center justify-between rounded-3xl bg-theme-background-offset p-4">
+		<aside className="sticky top-0 m-4 flex h-20 items-center justify-between rounded-3xl bg-theme-background-offset p-4">
 			<div></div>
 			<div className="flex gap-4">
 				<LogoutButton />
