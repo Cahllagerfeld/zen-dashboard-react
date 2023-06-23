@@ -1,6 +1,7 @@
 import * as RadixTabs from "@radix-ui/react-tabs";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import StackTable from "./StackTable";
 
 function Tabs() {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -39,7 +40,7 @@ function Tabs() {
 				</RadixTabs.Trigger>
 			</RadixTabs.List>
 			<RadixTabs.Content className="grow pt-4" value="stacks">
-				Content
+				<StackTable />
 			</RadixTabs.Content>
 		</RadixTabs.Root>
 	);

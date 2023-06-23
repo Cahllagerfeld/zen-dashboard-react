@@ -4,7 +4,7 @@ import OverviewCard from "./cards/OverviewCard";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
 import ConfigCard from "./cards/ConfigCard";
 import StackComponent404 from "./StackComponent404";
-import TabsDemo from "./Tabs";
+import Tabs from "./Tabs";
 
 function StackComponentDetail() {
 	const { id } = useParams() as { id: string };
@@ -25,7 +25,7 @@ function StackComponentDetail() {
 				<OverviewCard stackComponent={data} />
 				<ConfigCard config={data.configuration} />
 			</div>
-			<TabsDemo />
+			<Tabs />
 		</div>
 	);
 }
