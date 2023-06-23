@@ -6,8 +6,8 @@ import { ReactComponent as ChevronEnd } from "@/assets/chevron-end.svg";
 
 type PaginationProps = {
 	paginate: Omit<ResponsePage<any>, "items">;
-	pageChangeHandler: (page: string) => void;
-	pageSizeChangeHandler: (size: string) => void;
+	pageChangeHandler: (page: number) => void;
+	pageSizeChangeHandler: (size: number) => void;
 };
 
 function Pagination({ paginate, pageChangeHandler, pageSizeChangeHandler }: PaginationProps) {
@@ -21,7 +21,7 @@ function Pagination({ paginate, pageChangeHandler, pageSizeChangeHandler }: Pagi
 			<button
 				className={`${index === 1 ? "hidden" : ""}`}
 				disabled={index === 1}
-				onClick={() => pageChangeHandler("1")}
+				onClick={() => pageChangeHandler(1)}
 				aria-label="Go to first page"
 			>
 				<ChevronStart />
@@ -29,7 +29,7 @@ function Pagination({ paginate, pageChangeHandler, pageSizeChangeHandler }: Pagi
 			<button
 				className={`${index === 1 ? "hidden" : ""}`}
 				disabled={index === 1}
-				onClick={() => pageChangeHandler((index - 1).toString())}
+				onClick={() => pageChangeHandler(index - 1)}
 				aria-label="Go to previous page"
 			>
 				<ChevronLeft />
@@ -37,7 +37,7 @@ function Pagination({ paginate, pageChangeHandler, pageSizeChangeHandler }: Pagi
 			<button
 				className={`${index === total_pages ? "hidden" : ""}`}
 				disabled={index === total_pages}
-				onClick={() => pageChangeHandler((index + 1).toString())}
+				onClick={() => pageChangeHandler(index + 1)}
 				aria-label="Go to next page"
 			>
 				<ChevronRight />
@@ -46,7 +46,7 @@ function Pagination({ paginate, pageChangeHandler, pageSizeChangeHandler }: Pagi
 			<button
 				className={`${index === total_pages ? "hidden" : ""}`}
 				disabled={index === total_pages}
-				onClick={() => pageChangeHandler(total_pages.toString())}
+				onClick={() => pageChangeHandler(total_pages)}
 				aria-label="Go to last page"
 			>
 				<ChevronEnd />
@@ -55,7 +55,7 @@ function Pagination({ paginate, pageChangeHandler, pageSizeChangeHandler }: Pagi
 				Rows per page:
 				<select
 					defaultValue={max_size.toString()}
-					onChange={(e) => pageSizeChangeHandler(e.target.value)}
+					onChange={(e) => pageSizeChangeHandler(parseInt(e.target.value))}
 					className="ml-2 rounded-lg border-none bg-transparent pl-1"
 				>
 					<option value="10">10</option>

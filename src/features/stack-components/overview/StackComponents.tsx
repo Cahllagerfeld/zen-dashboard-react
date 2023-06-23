@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
-import { StackComponentQueryParams, useStackComponents } from "./query";
+import { useStackComponents } from "./query";
 import { useTableDefinition } from "./table";
 import Table from "@/components/table/Table";
 import TableSkeleton from "@/components/table/TableSkeleton";
 import Pagination from "@/components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
+import { StackComponentQueryParams } from "@/types/stack-component";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
@@ -16,8 +17,8 @@ function StackComponentsOverview() {
 	const size = searchParams.get("size");
 
 	const [params, setParams] = useState<StackComponentQueryParams>({
-		page: page || DEFAULT_PAGE,
-		size: size || DEFAULT_PAGE_SIZE
+		page: parseInt(page || DEFAULT_PAGE),
+		size: parseInt(size || DEFAULT_PAGE_SIZE)
 	});
 	const activeWorkspace = useWorkspaceStore((state) => state.activeWorkspace);
 	const tableDef = useTableDefinition();
@@ -33,26 +34,26 @@ function StackComponentsOverview() {
 		setSearchParams(searchParams);
 	}, [searchParams, setSearchParams]);
 
-	function pageChangeHandler(page: string) {
+	function pageChangeHandler(page: number) {
 		setParams((prevParams) => ({
 			...prevParams,
 			page
 		}));
 		setSearchParams((existing) => {
 			const newSearchParams = new URLSearchParams(existing.toString());
-			newSearchParams.set("page", page);
+			newSearchParams.set("page", page.toString());
 			return newSearchParams;
 		});
 	}
 
-	function pageSizeChangeHandler(size: string) {
+	function pageSizeChangeHandler(size: number) {
 		setParams((prevParams) => ({
 			...prevParams,
 			size
 		}));
 		setSearchParams((existing) => {
 			const newSearchParams = new URLSearchParams(existing.toString());
-			newSearchParams.set("size", size);
+			newSearchParams.set("size", size.toString());
 			newSearchParams.set("page", "1");
 			return newSearchParams;
 		});

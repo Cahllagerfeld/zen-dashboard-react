@@ -1,6 +1,6 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "@/state/stores";
-import { StackComponentPage, StackComponentType } from "@/types/stack-component";
+import { StackComponentPage, StackComponentQueryParams } from "@/types/stack-component";
 import { ErrorModel } from "@/types/error";
 import { apiPaths, createApiPath } from "@/data/api";
 import { objectToSearchParams } from "@/data/helper";
@@ -9,25 +9,6 @@ import { FetchError } from "@/data/fetch-error";
 type StackComponentOverviewQuery = {
 	workspace: string;
 	params: StackComponentQueryParams;
-};
-
-export type StackComponentQueryParams = {
-	sort_by?: string;
-	logical_operator?: "or" | "and";
-	page?: string;
-	size?: string;
-	id?: string;
-	created?: string;
-	updated?: string;
-	scope_workspace?: string;
-	scope_user?: string;
-	scope_type?: string;
-	is_shared?: string;
-	name?: string;
-	flavor?: string;
-	type?: StackComponentType;
-	workspace_id?: string;
-	user_id?: string;
 };
 
 export function getStackComponentQueryKey({ workspace, params }: StackComponentOverviewQuery) {
