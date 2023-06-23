@@ -1,6 +1,6 @@
-import Badge from "../../../../components/Badge";
-import KeyValue from "../../../../components/KeyValue";
-import { StackComponent } from "../../../../types/stack-component";
+import Badge from "@/components/Badge";
+import KeyValue from "@/components/KeyValue";
+import { StackComponent } from "@/types/stack-component";
 
 type OverviewCardProps = {
 	stackComponent: StackComponent;
@@ -8,9 +8,9 @@ type OverviewCardProps = {
 
 function OverviewCard({ stackComponent }: OverviewCardProps) {
 	return (
-		<div className="rounded-3xl bg-white p-8">
+		<div className="rounded-3xl bg-white p-8 @container">
 			<h2 className="mb-8 text-2xl">Overview</h2>
-			<dl className="columns-1 space-y-4 xl:columns-2">
+			<dl className="columns-1 space-y-4 @xl:columns-2">
 				<KeyValue itemKey="ID" value={stackComponent.id} />
 				<KeyValue itemKey="Name" value={stackComponent.name} />
 				<KeyValue
