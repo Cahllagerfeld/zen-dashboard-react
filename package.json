@@ -10,6 +10,7 @@
 		"preview": "vite preview --host",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "husky install",
+		"generate-types": "node ./scripts/openapi.js",
 		"test:unit": "vitest",
 		"test:unit:coverage": "vitest run --coverage"
 	},
@@ -40,6 +41,7 @@
 		"eslint-plugin-react-refresh": "^0.4.0",
 		"husky": "^8.0.0",
 		"lint-staged": "^13.2.2",
+		"openapi-typescript": "^6.2.8",
 		"postcss": "^8.4.23",
 		"prettier": "^2.8.8",
 		"prettier-plugin-tailwindcss": "^0.2.8",

@@ -1,35 +1,11 @@
-import { ServiceConnector } from "./connector";
-import { User } from "./user";
-import { Workspace } from "./workspace";
+import { components, operations } from "./core";
 
-export type StackComponent = {
-	id: string;
-	created: string;
-	updated: string;
-	user?: User;
-	workspace: Workspace;
-	is_shared: boolean;
-	name: string;
-	type: StackComponentType;
+export type StackComponent = components["schemas"]["ComponentResponseModel"];
 
-	flavor: string;
-	configuration: Record<string, string | object | boolean>;
-	labels: Record<string, string>;
-	connector_resource_id?: string;
-	connector?: ServiceConnector;
-};
+export type StackComponentPage = components["schemas"]["Page_ComponentResponseModel_"];
 
-export type StackComponentType =
-	| "alerter"
-	| "annotator"
-	| "artifact_store"
-	| "container_registry"
-	| "data_validator"
-	| "experiment_tracker"
-	| "feature_store"
-	| "image_builder"
-	| "model_deployer"
-	| "orchestrator"
-	| "secrets_manager"
-	| "step_operator"
-	| "model_registry ";
+export type StackComponentType = components["schemas"]["StackComponentType"];
+
+export type StackComponentQueryParams = NonNullable<
+	operations["list_stack_components_api_v1_components_get"]["parameters"]["query"]
+>;
