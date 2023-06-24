@@ -1,7 +1,3 @@
-export type Role = {
-	id: string;
-	created: string;
-	updated: string;
-	name: string;
-	permissions: string[];
-};
+import { components } from "./core";
+
+export type Role = components["schemas"]["RoleResponseModel"];
