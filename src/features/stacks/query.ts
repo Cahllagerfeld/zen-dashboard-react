@@ -6,7 +6,7 @@ import { FetchError } from "@/data/fetch-error";
 import { useTokenStore } from "@/state/stores";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 
-type StackQueryOverview = {
+export type StackQueryOverview = {
 	workspace: string;
 	params: StackQueryParams;
 };
