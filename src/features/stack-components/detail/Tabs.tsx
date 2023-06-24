@@ -1,10 +1,24 @@
 import * as RadixTabs from "@radix-ui/react-tabs";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import StackTable from "./StackTable";
+// import StackTable from "./StackTable";
+import { useStacks } from "@/features/stacks/query";
+import { useWorkspaceStore } from "@/state/stores/workspace-store";
 
-function Tabs() {
+type TabsProps = {
+	id: string;
+};
+
+function Tabs({ id }: TabsProps) {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const activeWorkspace = useWorkspaceStore((state) => state.activeWorkspace);
+
+	const { data } = useStacks({
+		workspace: activeWorkspace,
+		params: {
+			component_id: id
+		}
+	});
 
 	const tab = searchParams.get("tab");
 
@@ -40,7 +54,9 @@ function Tabs() {
 				</RadixTabs.Trigger>
 			</RadixTabs.List>
 			<RadixTabs.Content className="grow pt-4" value="stacks">
-				<StackTable />
+				{data?.items.map((item) => (
+					<p key={item.id}>{item.name}</p>
+				))}
 			</RadixTabs.Content>
 		</RadixTabs.Root>
 	);

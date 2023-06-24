@@ -25,7 +25,7 @@ function StackComponentDetail() {
 				<OverviewCard stackComponent={data} />
 				<ConfigCard config={data.configuration} />
 			</div>
-			<Tabs />
+			<Tabs id={id} />
 		</div>
 	);
 }
