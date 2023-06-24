@@ -13,10 +13,11 @@ function Tabs({ id }: TabsProps) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const activeWorkspace = useWorkspaceStore((state) => state.activeWorkspace);
 
-	const { data } = useStacks({
+	const { data, isLoading, isSuccess } = useStacks({
 		workspace: activeWorkspace,
 		params: {
-			component_id: id
+			component_id: id,
+			size: 10
 		}
 	});
 
@@ -54,9 +55,16 @@ function Tabs({ id }: TabsProps) {
 				</RadixTabs.Trigger>
 			</RadixTabs.List>
 			<RadixTabs.Content className="grow pt-4" value="stacks">
-				{data?.items.map((item) => (
-					<p key={item.id}>{item.name}</p>
-				))}
+				{isLoading && <p>Fetching...</p>}
+				{isSuccess && (
+					<ul className="space-y-4">
+						{data?.items.map((item) => (
+							<li className="rounded-xl bg-white p-3" key={item.id}>
+								{item.name || "n/a"}
+							</li>
+						))}
+					</ul>
+				)}
 			</RadixTabs.Content>
 		</RadixTabs.Root>
 	);
