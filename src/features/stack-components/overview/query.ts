@@ -12,7 +12,7 @@ type StackComponentOverviewQuery = {
 };
 
 export function getStackComponentQueryKey({ workspace, params }: StackComponentOverviewQuery) {
-	return ["workspaces", workspace, "runs", params];
+	return ["workspaces", workspace, "components", params];
 }
 
 export async function fetchStackComponents(
