@@ -10,7 +10,7 @@
 		"preview": "vite preview --host",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "husky install",
-		"generate-types": "pnpm openapi-typescript https://appserver.zenml.io/openapi.json -o ./src/types/core.ts -t",
+		"generate-types": "node ./scripts/openapi.js",
 		"test:unit": "vitest",
 		"test:unit:coverage": "vitest run --coverage"
 	},

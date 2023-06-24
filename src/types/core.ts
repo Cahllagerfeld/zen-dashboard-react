@@ -2229,7 +2229,7 @@ export type components = {
 			 * @default {}
 			 */
 			metadata?: {
-				[key: string]: components["schemas"]["RunMetadataResponseModel"] | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -2263,7 +2263,9 @@ export type components = {
 			 */
 			description?: string;
 			/** The JSON schema of the configuration for this authentication method. */
-			config_schema?: Record<string, never>;
+			config_schema?: {
+				[key: string]: unknown;
+			};
 			/** The minimum number of seconds that the authentication session can be configured to be valid for. Set to None for authentication sessions and long-lived credentials that don't expire. */
 			min_expiration_seconds?: number;
 			/** The maximum number of seconds that the authentication session can be configured to be valid for. Set to None for authentication sessions and long-lived credentials that don't expire. */
@@ -2413,7 +2415,9 @@ export type components = {
 			 * Config
 			 * @description Configuration for the code repository.
 			 */
-			config: Record<string, never>;
+			config: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Source
 			 * @description The code repository source.
@@ -2460,7 +2464,9 @@ export type components = {
 			 * Config
 			 * @description Configuration for the code repository.
 			 */
-			config: Record<string, never>;
+			config: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Source
 			 * @description The code repository source.
@@ -2498,7 +2504,9 @@ export type components = {
 			 * Config
 			 * @description Configuration for the code repository.
 			 */
-			config?: Record<string, never>;
+			config?: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Source
 			 * @description The code repository source.
@@ -2542,14 +2550,18 @@ export type components = {
 			/** The flavor of the stack component. */
 			flavor: string;
 			/** The stack component configuration. */
-			configuration: Record<string, never>;
+			configuration: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Connector Resource Id
 			 * @description The ID of a specific resource instance to gain access to through the connector
 			 */
 			connector_resource_id?: string;
 			/** The stack component labels. */
-			labels?: Record<string, never>;
+			labels?: {
+				[key: string]: unknown;
+			};
 			/**
 			 * The service connector linked to this stack component.
 			 * Format: uuid
@@ -2589,14 +2601,18 @@ export type components = {
 			/** The flavor of the stack component. */
 			flavor: string;
 			/** The stack component configuration. */
-			configuration: Record<string, never>;
+			configuration: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Connector Resource Id
 			 * @description The ID of a specific resource instance to gain access to through the connector
 			 */
 			connector_resource_id?: string;
 			/** The stack component labels. */
-			labels?: Record<string, never>;
+			labels?: {
+				[key: string]: unknown;
+			};
 			/** The service connector linked to this stack component. */
 			connector?: components["schemas"]["ServiceConnectorResponseModel"];
 		};
@@ -2627,14 +2643,18 @@ export type components = {
 			/** The flavor of the stack component. */
 			flavor?: string;
 			/** The stack component configuration. */
-			configuration?: Record<string, never>;
+			configuration?: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Connector Resource Id
 			 * @description The ID of a specific resource instance to gain access to through the connector
 			 */
 			connector_resource_id?: string;
 			/** The stack component labels. */
-			labels?: Record<string, never>;
+			labels?: {
+				[key: string]: unknown;
+			};
 			/**
 			 * The service connector linked to this stack component.
 			 * Format: uuid
@@ -2677,7 +2697,9 @@ export type components = {
 			/** The type of the Flavor. */
 			type: components["schemas"]["StackComponentType"];
 			/** The JSON schema of this flavor's corresponding configuration. */
-			config_schema: Record<string, never>;
+			config_schema: {
+				[key: string]: unknown;
+			};
 			/** The type of the connector that this flavor uses. */
 			connector_type?: string;
 			/** The resource type of the connector that this flavor uses. */
@@ -2735,7 +2757,9 @@ export type components = {
 			/** The type of the Flavor. */
 			type: components["schemas"]["StackComponentType"];
 			/** The JSON schema of this flavor's corresponding configuration. */
-			config_schema: Record<string, never>;
+			config_schema: {
+				[key: string]: unknown;
+			};
 			/** The type of the connector that this flavor uses. */
 			connector_type?: string;
 			/** The resource type of the connector that this flavor uses. */
@@ -2772,7 +2796,9 @@ export type components = {
 			/** The type of the Flavor. */
 			type?: components["schemas"]["StackComponentType"];
 			/** The JSON schema of this flavor's corresponding configuration. */
-			config_schema?: Record<string, never>;
+			config_schema?: {
+				[key: string]: unknown;
+			};
 			/** The type of the connector that this flavor uses. */
 			connector_type?: string;
 			/** The resource type of the connector that this flavor uses. */
@@ -3267,7 +3293,7 @@ export type components = {
 			 * @default {}
 			 */
 			images?: {
-				[key: string]: components["schemas"]["BuildItem"] | undefined;
+				[key: string]: unknown;
 			};
 			/** Whether the build images are stored in a container registry or locally. */
 			is_local: boolean;
@@ -3319,7 +3345,7 @@ export type components = {
 			 * @default {}
 			 */
 			images?: {
-				[key: string]: components["schemas"]["BuildItem"] | undefined;
+				[key: string]: unknown;
 			};
 			/** Whether the build images are stored in a container registry or locally. */
 			is_local: boolean;
@@ -3354,13 +3380,15 @@ export type components = {
 			 * @default {}
 			 */
 			settings?: {
-				[key: string]: components["schemas"]["BaseSettings"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Extra
 			 * @default {}
 			 */
-			extra?: Record<string, never>;
+			extra?: {
+				[key: string]: unknown;
+			};
 			failure_hook_source?: components["schemas"]["Source"];
 			success_hook_source?: components["schemas"]["Source"];
 			/** Name */
@@ -3390,14 +3418,14 @@ export type components = {
 			 * @default {}
 			 */
 			step_configurations?: {
-				[key: string]: components["schemas"]["Step"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * The client environment for this deployment.
 			 * @default {}
 			 */
 			client_environment?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * The stack associated with the deployment.
@@ -3455,14 +3483,14 @@ export type components = {
 			 * @default {}
 			 */
 			step_configurations?: {
-				[key: string]: components["schemas"]["Step"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * The client environment for this deployment.
 			 * @default {}
 			 */
 			client_environment?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/** The pipeline associated with the deployment. */
 			pipeline?: components["schemas"]["PipelineResponseModel"];
@@ -3590,14 +3618,14 @@ export type components = {
 			 * @default {}
 			 */
 			client_environment?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Environment of the orchestrator that executed this pipeline run (OS, Python version, etc.).
 			 * @default {}
 			 */
 			orchestrator_environment?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/** Git Sha */
 			git_sha?: string;
@@ -3688,14 +3716,14 @@ export type components = {
 			 * @default {}
 			 */
 			client_environment?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Environment of the orchestrator that executed this pipeline run (OS, Python version, etc.).
 			 * @default {}
 			 */
 			orchestrator_environment?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/** Git Sha */
 			git_sha?: string;
@@ -3708,7 +3736,7 @@ export type components = {
 			 * @default {}
 			 */
 			metadata?: {
-				[key: string]: components["schemas"]["RunMetadataResponseModel"] | undefined;
+				[key: string]: unknown;
 			};
 			/** The pipeline build that was used for this run. */
 			build?: components["schemas"]["PipelineBuildResponseModel"];
@@ -3742,7 +3770,9 @@ export type components = {
 			 * Parameters
 			 * @default {}
 			 */
-			parameters?: Record<string, never>;
+			parameters?: {
+				[key: string]: unknown;
+			};
 			/** Steps */
 			steps: components["schemas"]["StepSpec"][];
 		};
@@ -3880,7 +3910,14 @@ export type components = {
 			/** The key of the metadata. */
 			key: string;
 			/** The value of the metadata. */
-			value: string | number | boolean | Record<string, never> | unknown[];
+			value:
+				| string
+				| number
+				| boolean
+				| {
+						[key: string]: unknown;
+				  }
+				| unknown[];
 			/** The type of the metadata. */
 			type: string;
 		};
@@ -3931,7 +3968,14 @@ export type components = {
 			/** The key of the metadata. */
 			key: string;
 			/** The value of the metadata. */
-			value: string | number | boolean | Record<string, never> | unknown[];
+			value:
+				| string
+				| number
+				| boolean
+				| {
+						[key: string]: unknown;
+				  }
+				| unknown[];
 			/** The type of the metadata. */
 			type: string;
 		};
@@ -4101,7 +4145,7 @@ export type components = {
 			scope?: components["schemas"]["SecretScope"];
 			/** The values stored in this secret. */
 			values?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4137,7 +4181,7 @@ export type components = {
 			scope?: components["schemas"]["SecretScope"];
 			/** The values stored in this secret. */
 			values?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4167,7 +4211,7 @@ export type components = {
 			scope?: components["schemas"]["SecretScope"];
 			/** The values stored in this secret. */
 			values?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4282,14 +4326,16 @@ export type components = {
 			/** The duration, in seconds, that the temporary credentials generated by this connector should remain valid. Only applicable for connectors and authentication methods that involve generating temporary credentials from the ones configured in the connector. */
 			expiration_seconds?: number;
 			/** The service connector configuration, not including secrets. */
-			configuration?: Record<string, never>;
+			configuration?: {
+				[key: string]: unknown;
+			};
 			/** The service connector secrets. */
 			secrets?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/** Service connector labels. */
 			labels?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4368,14 +4414,16 @@ export type components = {
 			/** The duration, in seconds, that the temporary credentials generated by this connector should remain valid. Only applicable for connectors and authentication methods that involve generating temporary credentials from the ones configured in the connector. */
 			expiration_seconds?: number;
 			/** The service connector configuration, not including secrets. */
-			configuration?: Record<string, never>;
+			configuration?: {
+				[key: string]: unknown;
+			};
 			/** The service connector secrets. */
 			secrets?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/** Service connector labels. */
 			labels?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * The ID of the secret that contains the service connector secret configuration values.
@@ -4517,14 +4565,16 @@ export type components = {
 			/** The duration, in seconds, that the temporary credentials generated by this connector should remain valid. Only applicable for connectors and authentication methods that involve generating temporary credentials from the ones configured in the connector. */
 			expiration_seconds?: number;
 			/** The service connector configuration, not including secrets. */
-			configuration?: Record<string, never>;
+			configuration?: {
+				[key: string]: unknown;
+			};
 			/** The service connector secrets. */
 			secrets?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/** Service connector labels. */
 			labels?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4613,7 +4663,7 @@ export type components = {
 			description?: string;
 			/** A mapping of stack component types to the actualinstances of components of this type. */
 			components?: {
-				[key: string]: string[] | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4651,7 +4701,7 @@ export type components = {
 			description?: string;
 			/** A mapping of stack component types to the actualinstances of components of this type. */
 			components: {
-				[key: string]: components["schemas"]["ComponentResponseModel"][] | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4683,7 +4733,7 @@ export type components = {
 			description?: string;
 			/** A mapping of stack component types to the actualinstances of components of this type. */
 			components?: {
-				[key: string]: string[] | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4717,19 +4767,23 @@ export type components = {
 			 * Parameters
 			 * @default {}
 			 */
-			parameters?: Record<string, never>;
+			parameters?: {
+				[key: string]: unknown;
+			};
 			/**
 			 * Settings
 			 * @default {}
 			 */
 			settings?: {
-				[key: string]: components["schemas"]["BaseSettings"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Extra
 			 * @default {}
 			 */
-			extra?: Record<string, never>;
+			extra?: {
+				[key: string]: unknown;
+			};
 			failure_hook_source?: components["schemas"]["Source"];
 			success_hook_source?: components["schemas"]["Source"];
 			/**
@@ -4737,19 +4791,21 @@ export type components = {
 			 * @default {}
 			 */
 			outputs?: {
-				[key: string]: components["schemas"]["ArtifactConfiguration"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Caching Parameters
 			 * @default {}
 			 */
-			caching_parameters?: Record<string, never>;
+			caching_parameters?: {
+				[key: string]: unknown;
+			};
 			/**
 			 * External Input Artifacts
 			 * @default {}
 			 */
 			external_input_artifacts?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 		};
 		/**
@@ -4779,13 +4835,21 @@ export type components = {
 			/** Entrypoint Name */
 			entrypoint_name: string;
 			/** Parameters */
-			parameters: Record<string, never>;
+			parameters: {
+				[key: string]: unknown;
+			};
 			/** Configuration */
-			configuration: Record<string, never>;
+			configuration: {
+				[key: string]: unknown;
+			};
 			/** Inputs */
-			inputs: Record<string, never>;
+			inputs: {
+				[key: string]: unknown;
+			};
 			/** Outputs */
-			outputs: Record<string, never>;
+			outputs: {
+				[key: string]: unknown;
+			};
 			/** Metadata */
 			metadata: [string, string, string][];
 		};
@@ -4844,14 +4908,14 @@ export type components = {
 			 * @default {}
 			 */
 			input_artifacts?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Output Artifacts
 			 * @default {}
 			 */
 			output_artifacts?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			logs?: components["schemas"]["LogsRequestModel"];
 		};
@@ -4919,21 +4983,21 @@ export type components = {
 			 * @default {}
 			 */
 			input_artifacts?: {
-				[key: string]: components["schemas"]["ArtifactResponseModel"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Output Artifacts
 			 * @default {}
 			 */
 			output_artifacts?: {
-				[key: string]: components["schemas"]["ArtifactResponseModel"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Metadata associated with this step run.
 			 * @default {}
 			 */
 			metadata?: {
-				[key: string]: components["schemas"]["RunMetadataResponseModel"] | undefined;
+				[key: string]: unknown;
 			};
 			logs?: components["schemas"]["LogsResponseModel"];
 		};
@@ -4947,7 +5011,7 @@ export type components = {
 			 * @default {}
 			 */
 			output_artifacts?: {
-				[key: string]: string | undefined;
+				[key: string]: unknown;
 			};
 			status?: components["schemas"]["ExecutionStatus"];
 			/**
@@ -4969,7 +5033,7 @@ export type components = {
 			 * @default {}
 			 */
 			inputs?: {
-				[key: string]: components["schemas"]["InputSpec"] | undefined;
+				[key: string]: unknown;
 			};
 			/**
 			 * Pipeline Parameter Name
@@ -8018,7 +8082,7 @@ export type operations = {
 			200: {
 				content: {
 					"application/json": {
-						[key: string]: string | undefined;
+						[key: string]: unknown;
 					};
 				};
 			};
@@ -8065,7 +8129,7 @@ export type operations = {
 			200: {
 				content: {
 					"application/json": {
-						[key: string]: string | undefined;
+						[key: string]: unknown;
 					};
 				};
 			};
@@ -8135,7 +8199,7 @@ export type operations = {
 		requestBody?: {
 			content: {
 				"application/json": {
-					[key: string]: string | undefined;
+					[key: string]: unknown;
 				};
 			};
 		};
@@ -9429,7 +9493,9 @@ export type operations = {
 			/** @description Successful Response */
 			200: {
 				content: {
-					"application/json": Record<string, never>;
+					"application/json": {
+						[key: string]: unknown;
+					};
 				};
 			};
 			/** @description Unauthorized */
@@ -10040,7 +10106,7 @@ export type operations = {
 		requestBody?: {
 			content: {
 				"application/json": {
-					[key: string]: string | undefined;
+					[key: string]: unknown;
 				};
 			};
 		};
@@ -11120,7 +11186,9 @@ export type operations = {
 			/** @description Successful Response */
 			200: {
 				content: {
-					"application/json": Record<string, never>;
+					"application/json": {
+						[key: string]: unknown;
+					};
 				};
 			};
 			/** @description Unauthorized */
