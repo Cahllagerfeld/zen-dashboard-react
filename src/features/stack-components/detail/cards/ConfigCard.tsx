@@ -4,7 +4,7 @@ import KeyValue from "@/components/KeyValue";
 import { titleCase } from "./helper";
 
 type ConfigCardProps = {
-	config: Record<string, string | boolean | object>;
+	config: Record<string, any>;
 };
 
 function getValue(value: string | boolean | object) {
