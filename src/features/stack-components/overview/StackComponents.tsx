@@ -4,10 +4,11 @@ import { useStackComponents } from "./query";
 import Table from "@/components/table/Table";
 import TableSkeleton from "@/components/table/TableSkeleton";
 import Pagination from "@/components/pagination/Pagination";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { StackComponent, StackComponentQueryParams } from "@/types/stack-component";
 import { createColumnHelper } from "@tanstack/react-table";
 import Sidebar from "./Sidebar";
+import { routePaths } from "../../../routes/route-paths";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
@@ -19,7 +20,12 @@ function StackComponentsOverview() {
 	const tableDef = [
 		columnHelper.accessor("id", {
 			header: () => "ID",
-			cell: (id) => <button onClick={() => setID(id.getValue())}>{id.getValue()}</button>
+			cell: (id) => (
+				<Link className="link" to={routePaths.components.detail(id.getValue())}>
+					{id.getValue()}
+				</Link>
+			)
+			// cell: (id) => <button onClick={() => setID(id.getValue())}>{id.getValue()}</button>
 		}),
 		columnHelper.accessor("name", {
 			header: () => "Name",
@@ -49,13 +55,13 @@ function StackComponentsOverview() {
 	const size = searchParams.get("size");
 	const id = searchParams.get("id");
 
-	function setID(id: string) {
-		setSearchParams((existing) => {
-			const newSearchParams = new URLSearchParams(existing.toString());
-			newSearchParams.set("id", id);
-			return newSearchParams;
-		});
-	}
+	// function setID(id: string) {
+	// 	setSearchParams((existing) => {
+	// 		const newSearchParams = new URLSearchParams(existing.toString());
+	// 		newSearchParams.set("id", id);
+	// 		return newSearchParams;
+	// 	});
+	// }
 
 	function resetID() {
 		setSearchParams((existing) => {
