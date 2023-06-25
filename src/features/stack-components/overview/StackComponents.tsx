@@ -52,6 +52,9 @@ function StackComponentsOverview() {
 		columnHelper.accessor("id", {
 			id: "sidebar",
 			header: "",
+			meta: {
+				className: "w-8"
+			},
 			cell: ({ getValue }) => {
 				return (
 					<button className="w-8" onClick={() => setID(getValue())}>
