@@ -25,5 +25,11 @@ dist-ssr
 
 .env*
 !.env.example
+!.envrc
 
 coverage
+
+# Devenv
+.devenv*
+devenv.local.nix
+.direnv
