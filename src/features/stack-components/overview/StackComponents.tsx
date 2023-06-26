@@ -4,10 +4,12 @@ import { useStackComponents } from "./query";
 import Table from "@/components/table/Table";
 import TableSkeleton from "@/components/table/TableSkeleton";
 import Pagination from "@/components/pagination/Pagination";
-import { useSearchParams } from "react-router-dom";
+import { ReactComponent as OpenSidebar } from "@/assets/open-sidebar.svg";
+import { Link, useSearchParams } from "react-router-dom";
 import { StackComponent, StackComponentQueryParams } from "@/types/stack-component";
 import { createColumnHelper } from "@tanstack/react-table";
 import Sidebar from "./Sidebar";
+import { routePaths } from "@/routes/route-paths";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
@@ -19,7 +21,11 @@ function StackComponentsOverview() {
 	const tableDef = [
 		columnHelper.accessor("id", {
 			header: () => "ID",
-			cell: (id) => <button onClick={() => setID(id.getValue())}>{id.getValue()}</button>
+			cell: (id) => (
+				<Link className="link" to={routePaths.components.detail(id.getValue())}>
+					{id.getValue()}
+				</Link>
+			)
 		}),
 		columnHelper.accessor("name", {
 			header: () => "Name",
@@ -41,6 +47,20 @@ function StackComponentsOverview() {
 			header: "Created",
 			cell: ({ getValue }) => {
 				return <time>{new Date(getValue()).toLocaleString()}</time>;
+			}
+		}),
+		columnHelper.accessor("id", {
+			id: "sidebar",
+			header: "",
+			meta: {
+				className: "w-8"
+			},
+			cell: ({ getValue }) => {
+				return (
+					<button className="w-8" onClick={() => setID(getValue())}>
+						<OpenSidebar />
+					</button>
+				);
 			}
 		})
 	];

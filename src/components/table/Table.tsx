@@ -1,12 +1,12 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { twMerge } from "tailwind-merge";
 
 type TableProps<T> = {
 	data: T[];
 	columnDef: ColumnDef<T, any>[];
-	hasActions?: boolean;
 };
 
-function Table<T>({ data, columnDef, hasActions = false }: TableProps<T>) {
+function Table<T>({ data, columnDef }: TableProps<T>) {
 	const table = useReactTable({
 		data,
 		columns: columnDef,
@@ -32,9 +32,10 @@ function Table<T>({ data, columnDef, hasActions = false }: TableProps<T>) {
 						<tr key={row.id}>
 							{row.getVisibleCells().map((cell) => (
 								<td
-									className={`${
-										hasActions ? "last:w-16" : ""
-									} whitespace-nowrap bg-white p-3 first:rounded-l-lg last:rounded-r-lg`}
+									className={twMerge(
+										`whitespace-nowrap bg-white p-3 first:rounded-l-lg last:rounded-r-lg`,
+										cell.column.columnDef.meta?.className
+									)}
 									key={cell.id}
 								>
 									{flexRender(cell.column.columnDef.cell, cell.getContext())}
