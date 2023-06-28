@@ -5,7 +5,8 @@ export const apiPaths = {
 		base: "/workspaces",
 		statistics: (workspace: string) => `/workspaces/${workspace}/statistics`,
 		components: (workspace: string) => `/workspaces/${workspace}/components`,
-		stacks: (workspace: string) => `/workspaces/${workspace}/stacks`
+		stacks: (workspace: string) => `/workspaces/${workspace}/stacks`,
+		pipelines: (workspace: string) => `/workspaces/${workspace}/pipelines`
 	},
 	components: {
 		detail: (id: string) => `/components/${id}`
