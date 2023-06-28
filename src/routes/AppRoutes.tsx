@@ -16,6 +16,7 @@ const StackComponentsOverview = React.lazy(
 const StackComponentDetail = React.lazy(
 	() => import("@/features/stack-components/detail/StackComponentDetail")
 );
+const PipelineOverview = React.lazy(() => import("@/features/pipelines/overview/Pipelines"));
 
 function AppRoutes() {
 	const { token } = useTokenStore();
@@ -52,6 +53,12 @@ function AppRoutes() {
 						element={<StackComponentsOverview />}
 					/>
 					<Route path={routePaths.components.detail(":id")} element={<StackComponentDetail />} />
+
+					{/* Pipelines */}
+					<Route
+						path={routePaths.pipelines.overview(":workspace")}
+						element={<PipelineOverview />}
+					/>
 				</Route>
 
 				{/* Fallback */}
