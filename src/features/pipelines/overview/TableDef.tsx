@@ -1,12 +1,18 @@
 import { Pipeline } from "@/types/pipelines";
 import { createColumnHelper } from "@tanstack/react-table";
+import { Link } from "react-router-dom";
+import { routePaths } from "@/routes/route-paths";
 
 const columnHelper = createColumnHelper<Pipeline>();
 
 export const tableDef = [
 	columnHelper.accessor("id", {
 		header: () => "ID",
-		cell: (id) => id.getValue()
+		cell: (id) => (
+			<Link className="link" to={routePaths.pipelines.detail(id.getValue())}>
+				{id.getValue()}
+			</Link>
+		)
 	}),
 	columnHelper.accessor("name", {
 		header: () => "Name",
