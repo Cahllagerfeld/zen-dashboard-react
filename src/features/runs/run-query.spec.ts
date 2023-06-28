@@ -1,4 +1,5 @@
-import { getRunQueryKey, RunQueryParams } from "./run-query";
+import { RunQueryParams } from "@/types/runs";
+import { getRunKey } from "./run-query";
 import { describe, test, expect } from "vitest";
 
 describe("getRunQueryKey", () => {
@@ -7,8 +8,8 @@ describe("getRunQueryKey", () => {
 		const params: RunQueryParams = {
 			sort_by: "name",
 			logical_operator: "or",
-			page: "1",
-			size: "10",
+			page: 1,
+			size: 10,
 			id: "123",
 			created: "2023-01-01",
 			updated: "2023-02-01",
@@ -26,12 +27,12 @@ describe("getRunQueryKey", () => {
 			status: "running",
 			start_time: "2023-03-01",
 			end_time: "2023-04-01",
-			num_steps: "50",
-			unlisted: "true"
+			num_steps: 50,
+			unlisted: true
 		};
 		const expectedKey = ["workspaces", workspace, "runs", params];
 
-		const result = getRunQueryKey({ workspace, params });
+		const result = getRunKey({ workspace, params });
 
 		expect(result).toEqual(expectedKey);
 	});
@@ -42,7 +43,7 @@ describe("getRunQueryKey", () => {
 
 		const expectedKey = ["workspaces", workspace, "runs", params];
 
-		const result = getRunQueryKey({ workspace, params });
+		const result = getRunKey({ workspace, params });
 
 		expect(result).toEqual(expectedKey);
 	});
@@ -53,7 +54,7 @@ describe("getRunQueryKey", () => {
 
 		const expectedKey = ["workspaces", workspace, "runs", params];
 
-		const result = getRunQueryKey({ workspace, params });
+		const result = getRunKey({ workspace, params });
 
 		expect(result).toEqual(expectedKey);
 	});
@@ -63,12 +64,12 @@ describe("getRunQueryKey", () => {
 		const params: RunQueryParams = {
 			sort_by: "name",
 			logical_operator: "and",
-			page: "2",
-			size: "20"
+			page: 2,
+			size: 20
 		};
 		const expectedKey = ["workspaces", workspace, "runs", params];
 
-		const result = getRunQueryKey({ workspace, params });
+		const result = getRunKey({ workspace, params });
 
 		expect(result).toEqual(expectedKey);
 	});
@@ -80,7 +81,7 @@ describe("getRunQueryKey", () => {
 		};
 		const expectedKey = ["workspaces", workspace, "runs", params];
 
-		const result = getRunQueryKey({ workspace, params });
+		const result = getRunKey({ workspace, params });
 
 		expect(result).toEqual(expectedKey);
 	});
