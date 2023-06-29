@@ -2,6 +2,7 @@ import { Pipeline } from "@/types/pipelines";
 import { createColumnHelper } from "@tanstack/react-table";
 import { Link } from "react-router-dom";
 import { routePaths } from "@/routes/route-paths";
+import StatusOverview from "../StatusOverview";
 
 const columnHelper = createColumnHelper<Pipeline>();
 
@@ -20,7 +21,7 @@ export const tableDef = [
 	}),
 	columnHelper.accessor("status", {
 		header: "Status",
-		cell: ({ getValue }) => getValue()
+		cell: ({ getValue }) => <StatusOverview status={getValue()!} />
 	}),
 	columnHelper.accessor("version", {
 		header: "Version",
