@@ -6,8 +6,6 @@ import OverviewCard from "./cards/Overview";
 function PipelineDetail() {
 	const { id } = useParams() as { id: string };
 
-	console.log(id);
-
 	const { data, isError, isLoading } = usePipelineDetail(id);
 
 	if (isError) {
