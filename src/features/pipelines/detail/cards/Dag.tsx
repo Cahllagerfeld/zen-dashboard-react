@@ -1,5 +1,5 @@
 import { StepSpec } from "@/types/pipelines";
-import { Edge, Node, ReactFlow, Position } from "reactflow";
+import { Edge, Node, ReactFlow, Position, MarkerType } from "reactflow";
 import dagre from "dagre";
 import "reactflow/dist/style.css";
 
@@ -13,7 +13,7 @@ dagreGraph.setDefaultEdgeLabel(() => ({}));
 const nodeWidth = 172;
 const nodeHeight = 36;
 
-function getLayoutedElements(nodes: Node[], edges: Edge[], direction = "TB") {
+function getLayoutedElements(nodes: Node[], edges: Edge[], direction = "LR") {
 	const isHorizontal = direction === "LR";
 	dagreGraph.setGraph({ rankdir: direction });
 
@@ -47,9 +47,9 @@ function convertJSONToNodesAndEdges(spec: StepSpec[]) {
 	const convertedNodes: Node[] = [];
 	const edges: Edge[] = [];
 
-	spec.forEach((node, index) => {
+	spec.forEach((node) => {
 		const { source, pipeline_parameter_name, upstream_steps } = node;
-		const id = `node-${index}`;
+		const id = source.attribute || "test";
 		const type = "default";
 		const data = {
 			label: pipeline_parameter_name,
@@ -61,11 +61,21 @@ function convertJSONToNodesAndEdges(spec: StepSpec[]) {
 		convertedNodes.push(newNode);
 
 		upstream_steps.forEach((upstream) => {
-			console.log({ upstream });
-			const sourceId = `node-${spec.findIndex((n) => n.pipeline_parameter_name === upstream)}`;
+			const sourceId = upstream;
 			const targetId = id;
 			const edgeId = `edge-${sourceId}-${targetId}`;
-			const edge = { id: edgeId, source: sourceId, target: targetId };
+			const edge: Edge = {
+				id: edgeId,
+				source: sourceId,
+				target: targetId,
+				type: "smoothstep",
+				markerEnd: {
+					type: MarkerType.ArrowClosed,
+					width: 20,
+					height: 30,
+					color: "#431d93"
+				}
+			};
 			edges.push(edge);
 		});
 	});
@@ -76,7 +86,7 @@ function convertJSONToNodesAndEdges(spec: StepSpec[]) {
 function DagCard({ spec }: DagCardProps) {
 	const { edges, nodes } = convertJSONToNodesAndEdges(spec);
 	const { edges: layoutEdges, nodes: layoutNodes } = getLayoutedElements(nodes, edges);
-	console.log({ layoutEdges, layoutNodes });
+
 	return (
 		<div>
 			<div className="rounded-3xl bg-white p-8 @container">
@@ -85,10 +95,10 @@ function DagCard({ spec }: DagCardProps) {
 					<ReactFlow
 						preventScrolling
 						zoomOnScroll={false}
-						draggable={false}
+						panOnDrag={false}
 						fitView
-						edges={edges}
-						nodes={nodes}
+						edges={layoutEdges}
+						nodes={layoutNodes}
 					/>
 				</div>
 			</div>
