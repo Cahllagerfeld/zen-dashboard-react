@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Badge from "@/components/Badge";
 import KeyValue from "@/components/KeyValue";
 import { titleCase } from "./helper";
+import Card from "@/components/Card";
 
 type ConfigCardProps = {
 	config: Record<string, any>;
@@ -28,7 +29,7 @@ function getValue(value: string | boolean | object) {
 
 function ConfigCard({ config }: ConfigCardProps) {
 	return (
-		<div className="rounded-3xl bg-white p-8">
+		<Card>
 			<h2 className="mb-8 text-2xl">Configuration</h2>
 			<dl className="columns-1 space-y-4 xl:columns-2">
 				{Object.entries(config).map(([key, value], i) => (
@@ -37,7 +38,7 @@ function ConfigCard({ config }: ConfigCardProps) {
 					</Fragment>
 				))}
 			</dl>
-		</div>
+		</Card>
 	);
 }
 

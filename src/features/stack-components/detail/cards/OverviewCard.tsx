@@ -1,6 +1,7 @@
 import Badge from "@/components/Badge";
 import KeyValue from "@/components/KeyValue";
 import { StackComponent } from "@/types/stack-component";
+import Card from "@/components/Card";
 
 type OverviewCardProps = {
 	stackComponent: StackComponent;
@@ -8,7 +9,7 @@ type OverviewCardProps = {
 
 function OverviewCard({ stackComponent }: OverviewCardProps) {
 	return (
-		<div className="rounded-3xl bg-white p-8 @container">
+		<Card className="@container">
 			<h2 className="mb-8 text-2xl">Overview</h2>
 			<dl className="columns-1 space-y-4 @xl:columns-2">
 				<KeyValue itemKey="ID" value={stackComponent.id} />
@@ -24,7 +25,7 @@ function OverviewCard({ stackComponent }: OverviewCardProps) {
 				{stackComponent.user && <KeyValue itemKey="Author" value={stackComponent.user?.name} />}
 				<KeyValue itemKey="Created" value={new Date(stackComponent.created).toLocaleString()} />
 			</dl>
-		</div>
+		</Card>
 	);
 }
 
