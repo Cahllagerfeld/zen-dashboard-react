@@ -4,6 +4,7 @@ import { ReactComponent as Home } from "@/assets/home.svg";
 import { ReactComponent as Workspace } from "@/assets/suitcase.svg";
 import { ReactComponent as Settings } from "@/assets/settings.svg";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
+import { ReactComponent as Pipeline } from "@/assets/pipeline.svg";
 import SidebarItem from "./SidebarItem";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { routePaths } from "@/routes/route-paths";
@@ -24,6 +25,13 @@ function Sidebar() {
 					icon={<Workspace />}
 					label="Workspaces"
 				/>
+				<div className="flex w-full flex-col gap-2">
+					<SidebarItem
+						to={routePaths.pipelines.overview(activeWorkspace)}
+						icon={<Pipeline />}
+						label="Pipelines"
+					/>
+				</div>
 				<div className="flex w-full flex-col gap-2">
 					<SidebarItem
 						to={routePaths.components.overview(activeWorkspace)}

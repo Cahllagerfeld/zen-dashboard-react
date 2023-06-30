@@ -104,35 +104,6 @@ export type paths = {
 		 */
 		get: operations["get_pipeline_spec_api_v1_pipelines__pipeline_id__pipeline_spec_get"];
 	};
-	"/api/v1/projects": {
-		/**
-		 * List Workspaces
-		 * @deprecated
-		 * @description Lists all workspaces in the organization.
-		 *
-		 * Args:
-		 *     workspace_filter_model: Filter model used for pagination, sorting,
-		 *         filtering
-		 *
-		 * Returns:
-		 *     A list of workspaces.
-		 */
-		get: operations["list_workspaces_api_v1_projects_get"];
-		/**
-		 * Create Workspace
-		 * @deprecated
-		 * @description Creates a workspace based on the requestBody.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace: Workspace to create.
-		 *
-		 * Returns:
-		 *     The created workspace.
-		 */
-		post: operations["create_workspace_api_v1_projects_post"];
-	};
 	"/api/v1/workspaces": {
 		/**
 		 * List Workspaces
@@ -159,46 +130,6 @@ export type paths = {
 		 *     The created workspace.
 		 */
 		post: operations["create_workspace_api_v1_workspaces_post"];
-	};
-	"/api/v1/projects/{workspace_name_or_id}": {
-		/**
-		 * Get Workspace
-		 * @deprecated
-		 * @description Get a workspace for given name.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *
-		 * Returns:
-		 *     The requested workspace.
-		 */
-		get: operations["get_workspace_api_v1_projects__workspace_name_or_id__get"];
-		/**
-		 * Update Workspace
-		 * @deprecated
-		 * @description Get a workspace for given name.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace to update.
-		 *     workspace_update: the workspace to use to update
-		 *
-		 * Returns:
-		 *     The updated workspace.
-		 */
-		put: operations["update_workspace_api_v1_projects__workspace_name_or_id__put"];
-		/**
-		 * Delete Workspace
-		 * @deprecated
-		 * @description Deletes a workspace.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 */
-		delete: operations["delete_workspace_api_v1_projects__workspace_name_or_id__delete"];
 	};
 	"/api/v1/workspaces/{workspace_name_or_id}": {
 		/**
@@ -237,22 +168,6 @@ export type paths = {
 		 */
 		delete: operations["delete_workspace_api_v1_workspaces__workspace_name_or_id__delete"];
 	};
-	"/api/v1/projects/{workspace_name_or_id}/role_assignments": {
-		/**
-		 * List User Role Assignments For Workspace
-		 * @deprecated
-		 * @description Returns a list of all roles that are assigned to a team.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     user_role_assignment_filter_model: Filter model used for pagination,
-		 *         sorting, filtering
-		 *
-		 * Returns:
-		 *     A list of all roles that are assigned to a team.
-		 */
-		get: operations["list_user_role_assignments_for_workspace_api_v1_projects__workspace_name_or_id__role_assignments_get"];
-	};
 	"/api/v1/workspaces/{workspace_name_or_id}/role_assignments": {
 		/**
 		 * List User Role Assignments For Workspace
@@ -268,22 +183,6 @@ export type paths = {
 		 */
 		get: operations["list_user_role_assignments_for_workspace_api_v1_workspaces__workspace_name_or_id__role_assignments_get"];
 	};
-	"/api/v1/projects/{workspace_name_or_id}/team_role_assignments": {
-		/**
-		 * List Team Role Assignments For Workspace
-		 * @deprecated
-		 * @description Returns a list of all roles that are assigned to a team.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     team_role_assignment_filter_model: Filter model used for pagination,
-		 *         sorting, filtering
-		 *
-		 * Returns:
-		 *     A list of all roles that are assigned to a team.
-		 */
-		get: operations["list_team_role_assignments_for_workspace_api_v1_projects__workspace_name_or_id__team_role_assignments_get"];
-	};
 	"/api/v1/workspaces/{workspace_name_or_id}/team_role_assignments": {
 		/**
 		 * List Team Role Assignments For Workspace
@@ -298,42 +197,6 @@ export type paths = {
 		 *     A list of all roles that are assigned to a team.
 		 */
 		get: operations["list_team_role_assignments_for_workspace_api_v1_workspaces__workspace_name_or_id__team_role_assignments_get"];
-	};
-	"/api/v1/projects/{workspace_name_or_id}/stacks": {
-		/**
-		 * List Workspace Stacks
-		 * @deprecated
-		 * @description Get stacks that are part of a specific workspace for the user.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     stack_filter_model: Filter model used for pagination, sorting, filtering
-		 *     auth_context: Authentication Context
-		 *
-		 * Returns:
-		 *     All stacks part of the specified workspace.
-		 */
-		get: operations["list_workspace_stacks_api_v1_projects__workspace_name_or_id__stacks_get"];
-		/**
-		 * Create Stack
-		 * @deprecated
-		 * @description Creates a stack for a particular workspace.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     stack: Stack to register.
-		 *     auth_context: The authentication context.
-		 *
-		 * Returns:
-		 *     The created stack.
-		 *
-		 * Raises:
-		 *     IllegalOperationError: If the workspace or user specified in the stack
-		 *         does not match the current workspace or authenticated user.
-		 */
-		post: operations["create_stack_api_v1_projects__workspace_name_or_id__stacks_post"];
 	};
 	"/api/v1/workspaces/{workspace_name_or_id}/stacks": {
 		/**
@@ -368,44 +231,6 @@ export type paths = {
 		 *         does not match the current workspace or authenticated user.
 		 */
 		post: operations["create_stack_api_v1_workspaces__workspace_name_or_id__stacks_post"];
-	};
-	"/api/v1/projects/{workspace_name_or_id}/components": {
-		/**
-		 * List Workspace Stack Components
-		 * @deprecated
-		 * @description List stack components that are part of a specific workspace.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     component_filter_model: Filter model used for pagination, sorting,
-		 *         filtering
-		 *     auth_context: Authentication Context
-		 *
-		 * Returns:
-		 *     All stack components part of the specified workspace.
-		 */
-		get: operations["list_workspace_stack_components_api_v1_projects__workspace_name_or_id__components_get"];
-		/**
-		 * Create Stack Component
-		 * @deprecated
-		 * @description Creates a stack component.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     component: Stack component to register.
-		 *     auth_context: Authentication context.
-		 *
-		 * Returns:
-		 *     The created stack component.
-		 *
-		 * Raises:
-		 *     IllegalOperationError: If the workspace or user specified in the stack
-		 *         component does not match the current workspace or authenticated
-		 *         user.
-		 */
-		post: operations["create_stack_component_api_v1_projects__workspace_name_or_id__components_post"];
 	};
 	"/api/v1/workspaces/{workspace_name_or_id}/components": {
 		/**
@@ -442,42 +267,6 @@ export type paths = {
 		 *         user.
 		 */
 		post: operations["create_stack_component_api_v1_workspaces__workspace_name_or_id__components_post"];
-	};
-	"/api/v1/projects/{workspace_name_or_id}/pipelines": {
-		/**
-		 * List Workspace Pipelines
-		 * @deprecated
-		 * @description Gets pipelines defined for a specific workspace.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     pipeline_filter_model: Filter model used for pagination, sorting,
-		 *         filtering
-		 *
-		 * Returns:
-		 *     All pipelines within the workspace.
-		 */
-		get: operations["list_workspace_pipelines_api_v1_projects__workspace_name_or_id__pipelines_get"];
-		/**
-		 * Create Pipeline
-		 * @deprecated
-		 * @description Creates a pipeline.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     pipeline: Pipeline to create.
-		 *     auth_context: Authentication context.
-		 *
-		 * Returns:
-		 *     The created pipeline.
-		 *
-		 * Raises:
-		 *     IllegalOperationError: If the workspace or user specified in the pipeline
-		 *         does not match the current workspace or authenticated user.
-		 */
-		post: operations["create_pipeline_api_v1_projects__workspace_name_or_id__pipelines_post"];
 	};
 	"/api/v1/workspaces/{workspace_name_or_id}/pipelines": {
 		/**
@@ -582,44 +371,6 @@ export type paths = {
 		 */
 		post: operations["create_deployment_api_v1_workspaces__workspace_name_or_id__pipeline_deployments_post"];
 	};
-	"/api/v1/projects/{workspace_name_or_id}/runs": {
-		/**
-		 * List Runs
-		 * @deprecated
-		 * @description Get pipeline runs according to query filters.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     runs_filter_model: Filter model used for pagination, sorting,
-		 *         filtering
-		 *
-		 *
-		 * Returns:
-		 *     The pipeline runs according to query filters.
-		 */
-		get: operations["list_runs_api_v1_projects__workspace_name_or_id__runs_get"];
-		/**
-		 * Create Pipeline Run
-		 * @deprecated
-		 * @description Creates a pipeline run.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     pipeline_run: Pipeline run to create.
-		 *     auth_context: Authentication context.
-		 *     get_if_exists: If a similar pipeline run already exists, return it
-		 *         instead of raising an error.
-		 *
-		 * Returns:
-		 *     The created pipeline run.
-		 *
-		 * Raises:
-		 *     IllegalOperationError: If the workspace or user specified in the
-		 *         pipeline run does not match the current workspace or authenticated
-		 *         user.
-		 */
-		post: operations["create_pipeline_run_api_v1_projects__workspace_name_or_id__runs_post"];
-	};
 	"/api/v1/workspaces/{workspace_name_or_id}/runs": {
 		/**
 		 * List Runs
@@ -655,26 +406,6 @@ export type paths = {
 		 *         user.
 		 */
 		post: operations["create_pipeline_run_api_v1_workspaces__workspace_name_or_id__runs_post"];
-	};
-	"/api/v1/projects/{workspace_name_or_id}/schedules": {
-		/**
-		 * Create Schedule
-		 * @deprecated
-		 * @description Creates a schedule.
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace.
-		 *     schedule: Schedule to create.
-		 *     auth_context: Authentication context.
-		 *
-		 * Returns:
-		 *     The created schedule.
-		 *
-		 * Raises:
-		 *     IllegalOperationError: If the workspace or user specified in the
-		 *         schedule does not match the current workspace or authenticated user.
-		 */
-		post: operations["create_schedule_api_v1_projects__workspace_name_or_id__schedules_post"];
 	};
 	"/api/v1/workspaces/{workspace_name_or_id}/schedules": {
 		/**
@@ -789,21 +520,6 @@ export type paths = {
 		 */
 		post: operations["create_code_repository_api_v1_workspaces__workspace_name_or_id__code_repositories_post"];
 	};
-	"/api/v1/projects/{workspace_name_or_id}/statistics": {
-		/**
-		 * Get Workspace Statistics
-		 * @description Gets statistics of a workspace.
-		 *
-		 * # noqa: DAR401
-		 *
-		 * Args:
-		 *     workspace_name_or_id: Name or ID of the workspace to get statistics for.
-		 *
-		 * Returns:
-		 *     All pipelines within the workspace.
-		 */
-		get: operations["get_workspace_statistics_api_v1_projects__workspace_name_or_id__statistics_get"];
-	};
 	"/api/v1/workspaces/{workspace_name_or_id}/statistics": {
 		/**
 		 * Get Workspace Statistics
@@ -889,7 +605,6 @@ export type paths = {
 		get: operations["list_flavors_api_v1_flavors_get"];
 		/**
 		 * Create Flavor
-		 * @deprecated
 		 * @description Creates a stack component flavor.
 		 *
 		 * Args:
@@ -2165,10 +1880,11 @@ export type components = {
 			/** Name of the output in the parent step. */
 			name: string;
 			/**
-			 * Artifact Store Id
+			 * ID of the artifact store in which this artifact is stored.
 			 * Format: uuid
 			 */
 			artifact_store_id?: string;
+			/** Type of the artifact. */
 			type: components["schemas"]["ArtifactType"];
 			/** URI of the artifact. */
 			uri: string;
@@ -2206,10 +1922,11 @@ export type components = {
 			/** Name of the output in the parent step. */
 			name: string;
 			/**
-			 * Artifact Store Id
+			 * ID of the artifact store in which this artifact is stored.
 			 * Format: uuid
 			 */
 			artifact_store_id?: string;
+			/** Type of the artifact. */
 			type: components["schemas"]["ArtifactType"];
 			/** URI of the artifact. */
 			uri: string;
@@ -2220,7 +1937,7 @@ export type components = {
 			/** Visualizations of the artifact. */
 			visualizations?: components["schemas"]["VisualizationModel"][];
 			/**
-			 * Producer Step Run Id
+			 * ID of the step run that produced this artifact.
 			 * Format: uuid
 			 */
 			producer_step_run_id?: string;
@@ -2848,7 +2565,7 @@ export type components = {
 		};
 		/**
 		 * LineageGraph
-		 * @description A lineage graph representation of a PipelineRunView.
+		 * @description A lineage graph representation of a PipelineRunResponseModel.
 		 */
 		LineageGraph: {
 			/**
@@ -3526,6 +3243,7 @@ export type components = {
 			version_hash: string;
 			/** The docstring of the pipeline. */
 			docstring?: string;
+			/** The spec of the pipeline. */
 			spec: components["schemas"]["PipelineSpec"];
 		};
 		/**
@@ -3560,10 +3278,9 @@ export type components = {
 			version_hash: string;
 			/** The docstring of the pipeline. */
 			docstring?: string;
+			/** The spec of the pipeline. */
 			spec: components["schemas"]["PipelineSpec"];
-			/** A list of the last x Pipeline Runs. */
-			runs?: components["schemas"]["PipelineRunResponseModel"][];
-			/** The status of the last x Pipeline Runs. */
+			/** The status of the last 3 Pipeline Runs. */
 			status?: components["schemas"]["ExecutionStatus"][];
 		};
 		/**
@@ -3586,29 +3303,31 @@ export type components = {
 			/** The orchestrator run ID. */
 			orchestrator_run_id?: string;
 			/**
-			 * Schedule Id
+			 * The ID of the schedule that triggered this pipeline run.
 			 * Format: uuid
 			 */
 			schedule_id?: string;
-			/** Enable Cache */
+			/** Whether to enable caching for this pipeline run. */
 			enable_cache?: boolean;
 			/**
-			 * Start Time
+			 * The start time of the pipeline run.
 			 * Format: date-time
 			 */
 			start_time?: string;
 			/**
-			 * End Time
+			 * The end time of the pipeline run.
 			 * Format: date-time
 			 */
 			end_time?: string;
+			/** The status of the pipeline run. */
 			status: components["schemas"]["ExecutionStatus"];
-			pipeline_configuration: components["schemas"]["PipelineConfiguration"];
-			/** Num Steps */
+			/** The pipeline configuration used for this pipeline run. */
+			config: components["schemas"]["PipelineConfiguration"];
+			/** The number of steps in this pipeline run. */
 			num_steps?: number;
 			/**
 			 * Client version.
-			 * @default 0.40.2
+			 * @default 0.40.3
 			 */
 			client_version?: string;
 			/** Server version. */
@@ -3627,8 +3346,6 @@ export type components = {
 			orchestrator_environment?: {
 				[key: string]: unknown;
 			};
-			/** Git Sha */
-			git_sha?: string;
 			/**
 			 * Id
 			 * Format: uuid
@@ -3684,29 +3401,31 @@ export type components = {
 			/** The orchestrator run ID. */
 			orchestrator_run_id?: string;
 			/**
-			 * Schedule Id
+			 * The ID of the schedule that triggered this pipeline run.
 			 * Format: uuid
 			 */
 			schedule_id?: string;
-			/** Enable Cache */
+			/** Whether to enable caching for this pipeline run. */
 			enable_cache?: boolean;
 			/**
-			 * Start Time
+			 * The start time of the pipeline run.
 			 * Format: date-time
 			 */
 			start_time?: string;
 			/**
-			 * End Time
+			 * The end time of the pipeline run.
 			 * Format: date-time
 			 */
 			end_time?: string;
+			/** The status of the pipeline run. */
 			status: components["schemas"]["ExecutionStatus"];
-			pipeline_configuration: components["schemas"]["PipelineConfiguration"];
-			/** Num Steps */
+			/** The pipeline configuration used for this pipeline run. */
+			config: components["schemas"]["PipelineConfiguration"];
+			/** The number of steps in this pipeline run. */
 			num_steps?: number;
 			/**
 			 * Client version.
-			 * @default 0.40.2
+			 * @default 0.40.3
 			 */
 			client_version?: string;
 			/** Server version. */
@@ -3725,8 +3444,6 @@ export type components = {
 			orchestrator_environment?: {
 				[key: string]: unknown;
 			};
-			/** Git Sha */
-			git_sha?: string;
 			/** The pipeline this run belongs to. */
 			pipeline?: components["schemas"]["PipelineResponseModel"];
 			/** The stack that was used for this run. */
@@ -3742,6 +3459,13 @@ export type components = {
 			build?: components["schemas"]["PipelineBuildResponseModel"];
 			/** The deployment that was used for this run. */
 			deployment?: components["schemas"]["PipelineDeploymentResponseModel"];
+			/**
+			 * The steps of this run.
+			 * @default {}
+			 */
+			steps?: {
+				[key: string]: unknown;
+			};
 		};
 		/**
 		 * PipelineRunUpdateModel
@@ -3799,6 +3523,7 @@ export type components = {
 			version_hash?: string;
 			/** The docstring of the pipeline. */
 			docstring?: string;
+			/** The spec of the pipeline. */
 			spec?: components["schemas"]["PipelineSpec"];
 		};
 		/**
@@ -4870,22 +4595,23 @@ export type components = {
 			workspace: string;
 			/** The name of the pipeline run step. */
 			name: string;
-			step: components["schemas"]["Step"];
+			/** The configuration of the step. */
+			config: components["schemas"]["StepConfiguration"];
+			/** The spec of the step. */
+			spec: components["schemas"]["StepSpec"];
 			/**
-			 * Pipeline Run Id
+			 * The ID of the pipeline run that this step run belongs to.
 			 * Format: uuid
 			 */
 			pipeline_run_id: string;
 			/**
-			 * Original Step Run Id
+			 * The ID of the original step run if this step was cached.
 			 * Format: uuid
 			 */
 			original_step_run_id?: string;
+			/** The status of the step. */
 			status: components["schemas"]["ExecutionStatus"];
-			/**
-			 * Parent Step Ids
-			 * @default []
-			 */
+			/** The IDs of the parent steps of this step run. */
 			parent_step_ids?: string[];
 			/** The cache key of the step run. */
 			cache_key?: string;
@@ -4894,29 +4620,30 @@ export type components = {
 			/** The source code of the step function or class. */
 			source_code?: string;
 			/**
-			 * Start Time
+			 * The start time of the step run.
 			 * Format: date-time
 			 */
 			start_time?: string;
 			/**
-			 * End Time
+			 * The end time of the step run.
 			 * Format: date-time
 			 */
 			end_time?: string;
 			/**
-			 * Input Artifacts
+			 * The IDs of the input artifacts of the step run.
 			 * @default {}
 			 */
-			input_artifacts?: {
+			inputs?: {
 				[key: string]: unknown;
 			};
 			/**
-			 * Output Artifacts
+			 * The IDs of the output artifacts of the step run.
 			 * @default {}
 			 */
-			output_artifacts?: {
+			outputs?: {
 				[key: string]: unknown;
 			};
+			/** Logs associated with this step run. */
 			logs?: components["schemas"]["LogsRequestModel"];
 		};
 		/**
@@ -4945,22 +4672,23 @@ export type components = {
 			workspace: components["schemas"]["WorkspaceResponseModel"];
 			/** The name of the pipeline run step. */
 			name: string;
-			step: components["schemas"]["Step"];
+			/** The configuration of the step. */
+			config: components["schemas"]["StepConfiguration"];
+			/** The spec of the step. */
+			spec: components["schemas"]["StepSpec"];
 			/**
-			 * Pipeline Run Id
+			 * The ID of the pipeline run that this step run belongs to.
 			 * Format: uuid
 			 */
 			pipeline_run_id: string;
 			/**
-			 * Original Step Run Id
+			 * The ID of the original step run if this step was cached.
 			 * Format: uuid
 			 */
 			original_step_run_id?: string;
+			/** The status of the step. */
 			status: components["schemas"]["ExecutionStatus"];
-			/**
-			 * Parent Step Ids
-			 * @default []
-			 */
+			/** The IDs of the parent steps of this step run. */
 			parent_step_ids?: string[];
 			/** The cache key of the step run. */
 			cache_key?: string;
@@ -4969,27 +4697,27 @@ export type components = {
 			/** The source code of the step function or class. */
 			source_code?: string;
 			/**
-			 * Start Time
+			 * The start time of the step run.
 			 * Format: date-time
 			 */
 			start_time?: string;
 			/**
-			 * End Time
+			 * The end time of the step run.
 			 * Format: date-time
 			 */
 			end_time?: string;
 			/**
-			 * Input Artifacts
+			 * The input artifacts of the step run.
 			 * @default {}
 			 */
-			input_artifacts?: {
+			inputs?: {
 				[key: string]: unknown;
 			};
 			/**
-			 * Output Artifacts
+			 * The output artifacts of the step run.
 			 * @default {}
 			 */
-			output_artifacts?: {
+			outputs?: {
 				[key: string]: unknown;
 			};
 			/**
@@ -4999,6 +4727,7 @@ export type components = {
 			metadata?: {
 				[key: string]: unknown;
 			};
+			/** Logs associated with this step run. */
 			logs?: components["schemas"]["LogsResponseModel"];
 		};
 		/**
@@ -5007,15 +4736,16 @@ export type components = {
 		 */
 		StepRunUpdateModel: {
 			/**
-			 * Output Artifacts
+			 * The IDs of the output artifacts of the step run.
 			 * @default {}
 			 */
-			output_artifacts?: {
+			outputs?: {
 				[key: string]: unknown;
 			};
+			/** The status of the step. */
 			status?: components["schemas"]["ExecutionStatus"];
 			/**
-			 * End Time
+			 * The end time of the step run.
 			 * Format: date-time
 			 */
 			end_time?: string;
@@ -5752,104 +5482,6 @@ export type operations = {
 	};
 	/**
 	 * List Workspaces
-	 * @deprecated
-	 * @description Lists all workspaces in the organization.
-	 *
-	 * Args:
-	 *     workspace_filter_model: Filter model used for pagination, sorting,
-	 *         filtering
-	 *
-	 * Returns:
-	 *     A list of workspaces.
-	 */
-	list_workspaces_api_v1_projects_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				name?: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_WorkspaceResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Create Workspace
-	 * @deprecated
-	 * @description Creates a workspace based on the requestBody.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace: Workspace to create.
-	 *
-	 * Returns:
-	 *     The created workspace.
-	 */
-	create_workspace_api_v1_projects_post: {
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["WorkspaceRequestModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["WorkspaceResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Conflict */
-			409: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List Workspaces
 	 * @description Lists all workspaces in the organization.
 	 *
 	 * Args:
@@ -5932,145 +5564,6 @@ export type operations = {
 			};
 			/** @description Conflict */
 			409: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Get Workspace
-	 * @deprecated
-	 * @description Get a workspace for given name.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *
-	 * Returns:
-	 *     The requested workspace.
-	 */
-	get_workspace_api_v1_projects__workspace_name_or_id__get: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["WorkspaceResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Update Workspace
-	 * @deprecated
-	 * @description Get a workspace for given name.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace to update.
-	 *     workspace_update: the workspace to use to update
-	 *
-	 * Returns:
-	 *     The updated workspace.
-	 */
-	update_workspace_api_v1_projects__workspace_name_or_id__put: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["WorkspaceUpdateModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["WorkspaceResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Delete Workspace
-	 * @deprecated
-	 * @description Deletes a workspace.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 */
-	delete_workspace_api_v1_projects__workspace_name_or_id__delete: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": unknown;
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
 				content: {
 					"application/json": components["schemas"]["ErrorModel"];
 				};
@@ -6221,64 +5714,6 @@ export type operations = {
 	};
 	/**
 	 * List User Role Assignments For Workspace
-	 * @deprecated
-	 * @description Returns a list of all roles that are assigned to a team.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     user_role_assignment_filter_model: Filter model used for pagination,
-	 *         sorting, filtering
-	 *
-	 * Returns:
-	 *     A list of all roles that are assigned to a team.
-	 */
-	list_user_role_assignments_for_workspace_api_v1_projects__workspace_name_or_id__role_assignments_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				workspace_id?: string;
-				user_id?: string;
-				role_id?: string;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_UserRoleAssignmentResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List User Role Assignments For Workspace
 	 * @description Returns a list of all roles that are assigned to a team.
 	 *
 	 * Args:
@@ -6312,64 +5747,6 @@ export type operations = {
 			200: {
 				content: {
 					"application/json": components["schemas"]["Page_UserRoleAssignmentResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List Team Role Assignments For Workspace
-	 * @deprecated
-	 * @description Returns a list of all roles that are assigned to a team.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     team_role_assignment_filter_model: Filter model used for pagination,
-	 *         sorting, filtering
-	 *
-	 * Returns:
-	 *     A list of all roles that are assigned to a team.
-	 */
-	list_team_role_assignments_for_workspace_api_v1_projects__workspace_name_or_id__team_role_assignments_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				workspace_id?: string;
-				team_id?: string;
-				role_id?: string;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_TeamRoleAssignmentResponseModel_"];
 				};
 			};
 			/** @description Unauthorized */
@@ -6437,126 +5814,6 @@ export type operations = {
 			};
 			/** @description Not Found */
 			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List Workspace Stacks
-	 * @deprecated
-	 * @description Get stacks that are part of a specific workspace for the user.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     stack_filter_model: Filter model used for pagination, sorting, filtering
-	 *     auth_context: Authentication Context
-	 *
-	 * Returns:
-	 *     All stacks part of the specified workspace.
-	 */
-	list_workspace_stacks_api_v1_projects__workspace_name_or_id__stacks_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				scope_workspace?: string;
-				scope_user?: string;
-				is_shared?: boolean | string;
-				name?: string;
-				description?: string;
-				workspace_id?: string;
-				user_id?: string;
-				component_id?: string;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_StackResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Create Stack
-	 * @deprecated
-	 * @description Creates a stack for a particular workspace.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     stack: Stack to register.
-	 *     auth_context: The authentication context.
-	 *
-	 * Returns:
-	 *     The created stack.
-	 *
-	 * Raises:
-	 *     IllegalOperationError: If the workspace or user specified in the stack
-	 *         does not match the current workspace or authenticated user.
-	 */
-	create_stack_api_v1_projects__workspace_name_or_id__stacks_post: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["StackRequestModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["StackResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Conflict */
-			409: {
 				content: {
 					"application/json": components["schemas"]["ErrorModel"];
 				};
@@ -6689,130 +5946,6 @@ export type operations = {
 	};
 	/**
 	 * List Workspace Stack Components
-	 * @deprecated
-	 * @description List stack components that are part of a specific workspace.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     component_filter_model: Filter model used for pagination, sorting,
-	 *         filtering
-	 *     auth_context: Authentication Context
-	 *
-	 * Returns:
-	 *     All stack components part of the specified workspace.
-	 */
-	list_workspace_stack_components_api_v1_projects__workspace_name_or_id__components_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				scope_workspace?: string;
-				scope_user?: string;
-				scope_type?: string;
-				is_shared?: boolean | string;
-				name?: string;
-				flavor?: string;
-				type?: string;
-				workspace_id?: string;
-				user_id?: string;
-				connector_id?: string;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_ComponentResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Create Stack Component
-	 * @deprecated
-	 * @description Creates a stack component.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     component: Stack component to register.
-	 *     auth_context: Authentication context.
-	 *
-	 * Returns:
-	 *     The created stack component.
-	 *
-	 * Raises:
-	 *     IllegalOperationError: If the workspace or user specified in the stack
-	 *         component does not match the current workspace or authenticated
-	 *         user.
-	 */
-	create_stack_component_api_v1_projects__workspace_name_or_id__components_post: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["ComponentRequestModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["ComponentResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Conflict */
-			409: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List Workspace Stack Components
 	 * @description List stack components that are part of a specific workspace.
 	 *
 	 * # noqa: DAR401
@@ -6911,125 +6044,6 @@ export type operations = {
 			200: {
 				content: {
 					"application/json": components["schemas"]["ComponentResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Conflict */
-			409: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List Workspace Pipelines
-	 * @deprecated
-	 * @description Gets pipelines defined for a specific workspace.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     pipeline_filter_model: Filter model used for pagination, sorting,
-	 *         filtering
-	 *
-	 * Returns:
-	 *     All pipelines within the workspace.
-	 */
-	list_workspace_pipelines_api_v1_projects__workspace_name_or_id__pipelines_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				scope_workspace?: string;
-				name?: string;
-				version?: string;
-				version_hash?: string;
-				docstring?: string;
-				workspace_id?: string;
-				user_id?: string;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_PipelineResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Create Pipeline
-	 * @deprecated
-	 * @description Creates a pipeline.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     pipeline: Pipeline to create.
-	 *     auth_context: Authentication context.
-	 *
-	 * Returns:
-	 *     The created pipeline.
-	 *
-	 * Raises:
-	 *     IllegalOperationError: If the workspace or user specified in the pipeline
-	 *         does not match the current workspace or authenticated user.
-	 */
-	create_pipeline_api_v1_projects__workspace_name_or_id__pipelines_post: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["PipelineRequestModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["PipelineResponseModel"];
 				};
 			};
 			/** @description Unauthorized */
@@ -7409,139 +6423,6 @@ export type operations = {
 	};
 	/**
 	 * List Runs
-	 * @deprecated
-	 * @description Get pipeline runs according to query filters.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     runs_filter_model: Filter model used for pagination, sorting,
-	 *         filtering
-	 *
-	 *
-	 * Returns:
-	 *     The pipeline runs according to query filters.
-	 */
-	list_runs_api_v1_projects__workspace_name_or_id__runs_get: {
-		parameters: {
-			query?: {
-				sort_by?: string;
-				logical_operator?: components["schemas"]["LogicalOperators"];
-				page?: number;
-				size?: number;
-				id?: string;
-				created?: string;
-				updated?: string;
-				scope_workspace?: string;
-				name?: string;
-				orchestrator_run_id?: string;
-				pipeline_id?: string;
-				workspace_id?: string;
-				user_id?: string;
-				stack_id?: string;
-				schedule_id?: string;
-				build_id?: string;
-				deployment_id?: string;
-				code_repository_id?: string;
-				status?: string;
-				start_time?: string;
-				end_time?: string;
-				num_steps?: number;
-				unlisted?: boolean;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["Page_PipelineRunResponseModel_"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Create Pipeline Run
-	 * @deprecated
-	 * @description Creates a pipeline run.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     pipeline_run: Pipeline run to create.
-	 *     auth_context: Authentication context.
-	 *     get_if_exists: If a similar pipeline run already exists, return it
-	 *         instead of raising an error.
-	 *
-	 * Returns:
-	 *     The created pipeline run.
-	 *
-	 * Raises:
-	 *     IllegalOperationError: If the workspace or user specified in the
-	 *         pipeline run does not match the current workspace or authenticated
-	 *         user.
-	 */
-	create_pipeline_run_api_v1_projects__workspace_name_or_id__runs_post: {
-		parameters: {
-			query?: {
-				get_if_exists?: boolean;
-			};
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["PipelineRunRequestModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["PipelineRunResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Conflict */
-			409: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * List Runs
 	 * @description Get pipeline runs according to query filters.
 	 *
 	 * Args:
@@ -7649,61 +6530,6 @@ export type operations = {
 			200: {
 				content: {
 					"application/json": components["schemas"]["PipelineRunResponseModel"];
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Conflict */
-			409: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Create Schedule
-	 * @deprecated
-	 * @description Creates a schedule.
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace.
-	 *     schedule: Schedule to create.
-	 *     auth_context: Authentication context.
-	 *
-	 * Returns:
-	 *     The created schedule.
-	 *
-	 * Raises:
-	 *     IllegalOperationError: If the workspace or user specified in the
-	 *         schedule does not match the current workspace or authenticated user.
-	 */
-	create_schedule_api_v1_projects__workspace_name_or_id__schedules_post: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		requestBody: {
-			content: {
-				"application/json": components["schemas"]["ScheduleRequestModel"];
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": components["schemas"]["ScheduleResponseModel"];
 				};
 			};
 			/** @description Unauthorized */
@@ -8071,53 +6897,6 @@ export type operations = {
 	 * Returns:
 	 *     All pipelines within the workspace.
 	 */
-	get_workspace_statistics_api_v1_projects__workspace_name_or_id__statistics_get: {
-		parameters: {
-			path: {
-				workspace_name_or_id: string;
-			};
-		};
-		responses: {
-			/** @description Successful Response */
-			200: {
-				content: {
-					"application/json": {
-						[key: string]: unknown;
-					};
-				};
-			};
-			/** @description Unauthorized */
-			401: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Not Found */
-			404: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-			/** @description Unprocessable Entity */
-			422: {
-				content: {
-					"application/json": components["schemas"]["ErrorModel"];
-				};
-			};
-		};
-	};
-	/**
-	 * Get Workspace Statistics
-	 * @description Gets statistics of a workspace.
-	 *
-	 * # noqa: DAR401
-	 *
-	 * Args:
-	 *     workspace_name_or_id: Name or ID of the workspace to get statistics for.
-	 *
-	 * Returns:
-	 *     All pipelines within the workspace.
-	 */
 	get_workspace_statistics_api_v1_workspaces__workspace_name_or_id__statistics_get: {
 		parameters: {
 			path: {
@@ -8397,7 +7176,6 @@ export type operations = {
 	};
 	/**
 	 * Create Flavor
-	 * @deprecated
 	 * @description Creates a stack component flavor.
 	 *
 	 * Args:
