@@ -9,3 +9,5 @@ export type PipelineQueryParams = NonNullable<
 >;
 
 export type ExecutionStatus = components["schemas"]["ExecutionStatus"];
+
+export type StepSpec = components["schemas"]["StepSpec"];
