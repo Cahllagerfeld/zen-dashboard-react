@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { usePipelineDetail } from "./query";
 import { ReactComponent as PipelineIcon } from "@/assets/pipeline.svg";
 import OverviewCard from "./cards/Overview";
+import DagCard from "./cards/Dag";
 
 function PipelineDetail() {
 	const { id } = useParams() as { id: string };
@@ -21,6 +22,7 @@ function PipelineDetail() {
 			</div>
 			<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
 				<OverviewCard pipeline={data} />
+				<DagCard spec={data.spec.steps} />
 			</div>
 		</div>
 	);
