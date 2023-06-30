@@ -53,7 +53,8 @@ function Pipelines() {
 	function pageSizeChangeHandler(size: number) {
 		setQueryParams((prevParams) => ({
 			...prevParams,
-			size
+			size,
+			page: 1
 		}));
 		setSearchParams((existing) => {
 			const newSearchParams = new URLSearchParams(existing.toString());
