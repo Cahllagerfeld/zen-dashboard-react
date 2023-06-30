@@ -2,6 +2,7 @@ import { StepSpec } from "@/types/pipelines";
 import { Edge, Node, ReactFlow, Position, MarkerType } from "reactflow";
 import dagre from "dagre";
 import "reactflow/dist/style.css";
+import Card from "@/components/Card";
 
 type DagCardProps = {
 	spec: StepSpec[];
@@ -88,21 +89,19 @@ function DagCard({ spec }: DagCardProps) {
 	const { edges: layoutEdges, nodes: layoutNodes } = getLayoutedElements(nodes, edges);
 
 	return (
-		<div>
-			<div className="rounded-3xl bg-white p-8 @container">
-				<h2 className="mb-8 text-2xl">Configuration</h2>
-				<div className="h-[200px] w-[full]">
-					<ReactFlow
-						preventScrolling
-						zoomOnScroll={false}
-						panOnDrag={false}
-						fitView
-						edges={layoutEdges}
-						nodes={layoutNodes}
-					/>
-				</div>
+		<Card>
+			<h2 className="mb-8 text-2xl">Configuration</h2>
+			<div className="h-[200px] w-[full]">
+				<ReactFlow
+					preventScrolling
+					zoomOnScroll={false}
+					panOnDrag={false}
+					fitView
+					edges={layoutEdges}
+					nodes={layoutNodes}
+				/>
 			</div>
-		</div>
+		</Card>
 	);
 }
 
