@@ -6,7 +6,9 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
 	plugins: [svgr(), react()],
 	test: {
-		include: ["src/**/*.{test,spec}.{js,ts}"]
+		setupFiles: "./tests/setup.ts",
+		include: ["src/**/*.{test,spec}.{js,ts,jsx,tsx}"],
+		environment: "jsdom"
 	},
 	resolve: {
 		alias: {
