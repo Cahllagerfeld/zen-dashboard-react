@@ -1,5 +1,5 @@
 import { useCurrentUser } from "@/data/user/active-user-query";
-import PrimaryCirle from "@/components/primary-circle";
+import PrimaryCirle from "@/components/PrimaryCircle";
 import Skeleton from "react-loading-skeleton";
 import LogoutButton from "@/components/buttons/LogoutButton";
 
