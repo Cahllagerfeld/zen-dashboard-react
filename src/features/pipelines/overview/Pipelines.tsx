@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { PipelineQueryParams } from "@/types/pipelines";
 import Table from "@/components/table/Table";
 import { tableDef } from "./TableDef";
-import Pagination from "../../../components/pagination/Pagination";
+import Pagination from "@/components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
+import TableSkeleton from "@/components/table/TableSkeleton";
 
 function Pipelines() {
 	const DEFAULT_PAGE = "1";
@@ -68,7 +69,7 @@ function Pipelines() {
 	return (
 		<div>
 			<h1 className="mb-4 text-[2rem]">Pipelines</h1>
-			{isLoading && <p>Loading...</p>}
+			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
 			{isSuccess && (
 				<div>
 					<Table columnDef={tableDef} data={data.items} />
