@@ -12,7 +12,8 @@ export const apiPaths = {
 		detail: (id: string) => `/components/${id}`
 	},
 	pipelines: {
-		detail: (id: string) => `/pipelines/${id}`
+		detail: (id: string) => `/pipelines/${id}`,
+		runs: (id: string) => `/pipelines/${id}/runs`
 	}
 };
 

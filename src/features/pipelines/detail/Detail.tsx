@@ -3,6 +3,7 @@ import { usePipelineDetail } from "./query";
 import { ReactComponent as PipelineIcon } from "@/assets/pipeline.svg";
 import OverviewCard from "./cards/Overview";
 import DagCard from "./cards/Dag";
+import Tabs from "./Tabs";
 
 function PipelineDetail() {
 	const { id } = useParams() as { id: string };
@@ -24,6 +25,7 @@ function PipelineDetail() {
 				<OverviewCard pipeline={data} />
 				<DagCard spec={data.spec.steps} />
 			</div>
+			<Tabs id={id} />
 		</div>
 	);
 }

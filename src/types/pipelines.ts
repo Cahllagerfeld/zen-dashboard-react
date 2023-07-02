@@ -11,3 +11,7 @@ export type PipelineQueryParams = NonNullable<
 export type ExecutionStatus = components["schemas"]["ExecutionStatus"];
 
 export type StepSpec = components["schemas"]["StepSpec"];
+
+export type PipelineRunQueryParams = NonNullable<
+	operations["list_pipeline_runs_api_v1_pipelines__pipeline_id__runs_get"]["parameters"]["query"]
+>;
