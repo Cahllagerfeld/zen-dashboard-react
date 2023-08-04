@@ -3,6 +3,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { Link } from "react-router-dom";
 import { routePaths } from "@/routes/route-paths";
 import StatusOverview from "../StatusOverview";
+import { convertUTC } from "@/lib/dates";
 
 const columnHelper = createColumnHelper<Pipeline>();
 
@@ -34,7 +35,7 @@ export const tableDef = [
 	columnHelper.accessor("created", {
 		header: "Created",
 		cell: ({ getValue }) => {
-			return <time>{new Date(getValue()).toLocaleString()}</time>;
+			return <time>{convertUTC(getValue())}</time>;
 		}
 	})
 ];

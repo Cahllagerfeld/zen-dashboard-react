@@ -6,6 +6,7 @@ import { useCurrentUser } from "@/data/user/active-user-query";
 import Welcome from "@/components/Welcome";
 import Skeleton from "react-loading-skeleton";
 import WorkspaceSkeletonCard from "./WorkspaceSkeletonCard";
+import { convertUTC } from "@/lib/dates";
 
 function Home() {
 	const { setActiveWorkspace } = useWorkspaceStore();
@@ -33,7 +34,7 @@ function Home() {
 						>
 							<h2 className="text-xl">{item.name}</h2>
 							{item.description ? <p>{item.description}</p> : <p>No description provided</p>}
-							<time>{new Date(item.created).toLocaleDateString()}</time>
+							<time>{convertUTC(item.created)}</time>
 						</Link>
 					))}
 				</div>
