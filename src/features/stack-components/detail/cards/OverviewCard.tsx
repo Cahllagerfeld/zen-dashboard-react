@@ -2,6 +2,7 @@ import Badge from "@/components/Badge";
 import KeyValue from "@/components/KeyValue";
 import { StackComponent } from "@/types/stack-component";
 import Card from "@/components/Card";
+import { convertUTC } from "@/lib/dates";
 
 type OverviewCardProps = {
 	stackComponent: StackComponent;
@@ -23,7 +24,7 @@ function OverviewCard({ stackComponent }: OverviewCardProps) {
 					}
 				/>
 				{stackComponent.user && <KeyValue itemKey="Author" value={stackComponent.user?.name} />}
-				<KeyValue itemKey="Created" value={new Date(stackComponent.created).toLocaleString()} />
+				<KeyValue itemKey="Created" value={convertUTC(stackComponent.created)} />
 			</dl>
 		</Card>
 	);

@@ -10,6 +10,7 @@ import { StackComponent, StackComponentQueryParams } from "@/types/stack-compone
 import { createColumnHelper } from "@tanstack/react-table";
 import Sidebar from "./Sidebar";
 import { routePaths } from "@/routes/route-paths";
+import { convertUTC } from "@/lib/dates";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
@@ -46,7 +47,7 @@ function StackComponentsOverview() {
 		columnHelper.accessor("created", {
 			header: "Created",
 			cell: ({ getValue }) => {
-				return <time>{new Date(getValue()).toLocaleString()}</time>;
+				return <time>{convertUTC(getValue())}</time>;
 			}
 		}),
 		columnHelper.accessor("id", {

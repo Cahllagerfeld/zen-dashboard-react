@@ -2,6 +2,7 @@ import { Pipeline } from "@/types/pipelines";
 import KeyValue from "@/components/KeyValue";
 import StatusOverview from "../../StatusOverview";
 import Card from "@/components/Card";
+import { convertUTC } from "@/lib/dates";
 
 type DetailCard = {
 	pipeline: Pipeline;
@@ -19,7 +20,7 @@ function OverviewCard({ pipeline }: DetailCard) {
 					<KeyValue itemKey="Status" value={<StatusOverview status={pipeline.status} />} />
 				)}
 				{pipeline.user && <KeyValue itemKey="Author" value={pipeline.user?.name} />}
-				<KeyValue itemKey="Created" value={new Date(pipeline.created).toLocaleString()} />
+				<KeyValue itemKey="Created" value={convertUTC(pipeline.created)} />
 			</dl>
 		</Card>
 	);
