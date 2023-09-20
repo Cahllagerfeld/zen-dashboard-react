@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
 import { ButtonHTMLAttributes } from "react";
+import { cn } from "@zenml-io/react-component-library";
 
 const fabVariants = cva(
 	"rounded-full absolute h-12 w-12 bottom-12 right-12 transition-all duration-150 active:scale-95",
@@ -25,7 +25,7 @@ interface FABProps
 
 function FAB({ children, variant, className, ...props }: FABProps) {
 	return (
-		<button className={twMerge(fabVariants({ variant }), className)} {...props}>
+		<button className={cn(fabVariants({ variant }), className)} {...props}>
 			{children}
 		</button>
 	);

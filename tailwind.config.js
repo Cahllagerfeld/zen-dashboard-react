@@ -1,3 +1,5 @@
+import { zenmlPreset } from "@zenml-io/react-component-library";
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: "class",
@@ -55,5 +57,6 @@ export default {
 			}
 		}
 	},
+	presets: [zenmlPreset],
 	plugins: [require("@tailwindcss/forms"), require("@tailwindcss/container-queries")]
 };

@@ -6,9 +6,9 @@ import LogoutButton from "@/components/buttons/LogoutButton";
 function Topbar() {
 	const user = useCurrentUser();
 	return (
-		<aside className="sticky top-0 z-10 m-4 flex h-20 items-center justify-between rounded-3xl bg-theme-background-offset p-4">
+		<aside className="flex h-9 items-center justify-between border-b border-theme-border-moderate bg-theme-surface-primary px-4 py-1">
 			<div></div>
-			<div className="flex gap-4">
+			<div className="flex gap-2">
 				<LogoutButton />
 				{user.data ? (
 					<PrimaryCirle text={user.data.name} />

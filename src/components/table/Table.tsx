@@ -1,5 +1,5 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@zenml-io/react-component-library";
 
 type TableProps<T> = {
 	data: T[];
@@ -32,8 +32,8 @@ function Table<T>({ data, columnDef }: TableProps<T>) {
 						<tr key={row.id}>
 							{row.getVisibleCells().map((cell) => (
 								<td
-									className={twMerge(
-										`whitespace-nowrap bg-white p-3 first:rounded-l-lg last:rounded-r-lg`,
+									className={cn(
+										`first:rounded-l-lg last:rounded-r-lg whitespace-nowrap bg-white p-3`,
 										cell.column.columnDef.meta?.className
 									)}
 									key={cell.id}
