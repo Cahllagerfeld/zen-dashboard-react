@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "@/assets/logo.svg";
 import { ReactComponent as Home } from "@/assets/home.svg";
 import { ReactComponent as Workspace } from "@/assets/suitcase.svg";
-import { ReactComponent as Settings } from "@/assets/settings.svg";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
 import { ReactComponent as Pipeline } from "@/assets/pipeline.svg";
 import SidebarItem from "./SidebarItem";
@@ -18,34 +17,30 @@ function Sidebar() {
 					<Logo className="h-7 w-7" />
 				</Link>
 			</div>
-			<div className="h-full w-full bg-theme-surface-tertiary">
-				{/* <SidebarItem to="/" icon={<Home />} label="Home" /> */}
-
-				{/* <div className="flex h-full w-full flex-col gap-3">
-				<SidebarItem
-					end
-					to={routePaths.workspaces.detail(activeWorkspace)}
-					icon={<Workspace />}
-					label="Workspaces"
-				/>
-				<div className="flex w-full flex-col gap-2">
+			<div className="h-full w-full bg-theme-surface-tertiary px-2 py-5 pt-2">
+				<div className="flex h-full w-full flex-col items-center gap-1">
+					<SidebarItem to="/" icon={<Home />} label="Home" />
 					<SidebarItem
-						to={routePaths.pipelines.overview(activeWorkspace)}
-						icon={<Pipeline />}
-						label="Pipelines"
+						end
+						to={routePaths.workspaces.detail(activeWorkspace)}
+						icon={<Workspace />}
+						label="Workspaces"
 					/>
+					<div className="flex w-full flex-col items-center gap-2">
+						<SidebarItem
+							to={routePaths.pipelines.overview(activeWorkspace)}
+							icon={<Pipeline />}
+							label="Pipelines"
+						/>
+					</div>
+					<div className="flex w-full flex-col items-center gap-2">
+						<SidebarItem
+							to={routePaths.components.overview(activeWorkspace)}
+							icon={<Cube />}
+							label="Components"
+						/>
+					</div>
 				</div>
-				<div className="flex w-full flex-col gap-2">
-					<SidebarItem
-						to={routePaths.components.overview(activeWorkspace)}
-						icon={<Cube />}
-						label="Components"
-					/>
-				</div>
-			</div> */}
-				{/* <div className="flex w-full flex-col gap-2">
-				<SidebarItem to="/settings" icon={<Settings />} label="Settings" />
-			</div> */}
 			</div>
 		</nav>
 	);

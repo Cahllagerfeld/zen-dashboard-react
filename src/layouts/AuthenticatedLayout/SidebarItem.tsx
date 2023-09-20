@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, cloneElement } from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 
 interface SidebarItemProps extends NavLinkProps {
@@ -10,14 +10,20 @@ function SidebarItem({ label, icon, ...rest }: SidebarItemProps) {
 	return (
 		<NavLink
 			className={({ isActive }) =>
-				`flex w-full gap-2 px-4 ${
-					isActive ? "border-r-2 border-r-primary text-neutral-800" : "text-neutral-300"
+				`flex w-11 flex-col items-center rounded-md p-1 text-text-xs  ${
+					isActive ? "bg-theme-surface-primary" : "hover:bg-neutral-200 active:bg-neutral-300"
 				}`
 			}
 			{...rest}
 		>
-			{icon}
-			<p>{label}</p>
+			{({ isActive }) => (
+				<>
+					{cloneElement(icon as React.ReactElement, {
+						className: isActive ? "stroke-primary-400" : "stroke-neutral-400"
+					})}
+					<p>{label}</p>
+				</>
+			)}
 		</NavLink>
 	);
 }
