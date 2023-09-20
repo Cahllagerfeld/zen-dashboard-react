@@ -7,17 +7,13 @@ import { useTokenStore } from "@/state/stores";
 // import WorkspaceDetail from "@/features/workspace-detail/WorkspaceDetail";
 // import Login from "@/features/login/Login";
 
-const Login = React.lazy(() => import("@/features/login/Login"));
-const Home = React.lazy(() => import("@/features/home/Home"));
-const WorkspaceDetail = React.lazy(() => import("@/features/workspaces/detail/WorkspaceDetail"));
-const StackComponentsOverview = React.lazy(
-	() => import("@/features/stack-components/overview/StackComponents")
-);
-const StackComponentDetail = React.lazy(
-	() => import("@/features/stack-components/detail/StackComponentDetail")
-);
-const PipelineOverview = React.lazy(() => import("@/features/pipelines/overview/Pipelines"));
-const PipelineDetail = React.lazy(() => import("@/features/pipelines/detail/Detail"));
+const Login = React.lazy(() => import("@/app/login/page"));
+const Home = React.lazy(() => import("@/app/home/page"));
+const WorkspaceDetail = React.lazy(() => import("@/app/workspaces/detail/page"));
+const StackComponentsOverview = React.lazy(() => import("@/app/stack-components/overview/page"));
+const StackComponentDetail = React.lazy(() => import("@/app/stack-components/detail/page"));
+const PipelineOverview = React.lazy(() => import("@/app/pipelines/overview/page"));
+const PipelineDetail = React.lazy(() => import("@/app/pipelines/detail/page"));
 
 function AppRoutes() {
 	const { token } = useTokenStore();
