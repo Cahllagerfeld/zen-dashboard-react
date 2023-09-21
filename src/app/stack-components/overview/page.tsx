@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import BasePage from "@/components/common/BasePage";
 import { columns } from "./TableDef";
 import { DataTable } from "@/components/table/DataTable";
+import DefaultHeader from "@/components/DefaultHeader";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
@@ -18,14 +19,6 @@ function StackComponentsOverview() {
 	const page = searchParams.get("page");
 	const size = searchParams.get("size");
 	const id = searchParams.get("id");
-
-	function setID(id: string) {
-		setSearchParams((existing) => {
-			const newSearchParams = new URLSearchParams(existing.toString());
-			newSearchParams.set("id", id);
-			return newSearchParams;
-		});
-	}
 
 	function resetID() {
 		setSearchParams((existing) => {
@@ -79,7 +72,7 @@ function StackComponentsOverview() {
 
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
-		<BasePage title="Stack Components">
+		<BasePage header={<DefaultHeader title="Stack Components" />}>
 			{isLoading && <TableSkeleton colAmount={columns.length} />}
 			{isSuccess && (
 				<div className="flex">

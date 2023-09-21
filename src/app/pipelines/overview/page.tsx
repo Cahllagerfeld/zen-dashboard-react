@@ -7,6 +7,7 @@ import { useSearchParams } from "react-router-dom";
 import BasePage from "../../../components/common/BasePage";
 import { DataTable } from "../../../components/table/DataTable";
 import { columns } from "./TableDef";
+import DefaultHeader from "@/components/DefaultHeader";
 
 function Pipelines() {
 	const DEFAULT_PAGE = "1";
@@ -67,7 +68,7 @@ function Pipelines() {
 
 	if (isError) return <p>Error</p>;
 	return (
-		<BasePage title="Pipelines">
+		<BasePage header={<DefaultHeader title="Pipelines" />}>
 			{isLoading && <p>Loading...</p>}
 			{isSuccess && (
 				<div>

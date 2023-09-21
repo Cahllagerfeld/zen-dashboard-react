@@ -4,6 +4,7 @@ import { ReactComponent as Run } from "@/assets/run.svg";
 import { ReactComponent as Settings } from "@/assets/settings.svg";
 import BasePage from "@/components/common/BasePage";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
+import PipelineHeader from "./PipelineHeader";
 
 function PipelineDetail() {
 	const { id } = useParams() as { id: string };
@@ -16,13 +17,8 @@ function PipelineDetail() {
 	if (isLoading) return <p>Fetching</p>;
 
 	return (
-		<BasePage>
+		<BasePage header={<PipelineHeader pipeline={data} />}>
 			<div className="flex flex-col gap-4 xl:gap-8">
-				<div className="flex items-center gap-2">
-					<Run width={32} height={32} strokeWidth={2.2} />
-					<h1 className="text- text-[2rem]">{data.name}</h1>
-				</div>
-
 				<Tabs defaultValue="account">
 					<TabsList>
 						<TabsTrigger icon={<Run />} value="account">
