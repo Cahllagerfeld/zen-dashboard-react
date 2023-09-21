@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import { usePipelineDetail } from "./query";
-import { ReactComponent as PipelineIcon } from "@/assets/pipeline.svg";
-import OverviewCard from "./cards/Overview";
-import DagCard from "./cards/Dag";
-import Tabs from "./Tabs";
-import BasePage from "../../../components/common/BasePage";
+import { ReactComponent as Run } from "@/assets/run.svg";
+import { ReactComponent as Settings } from "@/assets/settings.svg";
+import BasePage from "@/components/common/BasePage";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
 
 function PipelineDetail() {
 	const { id } = useParams() as { id: string };
@@ -20,14 +19,22 @@ function PipelineDetail() {
 		<BasePage>
 			<div className="flex flex-col gap-4 xl:gap-8">
 				<div className="flex items-center gap-2">
-					<PipelineIcon width={32} height={32} strokeWidth={2.2} />
+					<Run width={32} height={32} strokeWidth={2.2} />
 					<h1 className="text- text-[2rem]">{data.name}</h1>
 				</div>
-				<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
-					<OverviewCard pipeline={data} />
-					<DagCard spec={data.spec.steps} />
-				</div>
-				<Tabs id={id} />
+
+				<Tabs defaultValue="account">
+					<TabsList>
+						<TabsTrigger icon={<Run />} value="account">
+							Runs
+						</TabsTrigger>
+						<TabsTrigger icon={<Settings />} value="password">
+							Configuration
+						</TabsTrigger>
+					</TabsList>
+					<TabsContent value="account">Make changes to your account here.</TabsContent>
+					<TabsContent value="password">Change your password here.</TabsContent>
+				</Tabs>
 			</div>
 		</BasePage>
 	);

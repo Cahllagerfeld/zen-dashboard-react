@@ -1,9 +1,10 @@
-import { Pipeline } from "@/types/pipelines";
+import { ExecutionStatus, Pipeline } from "@/types/pipelines";
 import { ColumnDef } from "@tanstack/react-table";
 import { Link } from "react-router-dom";
 import { routePaths } from "@/routes/route-paths";
 import { convertUTC } from "@/lib/dates";
 import { User } from "@/types/user";
+import StatusOverview from "../StatusOverview";
 
 export const columns: ColumnDef<Pipeline>[] = [
 	{
@@ -22,6 +23,11 @@ export const columns: ColumnDef<Pipeline>[] = [
 	{
 		header: "Version",
 		accessorKey: "version"
+	},
+	{
+		accessorKey: "status",
+		header: "Status",
+		cell: ({ getValue }) => <StatusOverview status={getValue() as ExecutionStatus[]} />
 	},
 	{
 		header: "Author",
