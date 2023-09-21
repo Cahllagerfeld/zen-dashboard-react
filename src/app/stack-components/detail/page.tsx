@@ -5,6 +5,7 @@ import { ReactComponent as Cube } from "@/assets/cube.svg";
 import ConfigCard from "./cards/ConfigCard";
 import StackComponent404 from "./StackComponent404";
 import Tabs from "./Tabs";
+import BasePage from "../../../components/common/BasePage";
 
 function StackComponentDetail() {
 	const { id } = useParams() as { id: string };
@@ -16,17 +17,19 @@ function StackComponentDetail() {
 	}
 	if (isLoading) return <p>Fetching</p>;
 	return (
-		<div className="flex flex-col gap-4 xl:gap-8">
-			<div className="flex items-center gap-2">
-				<Cube width={32} height={32} strokeWidth={2.2} />
-				<h1 className="text- text-[2rem]">{data.name}</h1>
+		<BasePage>
+			<div className="flex flex-col gap-4 xl:gap-8">
+				<div className="flex items-center gap-2">
+					<Cube width={32} height={32} strokeWidth={2.2} />
+					<h1 className="text- text-[2rem]">{data.name}</h1>
+				</div>
+				<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
+					<OverviewCard stackComponent={data} />
+					<ConfigCard config={data.configuration} />
+				</div>
+				<Tabs id={id} />
 			</div>
-			<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
-				<OverviewCard stackComponent={data} />
-				<ConfigCard config={data.configuration} />
-			</div>
-			<Tabs id={id} />
-		</div>
+		</BasePage>
 	);
 }
 

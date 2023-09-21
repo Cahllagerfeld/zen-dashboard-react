@@ -6,6 +6,7 @@ import Table from "@/components/table/Table";
 import { tableDef } from "./TableDef";
 import Pagination from "../../../components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
+import BasePage from "../../../components/common/BasePage";
 
 function Pipelines() {
 	const DEFAULT_PAGE = "1";
@@ -66,8 +67,7 @@ function Pipelines() {
 
 	if (isError) return <p>Error</p>;
 	return (
-		<div>
-			<h1 className="mb-4 text-[2rem]">Pipelines</h1>
+		<BasePage title="Pipelines">
 			{isLoading && <p>Loading...</p>}
 			{isSuccess && (
 				<div>
@@ -79,7 +79,7 @@ function Pipelines() {
 					/>
 				</div>
 			)}
-		</div>
+		</BasePage>
 	);
 }
 

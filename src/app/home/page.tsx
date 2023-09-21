@@ -7,6 +7,7 @@ import Welcome from "@/components/Welcome";
 import Skeleton from "react-loading-skeleton";
 import WorkspaceSkeletonCard from "./WorkspaceSkeletonCard";
 import { convertUTC } from "@/lib/dates";
+import BasePage from "../../components/common/BasePage";
 
 function Home() {
 	const { setActiveWorkspace } = useWorkspaceStore();
@@ -14,34 +15,36 @@ function Home() {
 	const { data } = useWorkspaces();
 
 	return (
-		<div className="flex flex-col gap-8">
-			<div>
-				{currentUser ? (
-					<Welcome name={currentUser.full_name || currentUser.name || ""} />
-				) : (
-					<Skeleton className="h-12 w-1/4 rounded-xl" />
-				)}
-				<p className="text-neutral-400">Please select one of the following workspaces</p>
-			</div>
-			{data ? (
-				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
-					{data?.items.map((item, index) => (
-						<Link
-							key={index}
-							to={routePaths.workspaces.detail(item.name)}
-							onClick={() => setActiveWorkspace(item.name)}
-							className="flex w-full select-text flex-col gap-2 rounded-2xl bg-white from-primary to-primary-light p-4 hover:bg-primary hover:bg-gradient-to-br hover:text-white"
-						>
-							<h2 className="text-xl">{item.name}</h2>
-							{item.description ? <p>{item.description}</p> : <p>No description provided</p>}
-							<time>{convertUTC(item.created)}</time>
-						</Link>
-					))}
+		<BasePage>
+			<div className="flex flex-col gap-8">
+				<div>
+					{currentUser ? (
+						<Welcome name={currentUser.full_name || currentUser.name || ""} />
+					) : (
+						<Skeleton className="rounded-xl h-12 w-1/4" />
+					)}
+					<p className="text-neutral-400">Please select one of the following workspaces</p>
 				</div>
-			) : (
-				<WorkspaceSkeletonCard />
-			)}
-		</div>
+				{data ? (
+					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+						{data?.items.map((item, index) => (
+							<Link
+								key={index}
+								to={routePaths.workspaces.detail(item.name)}
+								onClick={() => setActiveWorkspace(item.name)}
+								className="rounded-2xl flex w-full select-text flex-col gap-2 bg-white from-primary to-primary-light p-4 hover:bg-primary hover:bg-gradient-to-br hover:text-white"
+							>
+								<h2 className="text-xl">{item.name}</h2>
+								{item.description ? <p>{item.description}</p> : <p>No description provided</p>}
+								<time>{convertUTC(item.created)}</time>
+							</Link>
+						))}
+					</div>
+				) : (
+					<WorkspaceSkeletonCard />
+				)}
+			</div>
+		</BasePage>
 	);
 }
 
