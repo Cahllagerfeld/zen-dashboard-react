@@ -1,41 +1,36 @@
 import { Pipeline } from "@/types/pipelines";
-import { createColumnHelper } from "@tanstack/react-table";
+import { ColumnDef } from "@tanstack/react-table";
 import { Link } from "react-router-dom";
 import { routePaths } from "@/routes/route-paths";
-import StatusOverview from "../StatusOverview";
 import { convertUTC } from "@/lib/dates";
+import { User } from "@/types/user";
 
-const columnHelper = createColumnHelper<Pipeline>();
-
-export const tableDef = [
-	columnHelper.accessor("id", {
-		header: () => "ID",
-		cell: (id) => (
-			<Link className="link" to={routePaths.pipelines.detail(id.getValue())}>
-				{id.getValue()}
+export const columns: ColumnDef<Pipeline>[] = [
+	{
+		header: "ID",
+		accessorKey: "id",
+		cell: ({ getValue }) => (
+			<Link className="link" to={routePaths.pipelines.detail(getValue() as string)}>
+				{getValue() as string}
 			</Link>
 		)
-	}),
-	columnHelper.accessor("name", {
-		header: () => "Name",
-		cell: (name) => name.getValue()
-	}),
-	columnHelper.accessor("status", {
-		header: "Status",
-		cell: ({ getValue }) => <StatusOverview status={getValue()!} />
-	}),
-	columnHelper.accessor("version", {
+	},
+	{
+		header: "Name",
+		accessorKey: "name"
+	},
+	{
 		header: "Version",
-		cell: ({ getValue }) => getValue()
-	}),
-	columnHelper.accessor("user", {
+		accessorKey: "version"
+	},
+	{
 		header: "Author",
-		cell: ({ getValue }) => getValue()?.name
-	}),
-	columnHelper.accessor("created", {
+		accessorKey: "user",
+		cell: ({ getValue }) => (getValue() as User)?.name
+	},
+	{
 		header: "Created",
-		cell: ({ getValue }) => {
-			return <time>{convertUTC(getValue())}</time>;
-		}
-	})
+		accessorKey: "created",
+		cell: ({ getValue }) => <time>{convertUTC(getValue() as string)}</time>
+	}
 ];

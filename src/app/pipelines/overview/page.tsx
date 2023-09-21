@@ -2,11 +2,11 @@ import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { usePipelines } from "./query";
 import { useEffect, useState } from "react";
 import { PipelineQueryParams } from "@/types/pipelines";
-import Table from "@/components/table/Table";
-import { tableDef } from "./TableDef";
 import Pagination from "../../../components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import BasePage from "../../../components/common/BasePage";
+import { DataTable } from "../../../components/table/DataTable";
+import { columns } from "./TableDef";
 
 function Pipelines() {
 	const DEFAULT_PAGE = "1";
@@ -71,7 +71,7 @@ function Pipelines() {
 			{isLoading && <p>Loading...</p>}
 			{isSuccess && (
 				<div>
-					<Table columnDef={tableDef} data={data.items} />
+					<DataTable columns={columns} data={data.items} />
 					<Pagination
 						pageChangeHandler={pageChangeHandler}
 						pageSizeChangeHandler={pageSizeChangeHandler}
