@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
 import { HTMLAttributes } from "react";
+import { cn } from "@zenml-io/react-component-library";
 
 const cardVariants = cva("p-8", {
 	variants: {
@@ -21,7 +21,7 @@ interface CardProps extends VariantProps<typeof cardVariants>, HTMLAttributes<HT
 
 function Card({ background, size, className, children, ...props }: CardProps) {
 	return (
-		<div className={twMerge(cardVariants({ background, size }), className)} {...props}>
+		<div className={cn(cardVariants({ background, size }), className)} {...props}>
 			{children}
 		</div>
 	);

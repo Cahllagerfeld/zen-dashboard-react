@@ -11,6 +11,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import Sidebar from "./Sidebar";
 import { routePaths } from "@/routes/route-paths";
 import { convertUTC } from "@/lib/dates";
+import BasePage from "@/components/common/BasePage";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
@@ -130,8 +131,7 @@ function StackComponentsOverview() {
 
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
-		<div>
-			<h1 className="mb-4 text-[2rem]">Stack Components</h1>
+		<BasePage title="Stack Components">
 			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
 			{isSuccess && (
 				<div className="flex">
@@ -146,7 +146,7 @@ function StackComponentsOverview() {
 					{id && <Sidebar id={id} resetSelected={resetID} />}
 				</div>
 			)}
-		</div>
+		</BasePage>
 	);
 }
 

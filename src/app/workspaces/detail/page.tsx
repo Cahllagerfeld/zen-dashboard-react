@@ -2,12 +2,13 @@ import { useParams } from "react-router-dom";
 import { useWorkspaceStatisticsQuery } from "./workspace-detail-query";
 import WorkspaceStatisticsCard from "./WorkspaceStatisticsCard";
 import WorkspaceSkeletonStatisticsCard from "./WorkspaceStatisticsSkeletonCard";
+import BasePage from "@/components/common/BasePage";
 
 function WorkspaceDetail() {
 	const { workspace } = useParams() as { workspace: string };
 	const { data } = useWorkspaceStatisticsQuery({ workspace });
 	return (
-		<div>
+		<BasePage title="Workspaces">
 			<ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
 				{Object.entries(data || { 0: 0, 1: 0, 2: 0, 3: 0 })
 					.sort((a, b) => a[0].localeCompare(b[0]))
@@ -21,7 +22,7 @@ function WorkspaceDetail() {
 						</li>
 					))}
 			</ul>
-		</div>
+		</BasePage>
 	);
 }
 

@@ -1,5 +1,6 @@
+import { cn } from "@zenml-io/react-component-library";
 import { cva, VariantProps } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
+
 import { HTMLAttributes } from "react";
 
 const badgeVariants = cva("rounded-xl px-4 py-1 border text-sm", {
@@ -15,7 +16,7 @@ interface BadgeProps extends VariantProps<typeof badgeVariants>, HTMLAttributes<
 
 function Badge({ intent, className, children, ...props }: BadgeProps) {
 	return (
-		<span className={twMerge(badgeVariants({ intent }), className)} {...props}>
+		<span className={cn(badgeVariants({ intent }), className)} {...props}>
 			{children}
 		</span>
 	);

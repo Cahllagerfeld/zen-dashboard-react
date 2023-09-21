@@ -7,7 +7,7 @@ import { ReactComponent as EyeIcon } from "@/assets/eye.svg";
 import { useLoginMutation } from "./login-query";
 import { routePaths } from "@/routes/route-paths";
 import { useTokenStore } from "@/state/stores";
-import Button from "@/components/buttons/Button";
+import { Button } from "@zenml-io/react-component-library";
 
 function Login() {
 	const navigate = useNavigate();
@@ -37,42 +37,51 @@ function Login() {
 
 	return (
 		<div className="flex min-h-screen w-screen items-center justify-center">
-			<div className="flex w-full max-w-sm flex-col items-center justify-between gap-16 rounded-2xl bg-gradient-to-br from-primary to-primary-light pb-16 pt-8 shadow-sharper">
-				<ZenmlLogo />
-				<form className="flex flex-col gap-4">
-					<div className="flex w-full items-center gap-2 rounded-lg bg-white px-2">
-						<UserIcon className="stroke-neutral-800" />
-						<input
-							onChange={(e) => setUsername(e.target.value)}
-							type="text"
-							className="w-full border-none py-2 text-neutral-800 placeholder:text-neutral-300"
-							placeholder="Username"
-						/>
+			<div className="flex w-full max-w-lg flex-col items-center justify-between overflow-hidden rounded-md  border border-theme-border-moderate bg-theme-surface-primary">
+				<div className="flex w-full justify-center bg-gradient-dark p-8">
+					<ZenmlLogo className="h-7" />
+				</div>
+				<div className="flex w-full flex-col items-center p-7 pt-5">
+					<div className="mb-7 text-center">
+						<h1 className="text-display-xs">Login</h1>
+						<p className="pt-2 text-theme-text">Please login with your ZenML Credentials</p>
 					</div>
-					<div className="flex w-full items-center gap-2 rounded-lg bg-white px-2">
-						<KeyIcon className="stroke-neutral-800" />
-						<input
-							onChange={(e) => setPassword(e.target.value)}
-							type={isReadble ? "text" : "password"}
-							placeholder="Password"
-							className="w-full border-none py-2 text-neutral-800 placeholder:text-neutral-300"
-						/>
-						<button onClick={handlePassword} type="button">
-							<EyeIcon className={isReadble ? "stroke-neutral-800" : "stroke-neutral-300"} />
-						</button>
-					</div>
+					<form className="flex max-w-[300px] flex-col gap-4">
+						<div className="flex w-full items-center gap-2 rounded-md border border-neutral-300 px-2">
+							<UserIcon className="stroke-neutral-800" />
+							<input
+								onChange={(e) => setUsername(e.target.value)}
+								type="text"
+								className="w-full border-none py-2 text-neutral-800 placeholder:text-neutral-300"
+								placeholder="Username"
+							/>
+						</div>
+						<div className="flex w-full items-center gap-2 rounded-md border border-neutral-300 px-2">
+							<KeyIcon className="stroke-neutral-800" />
+							<input
+								onChange={(e) => setPassword(e.target.value)}
+								type={isReadble ? "text" : "password"}
+								placeholder="Password"
+								className="w-full border-none py-2 text-neutral-800 placeholder:text-neutral-300"
+							/>
+							<button onClick={handlePassword} type="button">
+								<EyeIcon className={isReadble ? "stroke-neutral-800" : "stroke-neutral-300"} />
+							</button>
+						</div>
 
-					<button
-						type="button"
-						onClick={(e) => e.preventDefault()}
-						className="self-end text-xs text-white"
-					>
-						Forgot password?
-					</button>
-					<Button fullWidth type="submit" onClick={handleSubmit} intent="secondary">
-						Login
-					</Button>
-				</form>
+						<button type="button" onClick={(e) => e.preventDefault()} className="text-xs self-end">
+							Forgot password?
+						</button>
+						<Button
+							className="flex justify-center"
+							type="submit"
+							onClick={handleSubmit}
+							intent="primary"
+						>
+							Login
+						</Button>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
