@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function UnauthenticatedLayout() {
 	return (
-		<main>
+		<main className="bg-theme-surface-secondary">
 			<Outlet />
 		</main>
 	);
