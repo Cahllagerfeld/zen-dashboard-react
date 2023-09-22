@@ -33,17 +33,17 @@ function PipelineDetail() {
 	return (
 		<BasePage header={<PipelineHeader pipeline={data} />}>
 			<div className="flex flex-col gap-4 xl:gap-8">
-				<Tabs defaultValue="account">
+				<Tabs defaultValue="runs">
 					<TabsList>
-						<TabsTrigger icon={<Run />} value="account">
+						<TabsTrigger icon={<Run />} value="runs">
 							Runs
 						</TabsTrigger>
-						<TabsTrigger icon={<Settings />} value="password">
+						<TabsTrigger icon={<Settings />} value="config">
 							Configuration
 						</TabsTrigger>
 					</TabsList>
-					<TabsContent value="account">Make changes to your account here.</TabsContent>
-					<TabsContent value="password">Change your password here.</TabsContent>
+					<TabsContent value="runs">Runs to come</TabsContent>
+					<TabsContent value="config">Config to come</TabsContent>
 				</Tabs>
 			</div>
 		</BasePage>

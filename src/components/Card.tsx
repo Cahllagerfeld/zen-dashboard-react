@@ -8,7 +8,7 @@ const cardVariants = cva("p-8", {
 			white: "bg-white"
 		},
 		size: {
-			large: "rounded-3xl"
+			large: "rounded-md"
 		}
 	},
 	defaultVariants: {

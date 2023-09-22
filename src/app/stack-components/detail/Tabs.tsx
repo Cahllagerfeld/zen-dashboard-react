@@ -46,9 +46,9 @@ function Tabs({ id }: TabsProps) {
 			className="flex w-full flex-col"
 			defaultValue={tab || defaultTab}
 		>
-			<RadixTabs.List className="h-16 rounded-3xl text-2xl flex w-full shrink-0 items-center bg-white px-8">
+			<RadixTabs.List className="h-16 text-2xl flex w-full shrink-0 items-center rounded-md bg-theme-surface-primary px-8 py-4">
 				<RadixTabs.Trigger
-					className="flex justify-center data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-primary"
+					className="data-[state=active]:shadow-primary flex justify-center data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0]"
 					value="stacks"
 				>
 					Stacks
@@ -59,7 +59,7 @@ function Tabs({ id }: TabsProps) {
 				{isSuccess && (
 					<ul className="space-y-4">
 						{data?.items.map((item) => (
-							<li className="rounded-xl bg-white p-3" key={item.id}>
+							<li className="rounded-md bg-white p-3" key={item.id}>
 								{item.name || "n/a"}
 							</li>
 						))}

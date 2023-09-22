@@ -17,7 +17,8 @@ export default function PipelineHeader({ pipeline }: Props) {
 				<StatusOverview status={pipeline.status!} />
 			</div>
 			<p className="text-text-sm text-theme-text-secondary">
-				Created by <span className="text-theme-text-primary">{pipeline.user?.name}</span> at{" "}
+				Created by{" "}
+				<span className="font-semibold text-theme-text-primary">{pipeline.user?.name}</span> at{" "}
 				{convertUTC(pipeline.created)}
 			</p>
 		</div>
