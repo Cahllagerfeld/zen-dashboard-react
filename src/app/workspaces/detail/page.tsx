@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useWorkspaceStatisticsQuery } from "./workspace-detail-query";
+import { useWorkspaceStatisticsQuery } from "../../../data/workspaces/detail-workspaces-query";
 import WorkspaceStatisticsCard from "./WorkspaceStatisticsCard";
 import WorkspaceSkeletonStatisticsCard from "./WorkspaceStatisticsSkeletonCard";
 import BasePage from "@/components/common/BasePage";

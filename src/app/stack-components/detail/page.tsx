@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useStackComponentDetail } from "./query";
+import { useStackComponentDetail } from "../../../data/stack-components/detail-components-query";
 import OverviewCard from "./cards/OverviewCard";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
 import ConfigCard from "./cards/ConfigCard";

@@ -1,4 +1,4 @@
-import { useCurrentUser } from "@/data/user/active-user-query";
+import { useCurrentUser } from "@/data/users/active-user-query";
 import PrimaryCirle from "@/components/primary-circle";
 import Skeleton from "react-loading-skeleton";
 import LogoutButton from "@/components/buttons/LogoutButton";

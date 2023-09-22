@@ -1,5 +1,5 @@
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
-import { usePipelines } from "./query";
+import { usePipelines } from "../../../data/pipelines/all-pipelines-query";
 import { useEffect, useState } from "react";
 import { PipelineQueryParams } from "@/types/pipelines";
 import Pagination from "../../../components/pagination/Pagination";
