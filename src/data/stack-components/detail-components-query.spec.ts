@@ -1,4 +1,7 @@
-import { getStackComponentQueryDetailKey, StackComponentDetailQuery } from "./query";
+import {
+	getStackComponentQueryDetailKey,
+	StackComponentDetailQuery
+} from "./detail-components-query";
 import { describe, it, expect } from "vitest";
 
 describe("getStackComponentQueryKey", () => {

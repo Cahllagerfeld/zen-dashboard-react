@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useStackComponentDetail } from "./query";
+import { useStackComponentDetail } from "@/data/stack-components/detail-components-query";
 import OverviewCard from "./cards/OverviewCard";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
 import ConfigCard from "./cards/ConfigCard";
 import StackComponent404 from "./StackComponent404";
 import Tabs from "./Tabs";
-import BasePage from "../../../components/common/BasePage";
+import BasePage from "@/components/common/BasePage";
 
 function StackComponentDetail() {
 	const { id } = useParams() as { id: string };

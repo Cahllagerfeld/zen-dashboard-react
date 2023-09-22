@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
-import { useWorkspaces } from "./workspace-query";
+import { useWorkspaces } from "@/data/workspaces/all-workspaces-query";
 import { routePaths } from "@/routes/route-paths";
-import { useCurrentUser } from "@/data/user/active-user-query";
+import { useCurrentUser } from "@/data/users/active-user-query";
 import Welcome from "@/components/Welcome";
 import Skeleton from "react-loading-skeleton";
 import WorkspaceSkeletonCard from "./WorkspaceSkeletonCard";
 import { convertUTC } from "@/lib/dates";
-import BasePage from "../../components/common/BasePage";
+import BasePage from "@/components/common/BasePage";
 
 function Home() {
 	const { setActiveWorkspace } = useWorkspaceStore();

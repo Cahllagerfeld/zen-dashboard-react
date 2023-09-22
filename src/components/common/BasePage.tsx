@@ -7,9 +7,11 @@ type Props = {
 
 export default function BasePage({ children, header, ...rest }: Props) {
 	const { setItems } = useBreadcrumbs();
+
 	useEffect(() => {
 		setItems([]);
-	}, [setItems]);
+	}, []);
+
 	return (
 		<div {...rest}>
 			{header && header}

@@ -1,4 +1,4 @@
-import { StackQueryOverview, getStackQueryKey } from "./query";
+import { StackQueryOverview, getStackQueryKey } from "./all-stacks-query";
 import { describe, it, expect } from "vitest";
 
 describe("getStackQueryKey", () => {

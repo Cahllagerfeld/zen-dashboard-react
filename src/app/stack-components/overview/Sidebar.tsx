@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { routePaths } from "../../../routes/route-paths";
+import { routePaths } from "@/routes/route-paths";
 import ConfigCard from "../detail/cards/ConfigCard";
 import OverviewCard from "../detail/cards/OverviewCard";
-import { useStackComponentDetail } from "../detail/query";
+import { useStackComponentDetail } from "@/data/stack-components/detail-components-query";
 import { ReactComponent as X } from "@/assets/close.svg";
 import { ReactComponent as Maximize } from "@/assets/maximize.svg";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
@@ -17,11 +17,11 @@ function Sidebar({ id, resetSelected }: SidebarProps) {
 
 	if (isLoading) return <p>Fetching...</p>;
 	return (
-		<aside className="sticky top-20 h-[80vh] w-1/3 space-y-8 overflow-y-auto p-4 pr-0">
+		<aside className="top-20 sticky h-[80vh] w-1/3 space-y-8 overflow-y-auto p-4 pr-0">
 			{data && (
 				<>
 					<div className="flex items-center justify-between">
-						<div className="flex gap-2 text-2xl">
+						<div className="text-2xl flex gap-2">
 							<Cube className="h-8 w-8" />
 							{data.name}
 						</div>

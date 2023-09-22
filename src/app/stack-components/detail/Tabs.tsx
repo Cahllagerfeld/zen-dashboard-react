@@ -2,7 +2,7 @@ import * as RadixTabs from "@radix-ui/react-tabs";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 // import StackTable from "./StackTable";
-import { useStacks } from "@/app/stacks/query";
+import { useStacks } from "@/data/stacks/all-stacks-query";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
 
 type TabsProps = {

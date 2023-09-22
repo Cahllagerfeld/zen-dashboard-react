@@ -1,5 +1,5 @@
 import { Pipeline } from "@/types/pipelines";
-import { convertUTC } from "../../../lib/dates";
+import { convertUTC } from "@/lib/dates";
 import StatusOverview from "../StatusOverview";
 import { Badge } from "@/components/BadgeNew";
 
