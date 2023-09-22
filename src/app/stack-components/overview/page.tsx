@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
-import { useStackComponents } from "../../../data/stack-components/all-components-query";
+import { useStackComponents } from "@/data/stack-components/all-components-query";
 import TableSkeleton from "@/components/table/TableSkeleton";
 import Pagination from "@/components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";

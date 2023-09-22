@@ -4,7 +4,7 @@ import { ReactComponent as ZenmlLogo } from "@/assets/logo-large.svg";
 import { ReactComponent as UserIcon } from "@/assets/user.svg";
 import { ReactComponent as KeyIcon } from "@/assets/key.svg";
 import { ReactComponent as EyeIcon } from "@/assets/eye.svg";
-import { useLoginMutation } from "../../data/login/login-mutation";
+import { useLoginMutation } from "@/data/login/login-mutation";
 import { routePaths } from "@/routes/route-paths";
 import { useTokenStore } from "@/state/stores";
 import { Button } from "@zenml-io/react-component-library";

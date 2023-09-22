@@ -2,7 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { StackComponent } from "@/types/stack-component";
 import { convertUTC } from "@/lib/dates";
 import { Link } from "react-router-dom";
-import { routePaths } from "../../../routes/route-paths";
+import { routePaths } from "@/routes/route-paths";
 
 export const columns: ColumnDef<StackComponent>[] = [
 	{

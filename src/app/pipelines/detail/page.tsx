@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { usePipelineDetail } from "../../../data/pipelines/detail-pipelines-query";
+import { usePipelineDetail } from "@/data/pipelines/detail-pipelines-query";
 import { ReactComponent as Run } from "@/assets/run.svg";
 import { ReactComponent as Settings } from "@/assets/settings.svg";
 import BasePage from "@/components/common/BasePage";

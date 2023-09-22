@@ -2,7 +2,7 @@ import { useCurrentUser } from "@/data/users/active-user-query";
 import PrimaryCirle from "@/components/primary-circle";
 import Skeleton from "react-loading-skeleton";
 import LogoutButton from "@/components/buttons/LogoutButton";
-import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
+import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { useBreadcrumbs } from "@/components/breadcrumb/BreadcrumbContext";
 
 function Topbar() {

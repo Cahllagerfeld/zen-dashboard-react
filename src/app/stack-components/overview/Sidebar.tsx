@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { routePaths } from "../../../routes/route-paths";
+import { routePaths } from "@/routes/route-paths";
 import ConfigCard from "../detail/cards/ConfigCard";
 import OverviewCard from "../detail/cards/OverviewCard";
-import { useStackComponentDetail } from "../../../data/stack-components/detail-components-query";
+import { useStackComponentDetail } from "@/data/stack-components/detail-components-query";
 import { ReactComponent as X } from "@/assets/close.svg";
 import { ReactComponent as Maximize } from "@/assets/maximize.svg";
 import { ReactComponent as Cube } from "@/assets/cube.svg";
