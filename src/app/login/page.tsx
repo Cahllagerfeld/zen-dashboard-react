@@ -44,7 +44,9 @@ function Login() {
 				<div className="flex w-full flex-col items-center p-7 pt-5">
 					<div className="mb-7 text-center">
 						<h1 className="text-display-xs">Login</h1>
-						<p className="pt-2 text-theme-text">Please login with your ZenML Credentials</p>
+						<p className="pt-2 text-theme-text-secondary">
+							Please login with your ZenML Credentials
+						</p>
 					</div>
 					<form className="flex max-w-[300px] flex-col gap-4">
 						<div className="flex w-full items-center gap-2 rounded-md border border-neutral-300 px-2">

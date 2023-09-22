@@ -1,15 +1,29 @@
 import { useParams } from "react-router-dom";
 import { usePipelineDetail } from "./query";
-import { ReactComponent as PipelineIcon } from "@/assets/pipeline.svg";
-import OverviewCard from "./cards/Overview";
-import DagCard from "./cards/Dag";
-import Tabs from "./Tabs";
-import BasePage from "../../../components/common/BasePage";
+import { ReactComponent as Run } from "@/assets/run.svg";
+import { ReactComponent as Settings } from "@/assets/settings.svg";
+import BasePage from "@/components/common/BasePage";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
+import PipelineHeader from "./PipelineHeader";
+import { useBreadcrumbs } from "@/components/breadcrumb/BreadcrumbContext";
+import { useEffect } from "react";
 
 function PipelineDetail() {
+	const { setItems } = useBreadcrumbs();
+
 	const { id } = useParams() as { id: string };
 
 	const { data, isError, isLoading } = usePipelineDetail(id);
+
+	useEffect(() => {
+		if (!isLoading && !isError) {
+			setItems([
+				// Todo: Adjust link here
+				{ label: "Pipelines", href: "/workspaces/default/pipelines" },
+				{ label: data?.name, href: `/pipelines/${data.id}` }
+			]);
+		}
+	}, [isLoading, isError, setItems]);
 
 	if (isError) {
 		return <p>Error</p>;
@@ -17,17 +31,20 @@ function PipelineDetail() {
 	if (isLoading) return <p>Fetching</p>;
 
 	return (
-		<BasePage>
+		<BasePage header={<PipelineHeader pipeline={data} />}>
 			<div className="flex flex-col gap-4 xl:gap-8">
-				<div className="flex items-center gap-2">
-					<PipelineIcon width={32} height={32} strokeWidth={2.2} />
-					<h1 className="text- text-[2rem]">{data.name}</h1>
-				</div>
-				<div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:gap-8">
-					<OverviewCard pipeline={data} />
-					<DagCard spec={data.spec.steps} />
-				</div>
-				<Tabs id={id} />
+				<Tabs defaultValue="runs">
+					<TabsList>
+						<TabsTrigger icon={<Run />} value="runs">
+							Runs
+						</TabsTrigger>
+						<TabsTrigger icon={<Settings />} value="config">
+							Configuration
+						</TabsTrigger>
+					</TabsList>
+					<TabsContent value="runs">Runs to come</TabsContent>
+					<TabsContent value="config">Config to come</TabsContent>
+				</Tabs>
 			</div>
 		</BasePage>
 	);

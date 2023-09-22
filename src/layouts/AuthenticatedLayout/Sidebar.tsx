@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "@/assets/logo.svg";
 import { ReactComponent as Home } from "@/assets/home.svg";
 import { ReactComponent as Workspace } from "@/assets/suitcase.svg";
-import { ReactComponent as Cube } from "@/assets/cube.svg";
-import { ReactComponent as Pipeline } from "@/assets/pipeline.svg";
+import { ReactComponent as Package } from "@/assets/package.svg";
+import { ReactComponent as Dataflow } from "@/assets/dataflow.svg";
 import SidebarItem from "./SidebarItem";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { routePaths } from "@/routes/route-paths";
@@ -19,7 +19,7 @@ function Sidebar() {
 			</div>
 			<div className="h-full w-full bg-theme-surface-tertiary px-2 py-5 pt-2">
 				<div className="flex h-full w-full flex-col items-center gap-1">
-					<SidebarItem to="/" icon={<Home />} label="Home" />
+					<SidebarItem to="/" icon={<Home />} stroke={false} label="Home" />
 					<SidebarItem
 						end
 						to={routePaths.workspaces.detail(activeWorkspace)}
@@ -29,14 +29,16 @@ function Sidebar() {
 					<div className="flex w-full flex-col items-center gap-2">
 						<SidebarItem
 							to={routePaths.pipelines.overview(activeWorkspace)}
-							icon={<Pipeline />}
+							icon={<Dataflow />}
+							stroke={false}
 							label="Pipelines"
 						/>
 					</div>
 					<div className="flex w-full flex-col items-center gap-2">
 						<SidebarItem
 							to={routePaths.components.overview(activeWorkspace)}
-							icon={<Cube />}
+							icon={<Package />}
+							stroke={false}
 							label="Components"
 						/>
 					</div>

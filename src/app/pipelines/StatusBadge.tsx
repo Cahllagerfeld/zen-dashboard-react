@@ -20,7 +20,7 @@ function StatusBadge({ status }: StatusBadgeProps) {
 				<Tooltip.Portal>
 					<Tooltip.Content
 						sideOffset={1}
-						className="rounded-md bg-white px-4 py-2 leading-none shadow-sharper "
+						className="shadow-sharper rounded-md border border-theme-border-moderate bg-white px-4 py-2 leading-none "
 					>
 						{status}
 						<Tooltip.Arrow className="fill-white" />

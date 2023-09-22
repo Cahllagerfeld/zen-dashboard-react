@@ -1,83 +1,24 @@
 import { useEffect, useState } from "react";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { useStackComponents } from "./query";
-import Table from "@/components/table/Table";
 import TableSkeleton from "@/components/table/TableSkeleton";
 import Pagination from "@/components/pagination/Pagination";
-import { ReactComponent as OpenSidebar } from "@/assets/open-sidebar.svg";
-import { Link, useSearchParams } from "react-router-dom";
-import { StackComponent, StackComponentQueryParams } from "@/types/stack-component";
-import { createColumnHelper } from "@tanstack/react-table";
+import { useSearchParams } from "react-router-dom";
+import { StackComponentQueryParams } from "@/types/stack-component";
 import Sidebar from "./Sidebar";
-import { routePaths } from "@/routes/route-paths";
-import { convertUTC } from "@/lib/dates";
 import BasePage from "@/components/common/BasePage";
+import { columns } from "./TableDef";
+import { DataTable } from "@/components/table/DataTable";
+import DefaultHeader from "@/components/DefaultHeader";
 
 function StackComponentsOverview() {
 	const DEFAULT_PAGE = "1";
 	const DEFAULT_PAGE_SIZE = "10";
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const columnHelper = createColumnHelper<StackComponent>();
-
-	const tableDef = [
-		columnHelper.accessor("id", {
-			header: () => "ID",
-			cell: (id) => (
-				<Link className="link" to={routePaths.components.detail(id.getValue())}>
-					{id.getValue()}
-				</Link>
-			)
-		}),
-		columnHelper.accessor("name", {
-			header: () => "Name",
-			cell: (name) => name.getValue()
-		}),
-		columnHelper.accessor("type", {
-			header: "Type",
-			cell: (type) => type.getValue()
-		}),
-		columnHelper.accessor("flavor", {
-			header: "Flavor",
-			cell: (flavor) => flavor.getValue()
-		}),
-		columnHelper.accessor("is_shared", {
-			header: "Shared",
-			cell: (isShared) => (isShared.getValue() ? "Yes" : "No")
-		}),
-		columnHelper.accessor("created", {
-			header: "Created",
-			cell: ({ getValue }) => {
-				return <time>{convertUTC(getValue())}</time>;
-			}
-		}),
-		columnHelper.accessor("id", {
-			id: "sidebar",
-			header: "",
-			meta: {
-				className: "w-8"
-			},
-			cell: ({ getValue }) => {
-				return (
-					<button className="w-8" onClick={() => setID(getValue())}>
-						<OpenSidebar />
-					</button>
-				);
-			}
-		})
-	];
-
 	const page = searchParams.get("page");
 	const size = searchParams.get("size");
 	const id = searchParams.get("id");
-
-	function setID(id: string) {
-		setSearchParams((existing) => {
-			const newSearchParams = new URLSearchParams(existing.toString());
-			newSearchParams.set("id", id);
-			return newSearchParams;
-		});
-	}
 
 	function resetID() {
 		setSearchParams((existing) => {
@@ -131,12 +72,12 @@ function StackComponentsOverview() {
 
 	const { data, isLoading, isSuccess } = useStackComponents({ workspace: activeWorkspace, params });
 	return (
-		<BasePage title="Stack Components">
-			{isLoading && <TableSkeleton colAmount={tableDef.length} />}
+		<BasePage header={<DefaultHeader title="Stack Components" />}>
+			{isLoading && <TableSkeleton colAmount={columns.length} />}
 			{isSuccess && (
 				<div className="flex">
 					<div className={`${id ? "w-2/3" : "w-full"}`}>
-						<Table columnDef={tableDef} data={data.items} />
+						<DataTable columns={columns} data={data.items} />
 						<Pagination
 							pageSizeChangeHandler={pageSizeChangeHandler}
 							pageChangeHandler={pageChangeHandler}

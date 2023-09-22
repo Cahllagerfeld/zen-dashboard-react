@@ -1,14 +1,18 @@
-import { HTMLAttributes } from "react";
-import PageHeader from "../PageHeader";
+import { HTMLAttributes, ReactNode, useEffect } from "react";
+import { useBreadcrumbs } from "../breadcrumb/BreadcrumbContext";
 
 type Props = {
-	title?: string;
+	header?: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-export default function BasePage({ title, children, ...rest }: Props) {
+export default function BasePage({ children, header, ...rest }: Props) {
+	const { setItems } = useBreadcrumbs();
+	useEffect(() => {
+		setItems([]);
+	}, [setItems]);
 	return (
 		<div {...rest}>
-			{title && <PageHeader title={title} />}
+			{header && header}
 			<div className="p-5">{children}</div>
 		</div>
 	);

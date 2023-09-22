@@ -32,7 +32,7 @@ function Home() {
 								key={index}
 								to={routePaths.workspaces.detail(item.name)}
 								onClick={() => setActiveWorkspace(item.name)}
-								className="rounded-2xl flex w-full select-text flex-col gap-2 bg-white from-primary to-primary-light p-4 hover:bg-primary hover:bg-gradient-to-br hover:text-white"
+								className="from-primary to-primary-light hover:bg-primary flex w-full select-text flex-col gap-2 rounded-md bg-theme-surface-primary p-4"
 							>
 								<h2 className="text-xl">{item.name}</h2>
 								{item.description ? <p>{item.description}</p> : <p>No description provided</p>}

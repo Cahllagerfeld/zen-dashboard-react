@@ -14,10 +14,7 @@ function determineDayTime() {
 function Welcome({ name }: WelcomeProps) {
 	return (
 		<p className="text-[2rem] text-neutral-400">
-			Good {determineDayTime()},{" "}
-			<span className="bg-gradient-to-br from-primary to-primary-light bg-clip-text text-4xl font-medium text-transparent">
-				{name}
-			</span>
+			Good {determineDayTime()}, <span className="font-medium text-theme-text-brand">{name}</span>
 		</p>
 	);
 }
