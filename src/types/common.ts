@@ -5,3 +5,8 @@ export type ResponsePage<T> = {
 	total: number;
 	items: T[];
 };
+
+export type BreadcrumbItem = {
+	label: string;
+	href: string;
+};

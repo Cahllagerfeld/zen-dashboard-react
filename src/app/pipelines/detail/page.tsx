@@ -5,11 +5,25 @@ import { ReactComponent as Settings } from "@/assets/settings.svg";
 import BasePage from "@/components/common/BasePage";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
 import PipelineHeader from "./PipelineHeader";
+import { useBreadcrumbs } from "@/components/breadcrumb/BreadcrumbContext";
+import { useEffect } from "react";
 
 function PipelineDetail() {
+	const { setItems } = useBreadcrumbs();
+
 	const { id } = useParams() as { id: string };
 
 	const { data, isError, isLoading } = usePipelineDetail(id);
+
+	useEffect(() => {
+		if (!isLoading && !isError) {
+			setItems([
+				// Todo: Adjust link here
+				{ label: "Pipelines", href: "/workspaces/default/pipelines" },
+				{ label: data?.name, href: `/pipelines/${data.id}` }
+			]);
+		}
+	}, [isLoading, isError, setItems]);
 
 	if (isError) {
 		return <p>Error</p>;
