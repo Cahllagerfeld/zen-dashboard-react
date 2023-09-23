@@ -1,6 +1,6 @@
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { usePipelines } from "@/data/pipelines/all-pipelines-query";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { PipelineQueryParams } from "@/types/pipelines";
 import Pagination from "@/components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
@@ -12,6 +12,7 @@ import { Input } from "@/components/Input";
 import { ReactComponent as Magnifying } from "@/assets/magnifying.svg";
 import { produce } from "immer";
 import debounce from "lodash.debounce";
+import { useDebouncedSearch } from "@/lib/hooks/debounce";
 
 function Pipelines() {
 	const DEFAULT_PAGE = "1";
@@ -74,15 +75,15 @@ function Pipelines() {
 		});
 	}
 
-	const debouncedSearch = useCallback(
+	const debouncedSearch = useDebouncedSearch(
 		debounce((value: string) => {
 			setQueryParams((prevState) =>
 				produce(prevState, (draft) => {
 					draft.name = value ? `contains:${value}` : undefined;
 				})
 			);
-		}, 500),
-		[]
+		}),
+		500
 	);
 
 	function searchHandler(e: ChangeEvent<HTMLInputElement>) {
