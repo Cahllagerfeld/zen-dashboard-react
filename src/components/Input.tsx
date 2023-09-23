@@ -4,7 +4,7 @@ import { cloneElement, forwardRef, InputHTMLAttributes, ReactElement, ReactNode 
 
 export const inputVariants = cva(
 	cn([
-		"transition-all duration-200 rounded-md",
+		"transition-all duration-200 rounded-md bg-theme-surface-primary",
 		"border-[#D0D5DD] border",
 		"text-theme-text-primary",
 		"placeholder:text-theme-text-secondary",
