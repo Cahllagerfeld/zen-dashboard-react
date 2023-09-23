@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { PipelineQueryParams } from "@/types/pipelines";
 import { useSearchParams } from "react-router-dom";
-import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from "@/lib/hooks/pagination";
 
 type PipelinesOverviewSerivceConfig = {
-	page: string | null;
-	size: string | null;
+	page: number;
+	size: number;
 };
 
 export function usePipelinesOverviewService({ page, size }: PipelinesOverviewSerivceConfig) {
 	const [, setSearchParams] = useSearchParams();
 	const [queryParams, setQueryParams] = useState<PipelineQueryParams>({
-		page: parseInt(page || DEFAULT_PAGE),
-		size: parseInt(size || DEFAULT_PAGE_SIZE),
+		page,
+		size,
 		name: undefined
 	});
 
