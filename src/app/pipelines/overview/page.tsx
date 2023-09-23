@@ -1,6 +1,6 @@
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
 import { usePipelines } from "@/data/pipelines/all-pipelines-query";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { PipelineQueryParams } from "@/types/pipelines";
 import Pagination from "@/components/pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
@@ -8,6 +8,10 @@ import BasePage from "@/components/common/BasePage";
 import { DataTable } from "@/components/table/DataTable";
 import { columns } from "./TableDef";
 import DefaultHeader from "@/components/DefaultHeader";
+import { Input } from "@/components/Input";
+import { ReactComponent as Magnifying } from "@/assets/magnifying.svg";
+import { produce } from "immer";
+import debounce from "lodash.debounce";
 
 function Pipelines() {
 	const DEFAULT_PAGE = "1";
@@ -21,7 +25,8 @@ function Pipelines() {
 
 	const [queryParams, setQueryParams] = useState<PipelineQueryParams>({
 		page: parseInt(page || DEFAULT_PAGE),
-		size: parseInt(size || DEFAULT_PAGE_SIZE)
+		size: parseInt(size || DEFAULT_PAGE_SIZE),
+		name: undefined
 	});
 
 	const { data, isLoading, isError, isSuccess } = usePipelines({
@@ -38,6 +43,9 @@ function Pipelines() {
 		}
 
 		setSearchParams(searchParams);
+		return () => {
+			debouncedSearch.cancel();
+		};
 	}, [searchParams, setSearchParams]);
 
 	function pageChangeHandler(page: number) {
@@ -66,20 +74,39 @@ function Pipelines() {
 		});
 	}
 
+	const debouncedSearch = useCallback(
+		debounce((value: string) => {
+			setQueryParams((prevState) =>
+				produce(prevState, (draft) => {
+					draft.name = value ? `contains:${value}` : undefined;
+				})
+			);
+		}, 500),
+		[]
+	);
+
+	function searchHandler(e: ChangeEvent<HTMLInputElement>) {
+		const { value } = e.target;
+		debouncedSearch(value);
+	}
+
 	if (isError) return <p>Error</p>;
 	return (
 		<BasePage header={<DefaultHeader title="Pipelines" />}>
-			{isLoading && <p>Loading...</p>}
-			{isSuccess && (
-				<div>
-					<DataTable columns={columns} data={data.items} />
-					<Pagination
-						pageChangeHandler={pageChangeHandler}
-						pageSizeChangeHandler={pageSizeChangeHandler}
-						paginate={data}
-					/>
-				</div>
-			)}
+			<div className="space-y-4">
+				<Input onChange={searchHandler} iconLeft={<Magnifying />} placeholder="Search..." />
+				{isLoading && <p>Loading...</p>}
+				{isSuccess && (
+					<>
+						<DataTable columns={columns} data={data.items} />
+						<Pagination
+							pageChangeHandler={pageChangeHandler}
+							pageSizeChangeHandler={pageSizeChangeHandler}
+							paginate={data}
+						/>
+					</>
+				)}
+			</div>
 		</BasePage>
 	);
 }
