@@ -1,5 +1,5 @@
 import { RunQueryParams } from "@/types/runs";
-import { getRunKey } from "./run-query";
+import { getRunKey } from "./all-runs-query";
 import { describe, test, expect } from "vitest";
 
 describe("getRunQueryKey", () => {
