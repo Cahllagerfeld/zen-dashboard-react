@@ -44,7 +44,7 @@ function PipelineDetail() {
 						</TabsTrigger>
 					</TabsList>
 					<TabsContent value="runs">
-						<RunsTab />
+						<RunsTab id={id} />
 					</TabsContent>
 					<TabsContent value="config">Config to come</TabsContent>
 				</Tabs>
