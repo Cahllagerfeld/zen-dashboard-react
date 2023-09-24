@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
 import PipelineHeader from "./PipelineHeader";
 import { useBreadcrumbs } from "@/components/breadcrumb/BreadcrumbContext";
 import { useEffect } from "react";
+import RunsTab from "./RunsTab";
 
 function PipelineDetail() {
 	const { setItems } = useBreadcrumbs();
@@ -42,7 +43,9 @@ function PipelineDetail() {
 							Configuration
 						</TabsTrigger>
 					</TabsList>
-					<TabsContent value="runs">Runs to come</TabsContent>
+					<TabsContent value="runs">
+						<RunsTab />
+					</TabsContent>
 					<TabsContent value="config">Config to come</TabsContent>
 				</Tabs>
 			</div>
