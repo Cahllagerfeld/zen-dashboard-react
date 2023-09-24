@@ -4,6 +4,7 @@ import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "@/layouts/UnauthenticatedLayout";
 import AuthenticatedLayout from "@/layouts/AuthenticatedLayout/AuthenticatedLayout";
 import { useTokenStore } from "@/state/stores";
+import NoMatch from "@/app/404/page";
 // import WorkspaceDetail from "@/features/workspace-detail/WorkspaceDetail";
 // import Login from "@/features/login/Login";
 
@@ -60,7 +61,7 @@ function AppRoutes() {
 				</Route>
 
 				{/* Fallback */}
-				<Route path="*" element={<h1 className="text-base">404</h1>} />
+				<Route path="*" element={<NoMatch />} />
 			</Routes>
 		</Suspense>
 	);
