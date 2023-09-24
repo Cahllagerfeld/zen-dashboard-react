@@ -4,8 +4,6 @@ import { routePaths } from "./route-paths";
 import UnauthenticatedLayout from "@/layouts/UnauthenticatedLayout";
 import AuthenticatedLayout from "@/layouts/AuthenticatedLayout/AuthenticatedLayout";
 import { useTokenStore } from "@/state/stores";
-// import WorkspaceDetail from "@/features/workspace-detail/WorkspaceDetail";
-// import Login from "@/features/login/Login";
 
 const Login = React.lazy(() => import("@/app/login/page"));
 const Home = React.lazy(() => import("@/app/home/page"));
@@ -14,6 +12,7 @@ const StackComponentsOverview = React.lazy(() => import("@/app/stack-components/
 const StackComponentDetail = React.lazy(() => import("@/app/stack-components/detail/page"));
 const PipelineOverview = React.lazy(() => import("@/app/pipelines/overview/page"));
 const PipelineDetail = React.lazy(() => import("@/app/pipelines/detail/page"));
+const NoMatch = React.lazy(() => import("@/app/404/page"));
 
 function AppRoutes() {
 	const { token } = useTokenStore();
@@ -60,7 +59,7 @@ function AppRoutes() {
 				</Route>
 
 				{/* Fallback */}
-				<Route path="*" element={<h1 className="text-base">404</h1>} />
+				<Route path="*" element={<NoMatch />} />
 			</Routes>
 		</Suspense>
 	);
