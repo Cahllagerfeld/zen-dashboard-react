@@ -2,34 +2,27 @@ import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { User } from "@/types/user";
 import { useTokenStore } from "@/state/stores";
 import { apiPaths, createApiPath } from "../api";
-import { ErrorModel } from "@/types/error";
-import { FetchError } from "../fetch-error";
+import { performAuthenticatedRequest } from "../requests";
 
 export function getCurrentUserKey() {
 	return ["current-user"];
+}
+
+export async function fetchCurrentUser(token: string) {
+	const url = createApiPath(apiPaths.currentUser);
+
+	return performAuthenticatedRequest<User>({
+		errorMessage: "Fetching the active user failed",
+		token,
+		url
+	});
 }
 
 export function useCurrentUser(options?: Omit<UseQueryOptions<User>, "queryKey" | "queryFn">) {
 	const { token } = useTokenStore();
 	return useQuery<User>({
 		queryKey: getCurrentUserKey(),
-		queryFn: async () => {
-			const response = await fetch(createApiPath(apiPaths.currentUser), {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			});
-			if (!response.ok) {
-				const errorData = (await response.json()) as ErrorModel;
-				throw new FetchError({
-					status: response.status,
-					statusText: response.statusText,
-					message: (errorData.detail as string) || "Fetching the active User failed"
-				});
-			}
-			return response.json();
-		},
+		queryFn: async () => fetchCurrentUser(token),
 		...options
 	});
 }

@@ -1,10 +1,10 @@
 import { RunQueryParams, RunsPage } from "@/types/runs";
 import { apiPaths, createApiPath } from "../api";
 import { objectToSearchParams } from "../helper";
-import { ErrorModel } from "@/types/error";
 import { FetchError } from "../fetch-error";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "@/state/stores";
+import { performAuthenticatedRequest } from "../requests";
 
 type RunQueryConfig = {
 	workspace: string;
@@ -20,21 +20,11 @@ export async function fetchRuns({ workspace, params }: RunQueryConfig, token: st
 		apiPaths.workspaces.runs(workspace) + `?${objectToSearchParams(params)}`
 	);
 
-	const res = await fetch(url, {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${token}`
-		}
+	return performAuthenticatedRequest<RunsPage>({
+		token,
+		url,
+		errorMessage: "Fetching Runs failed"
 	});
-	if (!res.ok) {
-		const errorData: ErrorModel = await res.json();
-		throw new FetchError({
-			status: res.status,
-			statusText: res.statusText,
-			message: (errorData.detail as string) || "Fetching Runs failed"
-		});
-	}
-	return res.json();
 }
 
 export function useRuns(

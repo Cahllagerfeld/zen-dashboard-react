@@ -1,10 +1,10 @@
 import { StackPage, StackQueryParams } from "@/types/stack";
 import { apiPaths, createApiPath } from "@/data/api";
 import { objectToSearchParams } from "@/data/helper";
-import { ErrorModel } from "@/types/error";
 import { FetchError } from "@/data/fetch-error";
 import { useTokenStore } from "@/state/stores";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
+import { performAuthenticatedRequest } from "../requests";
 
 export type StackQueryOverview = {
 	workspace: string;
@@ -20,21 +20,11 @@ export async function fetchStacks({ params, workspace }: StackQueryOverview, tok
 		apiPaths.workspaces.stacks(workspace) + `?${objectToSearchParams(params)}`
 	);
 
-	const res = await fetch(url, {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${token}`
-		}
+	return performAuthenticatedRequest<StackPage>({
+		url,
+		errorMessage: "Fetching the stacks failed",
+		token
 	});
-	if (!res.ok) {
-		const errorData = (await res.json()) as ErrorModel;
-		throw new FetchError({
-			status: res.status,
-			statusText: res.statusText,
-			message: (errorData.detail as string) || "Fetching the stacks failed"
-		});
-	}
-	return res.json();
 }
 
 export function useStacks(
@@ -48,3 +38,4 @@ export function useStacks(
 		...options
 	});
 }
+2;

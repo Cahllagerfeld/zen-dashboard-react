@@ -1,10 +1,10 @@
 import { PipelinePage, PipelineQueryParams } from "@/types/pipelines";
 import { apiPaths, createApiPath } from "@/data/api";
 import { objectToSearchParams } from "@/data/helper";
-import { ErrorModel } from "@/types/error";
 import { FetchError } from "@/data/fetch-error";
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { useTokenStore } from "@/state/stores";
+import { performAuthenticatedRequest } from "@/data/requests";
 
 type PipelineOverviewQuery = {
 	workspace: string;
@@ -20,21 +20,14 @@ export async function fetchPipelines({ workspace, params }: PipelineOverviewQuer
 		apiPaths.workspaces.pipelines(workspace) + `?${objectToSearchParams(params)}`
 	);
 
-	const res = await fetch(url, {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${token}`
-		}
-	});
-	if (!res.ok) {
-		const errorData = (await res.json()) as ErrorModel;
-		throw new FetchError({
-			status: res.status,
-			statusText: res.statusText,
-			message: (errorData.detail as string) || "Fetching the components failed"
-		});
-	}
-	return res.json();
+	return performAuthenticatedRequest<PipelinePage>(
+		{
+			url,
+			token,
+			errorMessage: "Fetching the pipelines failed"
+		},
+		{ method: "GET" }
+	);
 }
 
 export function usePipelines(
