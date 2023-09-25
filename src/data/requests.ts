@@ -16,7 +16,7 @@ export async function performAuthenticatedRequest<T>(
 	if (token) defaultHeaders["Authorization"] = `Bearer ${token}`;
 
 	const defaultConfig: RequestInit = {
-		credentials: token ? "same-origin" : "include",
+		// credentials: token ? "same-origin" : "include",
 		headers: defaultHeaders
 	};
 

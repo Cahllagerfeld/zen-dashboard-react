@@ -1,9 +1,9 @@
 import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { StackComponent } from "@/types/stack-component";
-import { ErrorModel } from "@/types/error";
 import { apiPaths, createApiPath } from "@/data/api";
 import { useTokenStore } from "@/state/stores";
 import { FetchError } from "@/data/fetch-error";
+import { performAuthenticatedRequest } from "../requests";
 
 export type StackComponentDetailQuery = {
 	id: string;
@@ -15,21 +15,12 @@ export function getStackComponentQueryDetailKey({ id }: StackComponentDetailQuer
 
 export async function fetchStackComponentDetail({ id }: StackComponentDetailQuery, token: string) {
 	const url = createApiPath(apiPaths.components.detail(id));
-	const res = await fetch(url, {
-		method: "GET",
-		headers: {
-			Authorization: `Bearer ${token}`
-		}
+
+	return performAuthenticatedRequest<StackComponent>({
+		token,
+		url,
+		errorMessage: `Fetching the component ${id} failed`
 	});
-	if (!res.ok) {
-		const errorData = (await res.json()) as ErrorModel;
-		throw new FetchError({
-			status: res.status,
-			statusText: res.statusText,
-			message: (errorData.detail as string) || `Fetching the component ${id} failed`
-		});
-	}
-	return res.json();
 }
 
 export function useStackComponentDetail(
