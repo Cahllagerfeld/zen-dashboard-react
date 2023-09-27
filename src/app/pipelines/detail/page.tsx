@@ -8,11 +8,12 @@ import PipelineHeader from "./PipelineHeader";
 import { useBreadcrumbs } from "@/components/breadcrumb/BreadcrumbContext";
 import { useEffect } from "react";
 import RunsTab from "./RunsTab";
+import { useTabQuery } from "./useTabQuery";
 
 function PipelineDetail() {
 	const { setItems } = useBreadcrumbs();
-
 	const { id } = useParams() as { id: string };
+	const { activeTab, handleTabChange } = useTabQuery();
 
 	const { data, isError, isLoading } = usePipelineDetail(id);
 
@@ -34,7 +35,7 @@ function PipelineDetail() {
 	return (
 		<BasePage header={<PipelineHeader pipeline={data} />}>
 			<div className="flex flex-col gap-4 xl:gap-8">
-				<Tabs defaultValue="runs">
+				<Tabs value={activeTab} onValueChange={handleTabChange} defaultValue="runs">
 					<TabsList>
 						<TabsTrigger icon={<Run />} value="runs">
 							Runs
