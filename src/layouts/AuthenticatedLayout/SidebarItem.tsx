@@ -1,7 +1,7 @@
 import { ReactNode, cloneElement } from "react";
-import { NavLink, NavLinkProps } from "react-router-dom";
+import { Link, LinkProps, useLocation, matchPath } from "react-router-dom";
 
-interface SidebarItemProps extends NavLinkProps {
+interface SidebarItemProps extends SidebarLinkProps {
 	label: string;
 	icon: ReactNode;
 	stroke?: boolean;
@@ -9,7 +9,7 @@ interface SidebarItemProps extends NavLinkProps {
 
 function SidebarItem({ label, icon, stroke = true, ...rest }: SidebarItemProps) {
 	return (
-		<NavLink
+		<SidebarLink
 			className={({ isActive }) =>
 				`flex w-11 flex-col items-center rounded-md p-1 text-text-xs  ${
 					isActive ? "bg-theme-surface-primary" : "hover:bg-neutral-200 active:bg-neutral-300"
@@ -31,8 +31,41 @@ function SidebarItem({ label, icon, stroke = true, ...rest }: SidebarItemProps) 
 					<p className="mt-0.5">{label}</p>
 				</>
 			)}
-		</NavLink>
+		</SidebarLink>
 	);
 }
 
 export default SidebarItem;
+
+interface SidebarLinkProps extends Omit<LinkProps, "className" | "children"> {
+	routePatterns: string[];
+	children?: React.ReactNode | ((props: { isActive: boolean }) => React.ReactNode);
+	className?: string | ((props: { isActive: boolean }) => string);
+	exact?: boolean;
+}
+
+export function SidebarLink({
+	routePatterns,
+	exact = false,
+	children,
+	className: classNameProp,
+	...rest
+}: SidebarLinkProps) {
+	const location = useLocation();
+	const matches = routePatterns
+		.map((routePattern) => matchPath(routePattern, location.pathname))
+		.filter(Boolean);
+	console.log(matches);
+	const isActive = exact ? location.pathname === rest.to : matches.length > 0;
+
+	let className: string | undefined;
+	if (typeof classNameProp === "function") {
+		className = classNameProp({ isActive });
+	}
+
+	return (
+		<Link className={className} {...rest}>
+			{typeof children === "function" ? children({ isActive }) : children}
+		</Link>
+	);
+}
