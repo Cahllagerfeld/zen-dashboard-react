@@ -1,5 +1,5 @@
 import { ReactNode, cloneElement } from "react";
-import { Link, LinkProps, useLocation, useMatch as getMatch } from "react-router-dom";
+import { Link, LinkProps, useLocation, matchPath } from "react-router-dom";
 
 interface SidebarItemProps extends SidebarLinkProps {
 	label: string;
@@ -52,7 +52,10 @@ export function SidebarLink({
 	...rest
 }: SidebarLinkProps) {
 	const location = useLocation();
-	const matches = routePatterns.map((routePattern) => getMatch(routePattern)).filter(Boolean);
+	const matches = routePatterns
+		.map((routePattern) => matchPath(routePattern, location.pathname))
+		.filter(Boolean);
+	console.log(matches);
 	const isActive = exact ? location.pathname === rest.to : matches.length > 0;
 
 	let className: string | undefined;
