@@ -1,6 +1,8 @@
 import { Pipeline } from "@/types/pipelines";
 import { useRuns } from "@/data/runs/all-runs-query";
 import { useWorkspaceStore } from "@/state/stores/workspace-store";
+import { DataTable } from "../../../components/table/DataTable";
+import { runsColumns } from "./TableDef";
 
 type RunsTabProps = {
 	id: Pipeline["id"];
@@ -17,11 +19,5 @@ export default function RunsTab({ id }: RunsTabProps) {
 	});
 	if (isError) return <p>Error</p>;
 	if (isLoading) return <p>Loading...</p>;
-	return (
-		<ul>
-			{data.items.map((run) => (
-				<li key={run.id}>{run.name}</li>
-			))}
-		</ul>
-	);
+	return <DataTable columns={runsColumns} data={data.items} />;
 }
